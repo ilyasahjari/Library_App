@@ -60,7 +60,7 @@ const ParentAdd = (props) => {
         <div>
             <div>
             <h3 className="testTilte">Ajouter Parent</h3>
-                <br />
+                
                 <div className="row">
                     <div className="col">
                         <label >Prenom :</label>
