@@ -59,8 +59,7 @@ const ParentAdd = (props) => {
     return (
         <div>
             <div>
-            <a className="navbar-brand bg-dark" style={{color:"white"}} >Ajouter Parent</a>
-
+            <h3 className="testTilte">Ajouter Parent</h3>
                 <br />
                 <div className="row">
                     <div className="col">

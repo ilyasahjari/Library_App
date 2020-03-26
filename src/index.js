@@ -7,7 +7,7 @@ import App from './App';
 import configureStore from './store/configureStore'
 import * as serviceWorker from './serviceWorker';
 import { startSetStudent } from './actions/expenses';
-import {  startSetParent } from './actions/parent'
+import { startSetParent } from './actions/parent'
 import './firebase/firebase';
 import { PersistGate } from 'redux-persist/integration/react'
 
@@ -17,7 +17,7 @@ console.log(store.getState());
 store.subscribe(() => {
     const state = store.getState();
     const visibleExpenses = state.parents;
-    
+
     console.log(visibleExpenses);
 
 });
@@ -27,7 +27,7 @@ store.subscribe(() => {
 const jsx = (
     <Provider store={store}>
         {/*<PersistGate persistor={Store.persistor}>*/}
-            <AppRouter />
+        <AppRouter />
         {/*</PersistGate>*/}
     </Provider>
 );
@@ -36,7 +36,7 @@ const jsx = (
 store.dispatch(startSetParent());
 
 store.dispatch(startSetStudent()).then(() => {
-     ReactDOM.render(jsx, document.getElementById('root'));
+    ReactDOM.render(jsx, document.getElementById('root'));
 });
 
 

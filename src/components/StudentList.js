@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import getVisibleExpenses from '../selectors/expenses'
 import numeral from '../number'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Table} from 'react-bootstrap';
 import { startRemoveStudent , removeBook} from '../actions/expenses';
 import { Link } from 'react-router-dom'
