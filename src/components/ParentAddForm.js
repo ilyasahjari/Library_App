@@ -5,7 +5,7 @@ const ParentAddForm = (props) => {
     const [addParentClick, setAddParentClick] =useState(true)
     
     const isAdded=()=>{
-           props.history.push('/');
+           props.history.push('/ParentsList');
     }
 
 
