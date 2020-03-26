@@ -6,7 +6,7 @@ import { startRemoveParent } from '../actions/parent';
 import { Link } from 'react-router-dom'
 import '../App.css'
 import moment from 'moment';
-
+import getVisibleParents from "../selectors/parents"
 
 export const ParentsList = (props) => {
 
@@ -61,7 +61,7 @@ export const ParentsList = (props) => {
 
 const mapsToProps = (state) => {
     return {
-        parents: state.parents
+        parents: getVisibleParents(state.parents, state.parentfilters)
     }
 }
 
