@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import numeral from '../number'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {Table} from 'react-bootstrap';
 import { startRemoveParent } from '../actions/parent';
 import { Link } from 'react-router-dom'
