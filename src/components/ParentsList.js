@@ -1,0 +1,70 @@
+import React from 'react'
+import { connect } from 'react-redux';
+import numeral from '../number'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Table} from 'react-bootstrap';
+import { startRemoveParent } from '../actions/parent';
+import { Link } from 'react-router-dom'
+import '../App.css'
+import moment from 'moment';
+
+
+export const ParentsList = (props) => {
+
+    return (
+        <div>
+            <h1 style={{
+                textAlign: "center"
+            }}> Afficher Liste de Parents </h1>
+            
+           <div style={{
+                margin: "50px"
+            }}> 
+            <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
+                <caption>{props.parents.length} Parents</caption>
+                <thead className="thead-light">
+                <tr>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Sexe</th>
+                    <th>Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                        {/* show each element */}
+                        {
+                        props.parents.map((parent) => {
+                        return (<tr key={parent.id}>
+                                    <td>{parent.prenom}</td> 
+                                    <td>{parent.nom}</td>
+                                    <td>{parent.sexe}</td>
+                                    <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveParent(parent.id)) }}>Delete</button></td>
+                                </tr>);
+                        })
+                        }
+                </tbody>     
+                                
+            </Table>
+            </div>
+        {/* <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                marginTop: 5,
+            }}>
+            
+        </div> */}
+    </div>
+        
+    )
+}
+
+const mapsToProps = (state) => {
+    return {
+        parents: state.parents
+    }
+}
+
+
+export default connect(mapsToProps)(ParentsList);

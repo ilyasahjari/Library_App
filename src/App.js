@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import configureStore from './store/configureStore'
+import AppRouter from './Router/AppRouter'
+import { addBook, startAddBook } from './actions/expenses' 
+import getVisibleExpenses from './selectors/expenses'
+import {sortByAmount, sortByDate, setTextFilter} from './actions/filters'
+import { Provider } from 'react-redux'
+import { app } from 'firebase';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// const store = configureStore();
+// //console.log(store.getState());
 
-export default App;
+
+// store.subscribe(() => {
+//     const state = store.getState();
+//     const visibleExpenses = state.expenses;
+//     console.log(visibleExpenses);
+// });
+
+
+
+//const expenseOne = store.dispatch(addBook({ nom: "ahjari", prenom: "ilyas", classe: "M1", date: 4000}));
+//const expenseTwo = store.dispatch(startAddBook({ nom: "dardab", prenom: "amine", classe: "L3", date: 2000 }));
+//const expenseThree = store.dispatch(startAddBook({ nom: "bazine", prenom: "mehdi", classe: "L2", date: 1000 }));
+
+//store.dispatch(sortByDate());
+// function App() 
+// {
+//     return (
+//         <Provider store={store}>
+//             <AppRouter/>
+//         </Provider>
+//     );
+// }
+
+
+// export default App;

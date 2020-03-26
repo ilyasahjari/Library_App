@@ -24,8 +24,13 @@
   color: white;
 }
 
+
 .App-link {
   color: #61dafb;
+}
+
+.is-active {
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +40,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.styleAdd{
+  margin: auto;
+  width : 50%;
+  border: 3px solid grey;
+  padding: 10px;
+}
+
+.testTilte {
+    text-align: center;
+    color: black;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+  
+}
+
+.testTiltee:after {
+	content: "Library App";
+	position: absolute; left: 10px; top: 5px;
+	color: rgba(255,0,0,0.5);   
 }
