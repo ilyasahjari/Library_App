@@ -14,7 +14,7 @@ const ParentAdd = (props) => {
             return (parent.nom === props.nom && parent.prenom === prenom)
         });
 
-        if (nom && prenom && sexe) {
+        if (nom && prenom && sexe && sexe!= "true") {
             if (exist_element.length === 0) {
                 props.startAddParent({
                     nom,

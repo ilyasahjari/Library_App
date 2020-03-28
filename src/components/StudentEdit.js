@@ -48,6 +48,11 @@ const StudentEdit = (props) => {
     }
   };
 
+  const handleCancel = (e) =>{
+    e.preventDefault()
+    props.history.push('/');
+  }
+
   const onNomChange = (e) => {
     const nom = e.target.value;
     setnom(nom)
@@ -74,7 +79,6 @@ const StudentEdit = (props) => {
 
 
   return (
-    
      <div>
        <EditCheck/>
        {editShow &&
@@ -115,8 +119,11 @@ const StudentEdit = (props) => {
           <div className="col">
             <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Etudiant</button>
           </div>
-          <div className="col-8">
+          <div className="col">
             <button type="submit" onClick={handleDelete} className="btn btn-primary">Supprimer Etudiant</button>
+          </div>
+          <div className="col">
+            <button type="submit" onClick={handleCancel} className="btn btn-primary">Annuler</button>
           </div>
         </div>
       </form>}

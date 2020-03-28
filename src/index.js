@@ -16,7 +16,7 @@ console.log(store.getState());
 
 store.subscribe(() => {
     const state = store.getState();
-    const visibleExpenses = state.parents;
+    const visibleExpenses = state.expenses;
 
     console.log(visibleExpenses);
 
@@ -26,7 +26,7 @@ store.subscribe(() => {
 
 const jsx = (
     <Provider store={store}>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous" />
 
         {/*<PersistGate persistor={Store.persistor}>*/}
         <AppRouter />

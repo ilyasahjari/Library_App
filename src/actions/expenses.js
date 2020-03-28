@@ -12,7 +12,9 @@ export const addStudent = ({
     nom = '',
     prenom = '',
     classe = '',
-    date = 0
+    date = 0,
+    idParent1 = '',
+    idParent2 = ''
 } = {}) =>
     ({
         type: 'ADD_EXPENSE',
@@ -22,7 +24,9 @@ export const addStudent = ({
             nom,
             prenom,
             classe,
-            date
+            date,
+            idParent1,
+            idParent2
         }
     });
 
@@ -40,10 +44,12 @@ export const startAddStudent = (userData = {}) => {
             nom = '',
             prenom = '',
             classe = '',
-            date = 0
+            date = 0,
+            idParent1 = '',
+            idParent2 = ''
         } = userData;
 
-        const user = { nom, prenom, classe, date };
+        const user = { nom, prenom, classe, date, idParent1, idParent2 };
 
         return database.ref('users/students').push(user).then((ref) => {
             dispatch(addStudent({

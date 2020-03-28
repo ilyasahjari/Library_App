@@ -1,0 +1,17 @@
+-- to do !
+- add profil page
+	- add payment on profil page
+	- go to edit
+	- add photo 
+
+- add books to redux [id , matricule, type, date, classe]
+- add import/export CSV 
+
+
+- adding stripe API for payment react
+- Working on firebase to connect offline with persistor to keep the state of the elements even offline
+(optional) Adding firebase for authentification
+- Working on adding axios framwork to react to connect spring
+REST API calls with different request methods including GET, POST, PUT, DELETE 
+
+

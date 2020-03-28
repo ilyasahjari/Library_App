@@ -34,7 +34,9 @@ const BookAdd = (props) => {
                     nom,
                     prenom,
                     classe,
-                    date: Number(date)
+                    date: Number(date),
+                    idParent1,
+                    idParent2
                 });
                 //console.log('added user');
                 props.history.push('/');
@@ -70,7 +72,6 @@ const BookAdd = (props) => {
         setIdParent1(id)
     }
 
-    console.log(idParent1)
 
     const handleParentName2 = (id) =>{
         setIdParent2(id)
