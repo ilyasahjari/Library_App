@@ -37,10 +37,9 @@ export const BookList = (props) => {
                         {
                         props.expenses.map((expense) => {
                             const milToDate = new Date(expense.date)
-                            //const creationDateFormat = milToDate.getDate().toLocaleString() + "/" + (milToDate.getMonth() + 1) + "/" + milToDate.getFullYear();                
                             const date = moment(milToDate).format('DD/MM/YYYY')
                         return (<tr key={expense.id}>
-                                    <td><Link to= {`/edit/${expense.id}`} title="Edit item">{expense.prenom}</Link></td> 
+                                    <td><Link to= {`/StudentProfil/${expense.id}`} title="Edit item">{expense.prenom}</Link></td> 
                                     <td>{expense.nom}</td>
                                     <td>{expense.classe}</td>
                                     <td>{date}</td>

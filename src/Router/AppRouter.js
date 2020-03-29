@@ -10,7 +10,7 @@ import Header from "../components/Header"
 import StudentEdit from "../components/StudentEdit"
 import { connect } from "react-redux"
 import  ParentsList  from '../components/ParentsList';
-
+import StudentProfil from '../components/StudentProfil';
 
 function AppRouter() {
     
@@ -35,6 +35,7 @@ function AppRouter() {
             <Route path="/edit/:id" component={StudentEdit}/>
             <Route path="/addParent" component={ParentAddForm}/>
             <Route path="/ParentsList" component={ParentsList}/>
+            <Route path="/StudentProfil/:id" component={StudentProfil}/>
             <Route component={ErrorMessage} />
           </Switch>
         </BrowserRouter>
