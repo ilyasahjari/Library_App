@@ -10,15 +10,21 @@ const StudentProfil = (props) => {
     const [prenom, setPrenom] = useState(props.expense ? props.expense.prenom : '');
     const [classe, setClasse] = useState(props.expense ? props.expense.classe : '');
     const [date, setDate] = useState(props.expense ? new Date(props.expense.date) : new Date());
+    const [email, setEmail] = useState(props.expense ? props.expense.email : '');
+    const classeFullName ={
+        "Tnle":"Année Terminal",
+        "2nde":"Seconde Année lycée",
+        "1ere":"Première Année lycée"
+    }
+    
 
-        
     return (
         <div>
-            <div className="container main-secction">
+            <div className="container main-section">
                 <div className="row">
 
                     <div className="row user-left-part">
-                        <div className="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
+                        <div className="col-md col-sm-3 col-xs-12 user-profil-part pull-left">
                             
                         </div>
                         <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
@@ -30,7 +36,7 @@ const StudentProfil = (props) => {
                                             <h5>Etudiant</h5>
                                         </div>
                                         <div className="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
-                                            <Link to= {`/edit/${id}`} title="Edit item"><button className="btn btn-primary">Modifier</button></Link>
+                                            <Link to={`/edit/${id}`} title="Edit item"><button className="btn btn-primary">Modifier</button></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -39,10 +45,10 @@ const StudentProfil = (props) => {
                                         <div className="col-md-12">
                                             <ul className="nav nav-tabs" role="tablist">
                                                 <li className="nav-item">
-                                                    <a className="nav-link active"  role="tab" data-toggle="tab"><i className="fas fa-user-circle"></i> Info Profile</a>
+                                                    <a className="nav-link active" role="tab" data-toggle="tab"><i className="fas fa-user-circle"></i> Info Profile</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link"  role="tab" data-toggle="tab"><i className="fas fa-info-circle"></i> Réglement Produit</a>
+                                                    <a className="nav-link" role="tab" data-toggle="tab"><i className="fas fa-info-circle"></i> Réglement Produit</a>
                                                 </li>
                                                 <li className="nav-item">
                                                     <a className="nav-link" role="tab" data-toggle="tab"><i className="fas fa-user-circle"></i> Livres empruntés</a>
@@ -52,8 +58,9 @@ const StudentProfil = (props) => {
 
                                             <div className="tab-content">
                                                 <div role="tabpanel" className="tab-pane fade show active" id="profile">
+                                                    <br/>
                                                     <div className="row">
-                                                        <div className="col-md-2">
+                                                        <div className="col-md-2"> 
                                                             <label>ID</label>
                                                         </div>
                                                         <div className="col-md-6">
@@ -65,7 +72,7 @@ const StudentProfil = (props) => {
                                                             <label>Nom</label>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <p>{prenom + " "+ nom }</p>
+                                                            <p>{prenom + " " + nom}</p>
                                                         </div>
                                                     </div>
                                                     <div className="row">
@@ -73,7 +80,7 @@ const StudentProfil = (props) => {
                                                             <label>Email</label>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <p>temp@gmail.com</p>
+                                                            <p>{email}</p>
                                                         </div>
                                                     </div>
                                                     <div className="row">
@@ -84,12 +91,13 @@ const StudentProfil = (props) => {
                                                             <p>{moment(date).format('MM/DD/YYYY')}</p>
                                                         </div>
                                                     </div>
+                                                    <br/>
                                                     <div className="row">
                                                         <div className="col-md-2">
                                                             <label>Classe </label>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <p>{classe}</p>
+                                                            <p>{classeFullName[classe]}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -163,9 +171,9 @@ const StudentProfil = (props) => {
 
 const mapToProps = (state, props) => {
     return {
-      expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+        expense: state.expenses.find((expense) => expense.id === props.match.params.id)
     }
-  }
-  
+}
+
 
 export default connect(mapToProps)(StudentProfil);

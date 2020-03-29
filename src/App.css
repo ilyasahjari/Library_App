@@ -68,8 +68,9 @@
   border-bottom:1px solid #F1F1F1;
   margin-bottom:10px;
 }
-.main-secction{
+.main-section{
   box-shadow: 3px 3px 3px;
+  margin-bottom: 60px;
 }
 .image-section{
   padding: 0px;
@@ -100,10 +101,7 @@
 .user-detail-row{
   margin:0px; 
 }
-.container {
-  margin-bottom: 60px;
 
-}
 .user-detail-section2 p{
   font-size:12px;
   padding: 0px;

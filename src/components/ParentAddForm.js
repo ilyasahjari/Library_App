@@ -12,7 +12,7 @@ const ParentAddForm = (props) => {
 
     return (
         <div>
-            <form className="styleAdd form-group">
+            <form className="styleAdd form-group main-section">
                 <ParentAdd handleClick={isAdded} isClicked={isAdded}/>
             </form>
         </div>

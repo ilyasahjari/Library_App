@@ -11,6 +11,7 @@ const StudentEdit = (props) => {
   const [prenom, setPrenom] = useState(props.expense ? props.expense.prenom : '');
   const [classe, setClasse] = useState(props.expense ? props.expense.classe : '');
   const [date, setDate] = useState(props.expense ? new Date(props.expense.date) : new Date());
+  const [email, setEmail] = useState(props.expense ? props.expense.email : '');
   const [editShow, setEditShow] = useState(true)
 
   // to connect with spring for next uses !!s
@@ -39,6 +40,7 @@ const StudentEdit = (props) => {
         nom,
         prenom,
         classe,
+        email,
         date: Number(date)
       });
       props.history.push('/')
@@ -48,9 +50,9 @@ const StudentEdit = (props) => {
     }
   };
 
-  const handleCancel = (e) =>{
+  const handleCancel = (e) => {
     e.preventDefault()
-    props.history.push('/');
+    props.history.push(`../StudentProfil/${props.expense.id}`);
   }
 
   const onNomChange = (e) => {
@@ -64,69 +66,85 @@ const StudentEdit = (props) => {
   }
 
   const onClasseChange = (e) => {
-    const classe = e.target.value
-    setClasse(classe)
+    const classe = e.target.value;
+    setClasse(classe);
   }
 
-  const EditCheck =()=> {
-    if(!nom){
-      setEditShow(false);
-      return <ErrorMessage/>
-    }
-      return null;
+  const onEmailChange = (e) => {
+    const email = e.target.value;
+    setEmail(email);
   }
- 
+
+  const EditCheck = () => {
+    if (!nom) {
+      setEditShow(false);
+      return <ErrorMessage />
+    }
+    return null;
+  }
+
 
 
   return (
-     <div>
-       <EditCheck/>
-       {editShow &&
-      <form className="styleAdd" onSubmit={handleEdit}>
-        <h5 className="row justify-content-center"> Modification {prenom.toUpperCase()} {nom.toUpperCase()} </h5>
-        <br/>
-        <div className="row">
-          <div className="col">
-            <label >Prenom :</label>
-            <input type="text" value={prenom} className="form-control" placeholder="First name" autoFocus onChange={onPrenomChange} />
-          </div>
+    <div>
+      <EditCheck />
+      {editShow &&
+        <form className="styleAdd main-section" onSubmit={handleEdit}>
+          <h5 className="row justify-content-center"> Modification {prenom.toUpperCase()} {nom.toUpperCase()} </h5>
+          <br />
+          <div className="row">
+            <div className="col">
+              <label >Prenom :</label>
+              <input type="text" value={prenom} className="form-control" placeholder="First name" autoFocus onChange={onPrenomChange} />
+            </div>
 
-          <div className="col">
-            <label >Nom :</label>
-            <input type="text" value={nom} className="form-control" placeholder="Last name" onChange={onNomChange} />
+            <div className="col">
+              <label >Nom :</label>
+              <input type="text" value={nom} className="form-control" placeholder="Last name" onChange={onNomChange} />
+            </div>
           </div>
-        </div>
-        <br />
-        <div className="form-group">
-          <label >Classe</label>
-          <select value={classe} className="form-control" onChange={onClasseChange}>
-            <option></option>
-            <option>2nde</option>
-            <option>1ere</option>
-            <option>Tnle</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label >Date</label><br />
-          <DatePicker className="form-control"
-            defaultValue={moment(date).format('MM/DD/YYYY')}
-            dateFormat="dd/MM/yyyy"
-            selected={date}
-            onChange={date => setDate(date)} />
-        </div>
-        <br />
-        <div className="row">
-          <div className="col">
-            <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Etudiant</button>
+          <br />
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">Email address :</label>
+            <input value={email} onChange={onEmailChange} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+            <small id="emailHelp" className="form-text text-muted">Nous ne partagerons jamais votre Email avec qui que ce soit.</small>
           </div>
-          <div className="col">
-            <button type="submit" onClick={handleDelete} className="btn btn-primary">Supprimer Etudiant</button>
+          <div className="row">
+            <div className="col">
+              <div className="form-group">
+                <label >Classe :</label>
+                <select value={classe} className="form-control" onChange={onClasseChange}>
+                  <option></option>
+                  <option>2nde</option>
+                  <option>1ere</option>
+                  <option>Tnle</option>
+                </select>
+              </div>
+            </div>
+            <div className="col">
+              <div className="form-group">
+                <label >Date :</label><br />
+                <DatePicker className="form-control"
+                  defaultValue={moment(date).format('MM/DD/YYYY')}
+                  dateFormat="dd/MM/yyyy"
+                  selected={date}
+                  onChange={date => setDate(date)} />
+              </div>
+            </div>
           </div>
-          <div className="col">
-            <button type="submit" onClick={handleCancel} className="btn btn-primary">Annuler</button>
+          <br />
+          <div className="row">
+            <div className="col">
+              <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Etudiant</button>
+            </div>
+            <div className="col">
+              <button type="submit" onClick={handleDelete} className="btn btn-primary">Supprimer Etudiant</button>
+            </div>
+            <div className="col">
+              <button type="submit" onClick={handleCancel} className="btn btn-primary">Annuler</button>
+            </div>
           </div>
-        </div>
-      </form>}
+        </form>}
     </div>
   )
 }
