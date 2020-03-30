@@ -1,6 +1,7 @@
 //filters reducer
 const filterReducerDefault = {
     text: '',
+    classe:'',
     sortBy: '',
     startDate: undefined,
     endDate: undefined
@@ -12,6 +13,12 @@ export default (state = filterReducerDefault, action) => {
             return {
                 ...state,
                 text: action.text
+            };
+
+        case 'SET_CLASSE_FILTER':
+            return {
+                ...state,
+                classe: action.classe
             };
 
         case 'SORT_BY_DATE':

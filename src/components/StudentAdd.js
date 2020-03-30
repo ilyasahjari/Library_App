@@ -108,7 +108,7 @@ const BookAdd = (props) => {
                 <div className="form-group">
                     <label >Classe :</label>
                     <select className="form-control" onChange={onClasseChange}>
-                        <option value> </option>
+                        <option > </option>
                         <option>2nde</option>
                         <option>1ere</option>
                         <option>Tnle</option>

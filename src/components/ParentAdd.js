@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { startAddParent, startSetParents } from '../actions/parent';
 import { connect } from 'react-redux';
 import '../App.css'
+import PhoneInput from 'react-phone-input-2'
+
+
 const ParentAdd = (props) => {
 
     const [nom, setNom] = useState(props.nom ? props.nom : '');
     const [prenom, setPrenom] = useState(props.prenom ? props.prenom : '');
     const [sexe, setSexe] = useState('');
+    const [phoneNum, setPhoneNum] = useState('');
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -19,7 +23,8 @@ const ParentAdd = (props) => {
                 props.startAddParent({
                     nom,
                     prenom,
-                    sexe
+                    sexe,
+                    phoneNum
                 });
                 props.isClicked(false)
                 //to return to the main page for the add parent page
@@ -55,6 +60,11 @@ const ParentAdd = (props) => {
         setSexe(sexe);
     }
 
+    const onPhoneNum = (e) => {
+        const phoneNum = e.target.value;
+        setPhoneNum(phoneNum);
+    }
+
 
     return (
         <div>
@@ -82,6 +92,11 @@ const ParentAdd = (props) => {
                         <option>Autre</option>
                     </select>
                 </div>
+                <div className="form-group ">
+                    <label >Numéro de téléphone :</label>
+                    <PhoneInput country={'fr'} value={phoneNum} onChange={setPhoneNum} />
+                </div>
+
                 <div className="row">
                     <div className="col">
                         <button onClick={handleAdd} className="btn btn-primary">Ajouter Parent</button>

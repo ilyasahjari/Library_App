@@ -4,10 +4,17 @@ export const setTextFilter = (text = '') => ({
     text
 });
 
+//SET_CLASSE_FILTER
+export const setClasseFilter = (classe ='')=>({
+    type: 'SET_CLASSE_FILTER',
+    classe
+});
+
 // SORT_BY_DATE
 export const sortByDate = () => ({
     type: 'SORT_BY_DATE',
 })
+
 
 
 // SET_START_DATE

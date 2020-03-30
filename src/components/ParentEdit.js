@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { startEditParent, startRemoveStudent } from '../actions/parent';
+import { startEditParent, startRemoveParent } from '../actions/parent';
 import { connect } from 'react-redux';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -20,13 +20,19 @@ const ParentEdit = (props) => {
                 nom,
                 prenom,
                 sexe,
-                phoneNum,
+                phoneNum
             });
-            props.history.push('/ParentsList')
+            props.history.push('../ParentsList')
         } else {
             alert("please fill the fields")
         }
     };
+
+    const handleDelete = (e) =>{
+        e.preventDefault();
+        props.startRemoveParent(props.parent.id) 
+        props.history.push('../ParentsList')      
+    }
 
     const onNomChange = (e) => {
         const nom = e.target.value;
@@ -83,6 +89,9 @@ const ParentEdit = (props) => {
                     <div className="col">
                         <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Parent</button>
                     </div>
+                    <div className="col">
+                        <button type="submit" onClick={handleDelete} className="btn btn-primary">Supprimer Parent</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -100,6 +109,7 @@ const mapToProps = (state, props) => {
 const mapDispatchProps = (dispatch) =>{
     return {
         startEditParent: (id, parent) => dispatch(startEditParent(id, parent)),
+        startRemoveParent: (payload) => dispatch(startRemoveParent(payload))
     }
 }
 

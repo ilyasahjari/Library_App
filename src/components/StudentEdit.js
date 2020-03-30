@@ -43,10 +43,9 @@ const StudentEdit = (props) => {
         email,
         date: Number(date)
       });
-      props.history.push('/')
+      props.history.push(`../StudentProfil/${props.expense.id}`)
     } else {
       alert("please fill the fields")
-      props.history.push('/')
     }
   };
 
@@ -159,7 +158,7 @@ const mapToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   startEditStudent: (id, expense) => dispatch(startEditStudent(id, expense)),
-  startRemoveStudent: (data) => dispatch(startRemoveStudent(data))
+  startRemoveStudent: (payload) => dispatch(startRemoveStudent(payload))
 });
 
 export default connect(mapToProps, mapDispatchToProps)(StudentEdit);

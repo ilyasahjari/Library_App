@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux';
 import getVisibleExpenses from '../selectors/expenses'
 import numeral from '../number'
-import {Table} from 'react-bootstrap';
-import { startRemoveStudent , removeBook} from '../actions/expenses';
+import { Table } from 'react-bootstrap';
+import { startRemoveStudent, removeBook } from '../actions/expenses';
 import { Link } from 'react-router-dom'
 import '../App.css'
+import { setClasseFilter } from '../actions/filters';
 import moment from 'moment';
 
 
@@ -16,42 +17,50 @@ export const BookList = (props) => {
             <h1 style={{
                 textAlign: "center"
             }}> Afficher Liste d'adherents </h1>
-            
-           <div style={{
+            {/*add filter Component*/}
+            Trier par classe   
+            <select onChange={(e) => { props.dispatch(setClasseFilter(e.target.value))}}>
+                <option> </option>
+                <option>2nde</option>
+                <option>1ere</option>
+                <option>Tnle</option>
+            </select>
+
+            <div style={{
                 margin: "50px"
-            }}> 
-            <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
-                <caption>{props.expenses.length} Users</caption>
-                <thead className="thead-light">
-                <tr>
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>Classe</th>
-                    <th>Date</th>
-                    <th>Modifier</th>
-                </tr>
-                </thead>
-                <tbody>
-                
+            }}>
+                <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
+                    <caption>{props.expenses.length} Users</caption>
+                    <thead className="thead-light">
+                        <tr>
+                            <th>Prenom</th>
+                            <th>Nom</th>
+                            <th>Classe</th>
+                            <th>Date</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
                         {/* show each element */}
                         {
-                        props.expenses.map((expense) => {
-                            const milToDate = new Date(expense.date)
-                            const date = moment(milToDate).format('DD/MM/YYYY')
-                        return (<tr key={expense.id}>
-                                    <td><Link to= {`/StudentProfil/${expense.id}`} title="Edit item">{expense.prenom}</Link></td> 
+                            props.expenses.map((expense) => {
+                                const milToDate = new Date(expense.date)
+                                const date = moment(milToDate).format('DD/MM/YYYY')
+                                return (<tr key={expense.id}>
+                                    <td><Link to={`/StudentProfil/${expense.id}`} title="Edit item">{expense.prenom}</Link></td>
                                     <td>{expense.nom}</td>
                                     <td>{expense.classe}</td>
                                     <td>{date}</td>
                                     <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveStudent(expense.id)) }}>Delete</button></td>
                                 </tr>);
-                        })
+                            })
                         }
-                </tbody>     
-                                
-            </Table>
+                    </tbody>
+
+                </Table>
             </div>
-        {/* <div style={{
+            {/* <div style={{
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-around',
@@ -59,8 +68,8 @@ export const BookList = (props) => {
             }}>
             
         </div> */}
-    </div>
-        
+        </div>
+
     )
 }
 
