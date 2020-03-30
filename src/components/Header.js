@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import React from 'react'
 import { setTextFilter, sortByAmount, sortByDate } from '../actions/filters'
 import { setTextFiltertParent } from '../actions/parent-filter'
@@ -17,7 +17,7 @@ const Header = ({ dispatch }) => (
             <NavLink className="nav-link" to="/" activeClassName="is-active" exact={true} > Liste d'étudiants </NavLink>
           </li>
           <li className="nav-item active">
-            <NavLink className="nav-link" to="/ParentsList" activeClassName="is-active">Liste Parents</NavLink>
+            <NavLink className="nav-link" to="/ParentsList" activeClassName="is-active" >Liste Parents</NavLink>
           </li>
           <li className="nav-item active">
             <NavLink className="nav-link" to="/addStudent" activeClassName="is-active">Ajout Etudiants</NavLink>

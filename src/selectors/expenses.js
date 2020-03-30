@@ -6,7 +6,7 @@ export default  (expenses, { text, classe }) => {
            //for a faster search
            // return expense.prenom.toLowerCase().includes(text.toLowerCase());         
         const textfilter   = !(expense.prenom.toLowerCase().search(text.toLowerCase()));
-        const classefilter = !(expense.classe.toLowerCase().includes(classe.toLowerCase()));  
+        const classefilter = !(expense.classe.toLowerCase().search(classe.toLowerCase()));  
 
         return textfilter && classefilter ;
         });

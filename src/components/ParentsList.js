@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState}from 'react'
 import { connect } from 'react-redux';
 import numeral from '../number'
 import { Table } from 'react-bootstrap';
@@ -11,6 +11,13 @@ import { setSexeFilterParent } from "../actions/parent-filter"
 
 
 export const ParentsList = (props) => {
+    const [classeFilter, setClasseFilter] = useState(' ');
+    
+    const onChangeClassFiltre =(e)=>{
+        const classeFilter = e.target.value;
+        setClasseFilter(classeFilter);
+        props.dispatch(setSexeFilterParent(classeFilter))
+    }
 
     return (
         <div>
@@ -19,7 +26,7 @@ export const ParentsList = (props) => {
             }}> Afficher Liste de Parents </h1>
             {/*add filter Component*/}
             Trier par classe   
-            <select onChange={(e) => { props.dispatch(setSexeFilterParent(e.target.value))}}>
+            <select defaultValue=' ' onChange={onChangeClassFiltre} >
                 <option> </option>
                 <option>M</option>
                 <option>F</option>
