@@ -87,7 +87,7 @@ const StudentProfil = (props) => {
                                                         <div className="col-md-2">
                                                             <label>Date de naissance </label>
                                                         </div>
-                                                        <div className="col-md-6">
+                                                        <div className="col-md-6">    
                                                             <p>{moment(date).format('MM/DD/YYYY')}</p>
                                                         </div>
                                                     </div>

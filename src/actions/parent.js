@@ -5,7 +5,8 @@ export const addParent = ({
     id = '',
     nom = '',
     prenom = '',
-    sexe = ''
+    sexe = '',
+    phoneNum = ''
 } = {}) =>
     ({
         type: 'ADD_PARENT',
@@ -14,7 +15,8 @@ export const addParent = ({
             id,
             nom,
             prenom,
-            sexe
+            sexe,
+            phoneNum
         }
     });
 
@@ -23,10 +25,11 @@ export const startAddParent = (userData = {}) => {
         const {
             nom = '',
             prenom = '',
-            sexe = ''
+            sexe = '',
+            phoneNum =''
         } = userData;
 
-        const user = { nom, prenom, sexe };
+        const user = { nom, prenom, sexe, phoneNum };
 
         return database.ref('users/parents').push(user).then((ref) => {
             dispatch(addParent({

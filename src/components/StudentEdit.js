@@ -89,9 +89,9 @@ const StudentEdit = (props) => {
     <div>
       <EditCheck />
       {editShow &&
-        <form className="styleAdd main-section" onSubmit={handleEdit}>
+        <form className="styleAdd main-section">
           <h5 className="row justify-content-center"> Modification {prenom.toUpperCase()} {nom.toUpperCase()} </h5>
-          <br />
+          <hr/>
           <div className="row">
             <div className="col">
               <label >Prenom :</label>
@@ -123,7 +123,7 @@ const StudentEdit = (props) => {
             </div>
             <div className="col">
               <div className="form-group">
-                <label >Date :</label><br />
+                <label >Date :</label><br/>
                 <DatePicker className="form-control"
                   defaultValue={moment(date).format('MM/DD/YYYY')}
                   dateFormat="dd/MM/yyyy"

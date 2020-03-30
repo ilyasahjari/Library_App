@@ -1,9 +1,9 @@
 -- to do !
-- add profil page
+- add profil page (done)
 	- add payment on profil page
-	- go to edit
-	- add photo 
+	-(optional) add photo 
 
+- go to student profil when adding him in studentAdd
 - add books to redux [id , matricule, type, date, classe]
 - add import/export CSV 
 

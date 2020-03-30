@@ -26,6 +26,7 @@ export const ParentsList = (props) => {
                     <th>Prenom</th>
                     <th>Nom</th>
                     <th>Sexe</th>
+                    <th>Numéro téléphone</th>
                     <th>Modifier</th>
                 </tr>
                 </thead>
@@ -35,9 +36,10 @@ export const ParentsList = (props) => {
                         {
                         props.parents.map((parent) => {
                         return (<tr key={parent.id}>
-                                    <td>{parent.prenom}</td> 
+                                    <td><Link to= {`/ParentEdit/${parent.id}`} title="Edit item">{parent.prenom}</Link></td> 
                                     <td>{parent.nom}</td>
                                     <td>{parent.sexe}</td>
+                                    <td>{parent.phoneNum}</td>
                                     <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveParent(parent.id)) }}>Delete</button></td>
                                 </tr>);
                         })
