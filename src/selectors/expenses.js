@@ -1,6 +1,6 @@
 //a test to show if the filter can see the elements existing in the expenses
 export default  (expenses, { text, classe }) => {
-
+    
     return expenses.filter((expense) => {
           
            //for a faster search

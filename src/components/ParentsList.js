@@ -16,7 +16,8 @@ export const ParentsList = (props) => {
     const onChangeClassFiltre =(e)=>{
         const classeFilter = e.target.value;
         setClasseFilter(classeFilter);
-        props.dispatch(setSexeFilterParent(classeFilter))
+        props.dispatch(setSexeFilterParent(classeFilter));
+        
     }
 
     return (
@@ -27,7 +28,7 @@ export const ParentsList = (props) => {
             {/*add filter Component*/}
             Trier par classe   
             <select defaultValue=' ' onChange={onChangeClassFiltre} >
-                <option> </option>
+                <option value=''> </option>
                 <option>M</option>
                 <option>F</option>
             </select>
@@ -79,7 +80,8 @@ export const ParentsList = (props) => {
 
 const mapsToProps = (state) => {
     return {
-        parents: getVisibleParents(state.parents, state.parentfilters)
+        parents: getVisibleParents(state.parents, state.parentfilters),
+        filtersParent: state.parentfilters
     }
 }
 
