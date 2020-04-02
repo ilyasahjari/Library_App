@@ -29,8 +29,9 @@ const BookAdd = (props) => {
         const exist_element = props.expenses.filter((expense) => {
             return (expense.nom === nom && expense.prenom === prenom)
         });
+        const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
 
-        if (nom && prenom && classe) {
+        if (nom && prenom && classe && emailValid) {
             if (exist_element.length === 0) {
                  props.startAddStudent({
                     nom,
@@ -47,7 +48,7 @@ const BookAdd = (props) => {
                 alert("Name already exists");
             }
         } else {
-            alert("Please fill the fields");
+            alert(emailValid ? "Veuillez remplir les champs necessaire" : "Veuillez saisir un Mail Valide");
         }
     };
 

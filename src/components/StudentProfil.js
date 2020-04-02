@@ -55,10 +55,10 @@ const StudentProfil = (props) => {
                                         <div className="col-md-12">
                                             <ul className="nav nav-tabs" role="tablist">
                                                 <li className="nav-item">
-                                                    <a className="nav-link active" role="tab" data-toggle="tab"><i className="fas fa-user-circle"></i> Info Profile</a>
+                                                    <a className="nav-link active" role="tab" data-toggle="tab"> Info Profile</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" role="tab" data-toggle="tab"><i className="fas fa-info-circle"></i> Réglement Produit</a>
+                                                    <a className="nav-link" role="tab" data-toggle="tab" > Réglement Produit</a>
                                                 </li>
                                                 <li className="nav-item">
                                                     <a className="nav-link" role="tab" data-toggle="tab"><i className="fas fa-user-circle"></i> Livres empruntés</a>
@@ -98,7 +98,7 @@ const StudentProfil = (props) => {
                                                             <label>Date de naissance </label>
                                                         </div>
                                                         <div className="col-md-6">    
-                                                            <p>{moment(date).format('MM/DD/YYYY')}</p>
+                                                            <p>{moment(date).format('DD/MM/YYYY')}</p>
                                                         </div>
                                                     </div>
                                                     <br/>

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 import { setClasseFilter } from '../actions/filters';
 import moment from 'moment';
+import { CSVLink, CSVDownload } from "react-csv";
 
 
 export const BookList = (props) => {
@@ -59,7 +60,9 @@ export const BookList = (props) => {
                     </tbody>
 
                 </Table>
+                <CSVLink data={props.expenses} filename={"Liste_etudiants.csv"} separator={";"} enclosingCharacter={`'`}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>
             </div>
+           
             {/* <div style={{
                 display: 'flex',
                 flexDirection: 'row',

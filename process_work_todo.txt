@@ -1,7 +1,6 @@
 -- to do !
 - livre : id, titre, auteur, niveau, destination ??, status (imprentable, preparé, emprunté, rendu)
 - payment ... (a suivre)  
-
 - go to student profil when adding him in studentAdd
 - add import/export CSV 
 - add to student : phonenumber, full adresse
