@@ -32,7 +32,7 @@ const BookAdd = (props) => {
 
         if (nom && prenom && classe) {
             if (exist_element.length === 0) {
-                props.startAddStudent({
+                 props.startAddStudent({
                     nom,
                     prenom,
                     classe,
@@ -41,7 +41,6 @@ const BookAdd = (props) => {
                     idParent1,
                     idParent2
                 });
-                //console.log('added user');
                 props.history.push('/');
 
             } else {

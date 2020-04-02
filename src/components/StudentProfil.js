@@ -11,12 +11,22 @@ const StudentProfil = (props) => {
     const [classe, setClasse] = useState(props.expense ? props.expense.classe : '');
     const [date, setDate] = useState(props.expense ? new Date(props.expense.date) : new Date());
     const [email, setEmail] = useState(props.expense ? props.expense.email : '');
+    const [idParent1, setIdParent1] = useState(props.expense ? props.expense.idParent1 : '');
+    const [idParent2, setIdParent2] = useState(props.expense ? props.expense.idParent2 : '');
+    
+
+
     const classeFullName ={
         "Tnle":"Année Terminal",
         "2nde":"Seconde Année lycée",
         "1ere":"Première Année lycée"
     }
     
+    const getParentById = (id) =>{
+        const parent = props.parents.find((parent)=> parent.id === id);
+        return  parent.nom + ' '+ parent.prenom;
+        
+    }
 
     return (
         <div>
@@ -80,7 +90,7 @@ const StudentProfil = (props) => {
                                                             <label>Email</label>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <p>{email}</p>
+                                                            <p>{props.expense.email}</p>
                                                         </div>
                                                     </div>
                                                     <div className="row">
@@ -98,6 +108,22 @@ const StudentProfil = (props) => {
                                                         </div>
                                                         <div className="col-md-6">
                                                             <p>{classeFullName[classe]}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="row">
+                                                        <div className="col-md-2">
+                                                            <label>Parent 1 </label>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <p>{getParentById(idParent1)}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="row">
+                                                        <div className="col-md-2">
+                                                            <label>Parent 2 </label>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <p>{getParentById(idParent2)}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -171,7 +197,8 @@ const StudentProfil = (props) => {
 
 const mapToProps = (state, props) => {
     return {
-        expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+        expense: state.expenses.find((expense) => expense.id === props.match.params.id),
+        parents: state.parents
     }
 }
 

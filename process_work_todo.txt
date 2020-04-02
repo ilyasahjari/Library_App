@@ -1,14 +1,16 @@
 -- to do !
-- add profil page (done)
-	- add payment on profil page
-	-(optional) add photo 
+- livre : id, titre, auteur, niveau, destination ??, status (imprentable, preparé, emprunté, rendu)
+- payment ... (a suivre)  
 
 - go to student profil when adding him in studentAdd
-- add books to redux [id , matricule, type, date, classe]
 - add import/export CSV 
-
-
+- add to student : phonenumber, full adresse
+- add to parent : email
 - adding stripe API for payment react
+
+- styling application 
+	-header with image 
+
 - Working on firebase to connect offline with persistor to keep the state of the elements even offline
 (optional) Adding firebase for authentification
 - Working on adding axios framwork to react to connect spring

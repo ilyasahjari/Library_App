@@ -1,35 +1,65 @@
-import React from 'react';
-import './App.css';
-import Ilyas from './Ilyas';
-
+import React from 'react'
 import { createStore, combineReducers } from 'redux';
-import uuid from 'uuid';
 
 // ADD_EXPENSE
 const addBook = ({
-    nom = '',
-    prenom = '',
-    classe = '',
+    titre = '',
+    auteur = '',
+    niveau = '',
+    status = '',
     date = 0
 } = {}) =>
     ({
-        type: 'ADD_EXPENSE',
+        type: 'ADD_BOOK',
         payload:
         {
-            id: uuid(),
-            nom,
-            prenom,
-            classe,
+            titre,
+            auteur,
+            niveau,
+            status,
             date
         }
     });
 
+export const startAddBook = (bookData = {}) => {
+    return (dispatch) => {
+        const {
+            titre = '',
+            auteur = '',
+            niveau = '',
+            status = '',
+            date = 0
+        } = bookData;
+
+        const book = { titre, auteur, niveau, status, date };
+
+        return database.ref('users/books').push(book).then((ref) => {
+            dispatch(addBook({
+                id: ref.key,
+                ...book
+            }));
+            console.log('book added');
+        });
+
+    };
+};
+
+
 
 // REMOVE_EXPENSE
 const removeBook = (id) => ({
-    type: "REMOVE_EXPENSE",
+    type: "REMOVE_BOOK",
     id
 });
+
+export const startRemoveBook = (id) => {
+    return (dispatch) => {
+        return database.ref(`users/books/${id}`).remove().then(() => {
+            dispatch(removeBook(id));
+        });
+    };
+};
+
 
 // EDIT_EXPENSE
 const editBook = (id, updates) =>
@@ -39,57 +69,63 @@ const editBook = (id, updates) =>
         updates
     });
 
+export const startEditBook = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`users/books/${id}`).update(updates).then(() => {
+            dispatch(editBook(id, updates));
+        });
+    };
+};
+
+
 // SET_TEXT_FILTER
-const setTextFilter = (text = '') => ({
-    type: 'SET_TEXT_FILTER',
+const setTitleFilter = (text = '') => ({
+    type: 'SET_TITLE_FILTER',
     text
 });
-
+//SET_AUTEUR_FILTER
+const setAuteurFilter = (auteur='') => ({
+    type : 'SET_AUTEUR_FILTER',
+    auteur
+})
+// SET_NIVEAU_FILTER
+const setNiveauFilter = (niveau='') => ({
+    type: "SET_NIVEAU_FILTERS",
+    niveau
+})
+//SET_STATUS_FILTER
+const setStatusFilter = (status='') => ({
+    type: "SET_STATUS_FILTER",
+    status
+})
 // SORT_BY_DATE
 const sortByDate = () => ({
-    type: 'SORT_BY_DATE',
+    type: 'SORT_BY_DATE'
 })
-
-// SORT_BY_AMOUNT
-const sortByAmount = () => ({
-    type: "SORT_BY_AMOUNT",
-})
-
-// SET_START_DATE
-const setStartDate = (startDate) => ({
-    type: "SET_START_DATE",
-    startDate,
-})
-
-// SET_END_DATE
-const setEndDate = (endDate) => ({
-    type: "SET_END_DATE",
-    endDate,
-})
-
-
 
 const bookReducerDefault = [];
 
 const filterReducerDefault = {
     text: '',
+    auteur: '',
+    niveau: '',
+    status: '',
     sortBy: 'date',
-    startDate: undefined,
-    endDate: undefined
+    date: undefined,
 }
 
 const bookReducer = (state = bookReducerDefault, action) => {
     switch (action.type) {
-        case 'ADD_EXPENSE':
+        case 'ADD_BOOK':
             return [
                 ...state,
                 action.payload
             ];
 
-        case 'REMOVE_EXPENSE':
+        case 'REMOVE_BOOK':
             return state.filter(({ id }) => id !== action.id);
 
-        case 'EDIT_EXPENSE':
+        case 'EDIT_BOOK':
             return state.map((expense) => {
                 if (expense.id === action.id)
                     return {
@@ -105,9 +141,9 @@ const bookReducer = (state = bookReducerDefault, action) => {
     }
 };
 
-const filterReducer = (state = filterReducerDefault, action) => {
+const filterBookReducer = (state = filterReducerDefault, action) => {
     switch (action.type) {
-        case 'SET_TEXT_FILTER':
+        case 'SET_TITLE_FILTER':
             return {
                 ...state,
                 text: action.text
@@ -118,21 +154,22 @@ const filterReducer = (state = filterReducerDefault, action) => {
                 ...state,
                 sortBy: "date"
             };
-        case 'SORT_BY_AMOUNT':
+
+        case 'SET_AUTEUR_FILTER':
             return {
                 ...state,
-                sortBy: "amount"
+                auteur: action.auteur
             }
-        case 'SET_START_DATE':
+        case 'SET_STATUS_FILTER':
             return {
                 ...state,
-                startDate: action.startDate
+                status: action.status
             }
-        case 'SET_END_DATE':
+        case 'SET_NIVEAU_FILTER':
             return {
                 ...state,
-                endDate: action.endDate
-            }
+                niveau: action.niveau
+            }       
 
         default:
             return state;
@@ -140,96 +177,16 @@ const filterReducer = (state = filterReducerDefault, action) => {
 }
 
 
-const store = createStore(
-    combineReducers({
-        expenses: bookReducer,
-        filters: filterReducer
-    })
-);
-
-
 //a test to show if the filter can see the elements existing in the expenses
-const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
+const getVisibleBooks = (expenses, {  text,auteur,niveau,status,sortBy,date }) => {
 
-    const filteredExpenses =
-        expenses.filter((expense) => {
-            const startDateMatch = expense.date >= startDate;
-            const endDateMatch = expense.date <= endDate;
+    return expenses.filter((expense) => {
             const textMatch = expense.nom.toLowerCase().includes(text.toLowerCase());
-
-            return startDateMatch && endDateMatch && textMatch;
+            const auteurMatch = expense.auteur.toLowerCase().includes(auteur.toLowerCase());
+            const niveauMatch = expense.niveau.toLowerCase().includes(niveau.toLowerCase());
+            const statusMatch = expense.status.toLowerCase().includes(status.toLowerCase());
+            
+            return textMatch && auteurMatch && niveauMatch && statusMatch;
         });
 
-        
-    return filteredExpenses.sort((a, b) => {
-        if (sortBy === 'date') {
-            return a.date > b.date ? 1 : -1;
-        }
-        // } else if (sortBy === 'amount') {
-        //     return a.amount > b.amount ? -1 : 1;
-        // }
-    });
 };
-
-
-store.subscribe(() => {
-    const state = store.getState();
-    const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-    console.log(visibleExpenses);
-});
-
-
-
-const expenseOne = store.dispatch(addBook({ nom: "good expense", prenom: "23", classe: 2134, date: 1000 }));
-const expenseTwo = store.dispatch(addBook({ nom: "great expense", prenom: "3", classe: 214, date: -1000 }));
-
-/*edits related just to the expenses*/
-// store.dispatch(removeExpense( expenseOne.payload.id ));
-// store.dispatch(editExpense(expenseTwo.payload.id,{amount:100}))
-
-
-/*---- edits related to filters of expenses-------*/
-store.dispatch(sortByAmount())
-//store.dispatch(sortByDate())
-//store.dispatch(setEndDate(900))
-//store.dispatch(setStartDate(-10000))
-
-//just a demo to see how it will be shown
-const demoState = {
-    expenses:
-        [{
-            id: '123',
-            nom: 'good product',
-            prenom: 'hsudhf',
-            classe: '9',
-            date: 2019
-
-        }],
-    filters: {
-        text: 'rent',
-        sortBy: 'note',
-        startDate: undefined,
-        endDate: undefined
-    }
-}
-
-
-
-
-function App() {
-    const lastname = "ahjari"
-    const firstname = "ilyas"
-    const fullname = {
-        fname: 'khghdf',
-        lname: 'ljhl'
-
-    };
-    return (
-        <div className="App">
-            <Ilyas lname={lastname} fname={firstname} />
-        </div>
-    );
-
-}
-
-export default App;
