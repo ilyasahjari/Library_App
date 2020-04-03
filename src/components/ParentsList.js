@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import numeral from '../number'
 import { Table } from 'react-bootstrap';
@@ -8,17 +8,36 @@ import '../App.css'
 import moment from 'moment';
 import getVisibleParents from "../selectors/parents"
 import { setSexeFilterParent } from "../actions/parent-filter"
+import { CSVLink, CSVDownload } from "react-csv";
+import { CSVReader } from 'react-papaparse'
+
 
 
 export const ParentsList = (props) => {
     const [classeFilter, setClasseFilter] = useState(' ');
-    
-    const onChangeClassFiltre =(e)=>{
+
+    const onChangeClassFiltre = (e) => {
         const classeFilter = e.target.value;
         setClasseFilter(classeFilter);
         props.dispatch(setSexeFilterParent(classeFilter));
-        
+
     }
+    const handleOnDrop = (data) => {
+        console.log('--------------------------------------------------')
+        console.log(data)
+        console.log('--------------------------------------------------')
+      }
+    const handleOnError = (err) => {
+        console.log(err)
+      }
+
+    const headerCSV = [
+        { label: "ID Parent", key: "id" },
+        { label: "Nom Parent", key: "nom" },
+        { label: "Numero de telephone", key: "phoneNum" },
+        { label: "Prenom Parent", key: "prenom" },
+        { label: "SEXE", key: "sexe" }
+    ];
 
     return (
         <div>
@@ -26,7 +45,7 @@ export const ParentsList = (props) => {
                 textAlign: "center"
             }}> Afficher Liste de Parents </h1>
             {/*add filter Component*/}
-            Trier par classe   
+            Trier par classe
             <select defaultValue=' ' onChange={onChangeClassFiltre} >
                 <option value=''> </option>
                 <option>M</option>
@@ -64,6 +83,14 @@ export const ParentsList = (props) => {
                     </tbody>
 
                 </Table>
+                <CSVLink data={props.parents} filename={"Liste_parents.csv"} separator={";"} enclosingCharacter={`'`} headers={headerCSV}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>
+                
+                <CSVReader
+                    onDrop={handleOnDrop}
+                    onError={handleOnError}
+                >
+                    <span>Drop CSV file here or click to upload.</span>
+                </CSVReader>
             </div>
             {/* <div style={{
                 display: 'flex',

@@ -18,7 +18,7 @@ const ParentAdd = (props) => {
             return (parent.nom === props.nom && parent.prenom === prenom)
         });
 
-        if (nom && prenom && sexe && sexe!= "true") {
+        if (nom && prenom && sexe ) {
             if (exist_element.length === 0) {
                 props.startAddParent({
                     nom,
@@ -86,7 +86,7 @@ const ParentAdd = (props) => {
                 <div className="form-group">
                     <label>Sexe :</label>
                     <select className="form-control" onChange={onSexeChange}>
-                        <option value> </option>
+                        <option> </option>
                         <option>M</option>
                         <option>F</option>
                         <option>Autre</option>

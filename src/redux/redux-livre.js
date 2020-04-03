@@ -111,7 +111,6 @@ const filterReducerDefault = {
     niveau: '',
     status: '',
     sortBy: 'date',
-    date: undefined,
 }
 
 const bookReducer = (state = bookReducerDefault, action) => {

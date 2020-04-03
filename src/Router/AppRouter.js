@@ -12,6 +12,7 @@ import StudentEdit from "../components/StudentEdit"
 import  ParentsList  from '../components/ParentsList';
 import StudentProfil from '../components/StudentProfil';
 import ParentEdit from '../components/ParentEdit';
+import BookAdd from '../components/BookAdd';
 function AppRouter() {
     
 
@@ -34,6 +35,7 @@ function AppRouter() {
             <Route path="/addStudent" component={StudentAdd} />
             <Route path="/edit/:id" component={StudentEdit}/>
             <Route path="/addParent" component={ParentAddForm}/>
+            <Route path="/addBook" component={BookAdd}/>
             <Route path="/ParentsList" component={ParentsList}/>
             <Route path="/StudentProfil/:id" component={StudentProfil}/>
             <Route path="/ParentEdit/:id" component={ParentEdit}/>

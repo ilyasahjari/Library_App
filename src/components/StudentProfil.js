@@ -90,7 +90,7 @@ const StudentProfil = (props) => {
                                                             <label>Email</label>
                                                         </div>
                                                         <div className="col-md-6">
-                                                            <p>{props.expense.email}</p>
+                                                            <p>{email}</p>
                                                         </div>
                                                     </div>
                                                     <div className="row">

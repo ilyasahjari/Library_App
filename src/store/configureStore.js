@@ -3,6 +3,8 @@ import studentReducer from '../reducers/expenses';
 import filterReducer from '../reducers/filters';
 import parentReducer from '../reducers/parent';
 import parentFilterReducer from '../reducers/parent-filter'
+import bookReducer from '../reducers/book'
+import bookFilterReducer from '../reducers/book-filter'
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import localstorage from 'redux-persist/lib/storage' 
@@ -37,7 +39,9 @@ export default () => {
             expenses: studentReducer,
             filters: filterReducer,
             parents: parentReducer,
-            parentfilters: parentFilterReducer
+            parentfilters: parentFilterReducer,
+            books: bookReducer,
+            booksfilters: bookFilterReducer
         }),
         composeEnhancers(applyMiddleware(thunk))
 

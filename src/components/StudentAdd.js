@@ -33,7 +33,7 @@ const BookAdd = (props) => {
 
         if (nom && prenom && classe && emailValid) {
             if (exist_element.length === 0) {
-                 props.startAddStudent({
+                props.startAddStudent({
                     nom,
                     prenom,
                     classe,
@@ -67,7 +67,7 @@ const BookAdd = (props) => {
         setClasse(classe);
     }
 
-    const onEmailChange = (e) =>{
+    const onEmailChange = (e) => {
         const email = e.target.value;
         setEmail(email);
     }
@@ -91,6 +91,7 @@ const BookAdd = (props) => {
         <div>
 
             <form className="styleAdd main-section">
+                <h3 className="testTilte">Ajouter Etudiant</h3>
                 <br />
                 <div className="row">
                     <div className="col">

@@ -7,7 +7,8 @@ import App from './App';
 import configureStore from './store/configureStore'
 import * as serviceWorker from './serviceWorker';
 import { startSetStudent } from './actions/expenses';
-import { startSetParent } from './actions/parent'
+import { startSetParent } from './actions/parent';
+import {startAddBook} from './actions/book'
 import './firebase/firebase';
 import { PersistGate } from 'redux-persist/integration/react'
 
@@ -16,12 +17,11 @@ console.log(store.getState());
 
 store.subscribe(() => {
     const state = store.getState();
-    const visibleExpenses = state.expenses;
+    const visibleExpenses = state.books;
 
     console.log(visibleExpenses);
 
 });
-
 
 
 const jsx = (
@@ -33,6 +33,8 @@ const jsx = (
         {/*</PersistGate>*/}
     </Provider>
 );
+
+
 
 //ReactDOM.render(jsx, document.getElementById('root'));
 store.dispatch(startSetParent());
