@@ -14,22 +14,21 @@ import { CSVLink, CSVDownload } from "react-csv";
 export const BookList = (props) => {
 
     return (
-        <div>
+        <div >
             <h1 style={{
                 textAlign: "center"
             }}> Afficher Liste d'adherents </h1>
-            {/*add filter Component*/}
-            Trier par classe   
-            <select onChange={(e) => { props.dispatch(setClasseFilter(e.target.value))}}>
-                <option> </option>
-                <option>2nde</option>
-                <option>1ere</option>
-                <option>Tnle</option>
-            </select>
 
-            <div style={{
-                margin: "50px"
-            }}>
+
+            <div className="App">
+                {/*add filter Component*/}
+            Trier par classe
+            <select onChange={(e) => { props.dispatch(setClasseFilter(e.target.value)) }}>
+                    <option> </option>
+                    <option>2nde</option>
+                    <option>1ere</option>
+                    <option>Tnle</option>
+                </select>
                 <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
                     <caption>{props.expenses.length} Users</caption>
                     <thead className="thead-light">
@@ -62,7 +61,7 @@ export const BookList = (props) => {
                 </Table>
                 <CSVLink data={props.expenses} filename={"Liste_etudiants.csv"} separator={";"} enclosingCharacter={`'`}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>
             </div>
-           
+
             {/* <div style={{
                 display: 'flex',
                 flexDirection: 'row',

@@ -1,10 +1,14 @@
 import { NavLink, Link } from 'react-router-dom'
-import React from 'react'
+import React,{useState} from 'react'
 import { setTextFilter, sortByAmount, sortByDate } from '../actions/filters'
 import { setTextFiltertParent } from '../actions/parent-filter'
 import { connect } from 'react-redux'
-
-const Header = ({ dispatch }) => (
+import SideBar from './SideBar'
+const Header = ({ dispatch }) => {
+  
+  const [sidebarOpen , setSidebarOpen]=useState(false)
+  
+  return(
   <div >
     <header >
     
@@ -19,12 +23,12 @@ const Header = ({ dispatch }) => (
           <li className="nav-item active">
             <NavLink className="nav-link" to="/ParentsList" activeClassName="is-active" >Liste Parents</NavLink>
           </li>
-          <li className="nav-item active">
+          {/* <li className="nav-item active">
             <NavLink className="nav-link" to="/addStudent" activeClassName="is-active">Ajout Etudiants</NavLink>
           </li>
           <li className="nav-item active">
             <NavLink className="nav-link" to="/addParent" activeClassName="is-active">Ajout Parent</NavLink>
-          </li>
+          </li> */}
           
           </ul>
           <form className="form-inline my-2 my-lg-0">
@@ -36,6 +40,6 @@ const Header = ({ dispatch }) => (
         <h1 className="testTilte">LIBRARY APP</h1>
     </header>
   </div >
-    );
+    )};
     
 export default connect()(Header);

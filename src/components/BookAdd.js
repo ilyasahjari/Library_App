@@ -22,7 +22,7 @@ const BookAdd = (props) => {
     const handleAdd = (e) => {
         e.preventDefault();
         const exist_element = props.books.filter((book) => {
-            return (book.titre === titre && book.status === status && book.niveau === status)
+            return (book.titre === titre && book.status === status && book.niveau === niveau)
         });
 
         if (titre && auteur && niveau && status) {
@@ -35,7 +35,7 @@ const BookAdd = (props) => {
                     date: Number(date)
                 });
             } else {
-                alert("Name already exists");
+                alert("Book already exists");
             }
         } else {
             alert("Please fill the fields");
@@ -66,7 +66,7 @@ const BookAdd = (props) => {
 
 
     return (
-        <div>
+        <div className="AppAdd">
             <form className="styleAdd main-section">
                 <h3 className="testTilte">Ajouter Livre</h3>
 
@@ -92,9 +92,14 @@ const BookAdd = (props) => {
                         <option>rendu</option>
                     </select>
                 </div>
-                <div className="form-group ">
-                    <label >Niveau :</label>
-                    <input type="text" className="form-control" placeholder="Student Level" onChange={onNiveauChange} />
+                <div className="form-group">
+                    <label>Niveau :</label>
+                    <select className="form-control" onChange={onNiveauChange}>
+                        <option> </option>
+                        <option>2nde</option>
+                        <option>1ere</option>
+                        <option>Tnle</option>
+                    </select>
                 </div>
 
                 <div className="form-group">
@@ -105,9 +110,9 @@ const BookAdd = (props) => {
                         onChange={date => setDate(date)} />
                 </div>
 
-                <div className="row">
+                <div className="row form-group">
                     <div className="col">
-                        <button onClick={handleAdd} className="btn btn-primary">Ajouter Parent</button>
+                        <button onClick={handleAdd} className="btn btn-primary">Ajouter Livre</button>
                     </div>
                 </div>
 

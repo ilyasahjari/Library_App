@@ -3,7 +3,7 @@ import StudentList from './StudentList';
 
 const Dashboard = () => (
     <div>
-      <StudentList/>
+        <StudentList/>
     </div>
   );
   

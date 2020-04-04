@@ -29,8 +29,8 @@ const StudentProfil = (props) => {
     }
 
     return (
-        <div>
-            <div className="container main-section">
+        <div className="App">
+            <div className="container main-section App">
                 <div className="row">
 
                     <div className="row user-left-part">

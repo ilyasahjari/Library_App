@@ -11,7 +11,7 @@ const ParentAddForm = (props) => {
 
 
     return (
-        <div>
+        <div className="AppAdd">
             <form className="styleAdd form-group main-section">
                 <ParentAdd handleClick={isAdded} isClicked={isAdded}/>
             </form>

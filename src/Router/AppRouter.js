@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from "react-redux"
+import SideBar from "../components/SideBar"
 import Dashboard from "../components/Dashboard"
 import StudentAdd from "../components/StudentAdd"
 import ParentAddForm from "../components/ParentAddForm"
@@ -30,7 +31,9 @@ function AppRouter() {
       <div>
         <BrowserRouter>
           <Header/>
-          <Switch>
+          <SideBar/>
+
+          <Switch className="App">
             <Route path="/" component={Dashboard} exact={true}/>
             <Route path="/addStudent" component={StudentAdd} />
             <Route path="/edit/:id" component={StudentEdit}/>

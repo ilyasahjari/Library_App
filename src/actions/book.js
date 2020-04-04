@@ -74,3 +74,26 @@ export const startEditBook = (id, updates) => {
         });
     };
 };
+
+export const setBook = (expenses) => ({
+    type: 'SET_BOOK',
+    expenses
+});
+
+
+export const startSetBook = () => {
+    return (dispatch) => {
+        return database.ref('users/books').once('value').then((snapshot) => {
+            const expenses = [];
+
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+
+            dispatch(setBook(expenses));
+        });
+    };
+}

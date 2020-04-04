@@ -15,7 +15,7 @@ const ParentAdd = (props) => {
     const handleAdd = (e) => {
         e.preventDefault();
         const exist_element = props.parents.filter((parent) => {
-            return (parent.nom === props.nom && parent.prenom === prenom)
+            return (parent.nom === nom && parent.prenom === prenom)
         });
 
         if (nom && prenom && sexe ) {
@@ -32,7 +32,7 @@ const ParentAdd = (props) => {
                 props.handleClick();
 
             } else {
-                alert("Name already exists");
+                alert("Parent already exists");
             }
         } else {
             alert("Please fill the fields");
@@ -97,7 +97,7 @@ const ParentAdd = (props) => {
                     <PhoneInput country={'fr'} value={phoneNum} onChange={setPhoneNum} />
                 </div>
 
-                <div className="row">
+                <div className="row form-group">
                     <div className="col">
                         <button onClick={handleAdd} className="btn btn-primary">Ajouter Parent</button>
                     </div>

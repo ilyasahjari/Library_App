@@ -45,7 +45,7 @@ const BookAdd = (props) => {
                 props.history.push('/');
 
             } else {
-                alert("Name already exists");
+                alert("Student already exists");
             }
         } else {
             alert(emailValid ? "Veuillez remplir les champs necessaire" : "Veuillez saisir un Mail Valide");
@@ -88,7 +88,7 @@ const BookAdd = (props) => {
     let iterator = 1;
     return (
 
-        <div>
+        <div className="AppAdd">
 
             <form className="styleAdd main-section">
                 <h3 className="testTilte">Ajouter Etudiant</h3>
@@ -136,8 +136,9 @@ const BookAdd = (props) => {
                 <br />
 
                 <ParentsBoxStudent i={iterator++} hideNextButton={hideNextButton2} setHideNextButton={setHideNextButton2} handleParentName={handleParentName2} />
+                <div className="form-group">
                 {parentsChecked() && <button type="submit" onClick={handleAdd} className="btn btn-primary">Inscription</button>}
-
+                </div>
             </form>
 
 

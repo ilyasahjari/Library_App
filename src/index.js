@@ -8,7 +8,7 @@ import configureStore from './store/configureStore'
 import * as serviceWorker from './serviceWorker';
 import { startSetStudent } from './actions/expenses';
 import { startSetParent } from './actions/parent';
-import {startAddBook} from './actions/book'
+import {startAddBook, startSetBook} from './actions/book'
 import './firebase/firebase';
 import { PersistGate } from 'redux-persist/integration/react'
 
@@ -37,7 +37,9 @@ const jsx = (
 
 
 //ReactDOM.render(jsx, document.getElementById('root'));
+store.dispatch(startSetBook());
 store.dispatch(startSetParent());
+
 
 store.dispatch(startSetStudent()).then(() => {
     ReactDOM.render(jsx, document.getElementById('root'));

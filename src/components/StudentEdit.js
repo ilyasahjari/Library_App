@@ -85,7 +85,7 @@ const StudentEdit = (props) => {
 
 
   return (
-    <div>
+    <div className="AppAdd">
       <EditCheck />
       {editShow &&
         <form className="styleAdd main-section">
@@ -132,7 +132,7 @@ const StudentEdit = (props) => {
             </div>
           </div>
           <br />
-          <div className="row">
+          <div className="row form-group">
             <div className="col">
               <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Etudiant</button>
             </div>

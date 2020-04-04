@@ -10,6 +10,7 @@ import getVisibleParents from "../selectors/parents"
 import { setSexeFilterParent } from "../actions/parent-filter"
 import { CSVLink, CSVDownload } from "react-csv";
 import { CSVReader } from 'react-papaparse'
+import SideBar from './SideBar';
 
 
 
@@ -26,10 +27,10 @@ export const ParentsList = (props) => {
         console.log('--------------------------------------------------')
         console.log(data)
         console.log('--------------------------------------------------')
-      }
+    }
     const handleOnError = (err) => {
         console.log(err)
-      }
+    }
 
     const headerCSV = [
         { label: "ID Parent", key: "id" },
@@ -44,17 +45,16 @@ export const ParentsList = (props) => {
             <h1 style={{
                 textAlign: "center"
             }}> Afficher Liste de Parents </h1>
-            {/*add filter Component*/}
+
+
+            <div className="App">
+                {/*add filter Component*/}
             Trier par classe
             <select defaultValue=' ' onChange={onChangeClassFiltre} >
-                <option value=''> </option>
-                <option>M</option>
-                <option>F</option>
-            </select>
-
-            <div style={{
-                margin: "50px"
-            }}>
+                    <option value=''> </option>
+                    <option>M</option>
+                    <option>F</option>
+                </select>
                 <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
                     <caption>{props.parents.length} Parents</caption>
                     <thead className="thead-light">
@@ -84,7 +84,7 @@ export const ParentsList = (props) => {
 
                 </Table>
                 <CSVLink data={props.parents} filename={"Liste_parents.csv"} separator={";"} enclosingCharacter={`'`} headers={headerCSV}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>
-                
+
                 <CSVReader
                     onDrop={handleOnDrop}
                     onError={handleOnError}
@@ -101,6 +101,7 @@ export const ParentsList = (props) => {
             
         </div> */}
         </div>
+
 
     )
 }

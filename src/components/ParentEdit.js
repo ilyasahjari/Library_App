@@ -54,7 +54,7 @@ const ParentEdit = (props) => {
     }
 
     return (
-        <div>
+        <div className="AppAdd">
             <form className="styleAdd main-section">
                 <h5 className="row justify-content-center"> Modification {prenom.toUpperCase()} {nom.toUpperCase()} </h5>
                 <hr />
@@ -85,7 +85,7 @@ const ParentEdit = (props) => {
                     <PhoneInput country={'fr'} value={phoneNum} onChange={setPhoneNum} />
                 </div>
                 <br />
-                <div className="row">
+                <div className="row form-group">
                     <div className="col">
                         <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Parent</button>
                     </div>

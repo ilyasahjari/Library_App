@@ -22,6 +22,9 @@ export default (state = bookReducerDefault, action) => {
                 }
             });
 
+        case 'SET_BOOK':
+            return action.expenses;
+
         default:
             return state;
     }

@@ -7,7 +7,7 @@ const ErrorMessage = (props) => {
     props.history.push('/')
   }
   return (
-    <div className="container App" >
+    <div className="AppAdd" >
       <div className="row">
         <div className="col-md-12">
           <div className="error-template">
