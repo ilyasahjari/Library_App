@@ -1,4 +1,5 @@
 -- to do !
+- to do create function that returns the checked value of status and idStudent
 - livre : id, titre, auteur, niveau, destination ??, status (imprentable, preparé, emprunté, rendu)
 - add id student on book
 - payment ... (a suivre)  

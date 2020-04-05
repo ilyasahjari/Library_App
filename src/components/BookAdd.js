@@ -18,6 +18,11 @@ const BookAdd = (props) => {
     const [niveau, setNiveau] = useState('');
     const [status, setStatus] = useState('');
     const [date, setDate] = useState(new Date())
+    const [nomStudent, setNomStudent] = useState('');
+    const [prenomStudent, setPrenomStudent] = useState('');
+    let idStudent='';
+    const [onChangeNiveau, setOnChangeNiveau] = useState(false);
+
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -25,103 +30,161 @@ const BookAdd = (props) => {
             return (book.titre === titre && book.status === status && book.niveau === niveau)
         });
 
-        if (titre && auteur && niveau && status) {
-            if (exist_element.length === 0) {
-                props.startAddBook({
-                    titre,
-                    auteur,
-                    niveau,
-                    status,
-                    date: Number(date)
+        
+        
+        const checkValue = () => {
+            if (status === "emprunté" || status === "préparé") {
+                const exist_student = props.students.filter((student) => {
+                    return (student.nom === nomStudent && student.prenom === prenomStudent)
                 });
-            } else {
-                alert("Book already exists");
+                if (exist_student.length != 0) {
+                    idStudent=exist_student[0].id;
+                    return true;
+                }
+                else
+                    return false;
             }
-        } else {
-            alert("Please fill the fields");
+            return true;
         }
+
+
+        if (titre && auteur && niveau && status){
+            if (checkValue()){
+                if (exist_element.length === 0){
+                    props.startAddBook({
+                        titre,
+                        auteur,
+                        niveau,
+                        status,
+                        date: Number(date),
+                        idStudent
+                    });
+                }else{
+                    alert('book already exist')
+                }
+            }else{
+                alert('Student don\'t exist');
+            }
+        }else{
+            alert('Please fill the empty fields')
+        }
+     
     };
 
 
-    const onTitreChange = (e) => {
-        const titre = e.target.value;
-        setTitre(titre);
-    }
 
-    const onAuteurChange = (e) => {
-        const auteur = e.target.value;
-        setAuteur(auteur);
-    }
+const onTitreChange = (e) => {
+    const titre = e.target.value;
+    setTitre(titre);
+}
 
-    const onStatusChange = (e) => {
-        const status = e.target.value;
-        setStatus(status);
-    }
+const onAuteurChange = (e) => {
+    const auteur = e.target.value;
+    setAuteur(auteur);
+}
 
-    const onNiveauChange = (e) => {
-        const niveau = e.target.value;
-        setNiveau(niveau)
-    }
+const onStatusChange = (e) => {
+    const status = e.target.value;
+    (status === "emprunté" || status === "préparé") ? setOnChangeNiveau(true) : setOnChangeNiveau(false);
+    setStatus(status);
+}
+
+const onNiveauChange = (e) => {
+    const niveau = e.target.value;
+    setNiveau(niveau)
+}
+
+const onNomStudentChange = (e) => {
+    const nom = e.target.value;
+    setNomStudent(nom);
+}
 
 
+const onPrenomStudentChange = (e) => {
+    const prenom = e.target.value;
+    setPrenomStudent(prenom);
+}
 
-    return (
-        <div className="AppAdd">
-            <form className="styleAdd main-section">
-                <h3 className="testTilte">Ajouter Livre</h3>
+return (
+    <div className="AppAdd">
+        <form className="styleAdd main-section">
+            <h3 className="testTilte">Ajouter Livre</h3>
 
-                <div className="row">
-                    <div className="col">
-                        <label >Titre :</label>
-                        <input type="text" className="form-control" placeholder="Book Name" onChange={onTitreChange} />
-                    </div>
-
-                    <div className="col">
-                        <label >Auteur :</label>
-                        <input type="text" className="form-control" placeholder="Writer Name" onChange={onAuteurChange} defaultValue={props.nom} />
-                    </div>
-                </div>
-                <br />
-                <div className="form-group">
-                    <label>Status :</label>
-                    <select className="form-control" onChange={onStatusChange}>
-                        <option> </option>
-                        <option>disponible</option>
-                        <option>préparé</option>
-                        <option>emprunté</option>
-                        <option>rendu</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label>Niveau :</label>
-                    <select className="form-control" onChange={onNiveauChange}>
-                        <option> </option>
-                        <option>2nde</option>
-                        <option>1ere</option>
-                        <option>Tnle</option>
-                    </select>
+            <div className="row">
+                <div className="col">
+                    <label >Titre :</label>
+                    <input type="text" className="form-control" placeholder="Book Name" onChange={onTitreChange} />
                 </div>
 
-                <div className="form-group">
-                    <label >Date :</label><br />
-                    <DatePicker className="form-control"
-                        dateFormat="dd/MM/yyyy"
-                        selected={date}
-                        onChange={date => setDate(date)} />
+                <div className="col">
+                    <label >Auteur :</label>
+                    <input type="text" className="form-control" placeholder="Writer Name" onChange={onAuteurChange} defaultValue={props.nom} />
                 </div>
-
+            </div>
+            <br />
+            <div className="form-group">
+                <label>Status :</label>
+                <select className="form-control" onChange={onStatusChange}>
+                    <option> </option>
+                    <option>disponible</option>
+                    <option>préparé</option>
+                    <option>emprunté</option>
+                    <option>rendu</option>
+                </select>
+            </div>
+            {onChangeNiveau &&
                 <div className="row form-group">
                     <div className="col">
-                        <button onClick={handleAdd} className="btn btn-primary">Ajouter Livre</button>
+                        <label >Nom Etudiant :</label>
+                        <input type="text" className="form-control" placeholder="Nom Etudiant" onChange={onNomStudentChange} />
+                    </div>
+
+                    <div className="col">
+                        <label >Prenom Parent :</label>
+                        <input type="text" className="form-control" placeholder="Prenom Etudiant" onChange={onPrenomStudentChange} list={"idDataList"} />
+                        <datalist id={"idDataList"}>
+                            {
+                                props.students.filter((expense) => {
+                                    return (expense.nom.toLowerCase() === nomStudent.toLowerCase());
+                                })
+                                    .map((element, index) => (
+                                        <option key={index}>{element.prenom}</option>
+                                    ))
+                            }
+                        </datalist>
                     </div>
                 </div>
+            }
+            <div className="form-group">
+                <label>Niveau :</label>
+                <select className="form-control" onChange={onNiveauChange}>
+                    <option> </option>
+                    <option>2nde</option>
+                    <option>1ere</option>
+                    <option>Tnle</option>
+                </select>
+            </div>
 
-            </form>
-        </div>
+            <div className="form-group">
+                <label >Date :</label><br />
+                <DatePicker className="form-control"
+                    dateFormat="dd/MM/yyyy"
+                    selected={date}
+                    onChange={date => setDate(date)} />
+            </div>
+
+            <div className="row form-group">
+                <div className="col">
+                    <button onClick={handleAdd} className="btn btn-primary">Ajouter Livre</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
 
 
 
-    )
+)
 
 }
 
@@ -133,7 +196,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapToProps = (state) => {
     return {
-        books: state.books
+        books: state.books,
+        students: state.expenses
     }
 };
 

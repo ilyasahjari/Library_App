@@ -76,7 +76,7 @@ const ParentsBoxStudent = (props) => {
 
             <br/>
 
-            {addParentClick || (props.hideNextButton || <button onClick={handleNext} className="btn btn-primary">Suivant</button>)}
+            {addParentClick || (props.hideNextButton || <button onClick={handleNext} className="btn btn-primary">Confirmer Parent</button>)}
             {addParentClick && <ParentAdd nom={nomParent} prenom={prenomParent} isClicked={setAddParentClick} handleClick={doNothing} />}
 
         </div>

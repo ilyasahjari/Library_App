@@ -5,7 +5,8 @@ const addBook = ({
     auteur = '',
     niveau = '',
     status = '',
-    date = 0
+    date = 0,
+    idStudent= ''
 } = {}) =>
     ({
         type: 'ADD_BOOK',
@@ -15,7 +16,8 @@ const addBook = ({
             auteur,
             niveau,
             status,
-            date
+            date,
+            idStudent
         }
     });
 
@@ -26,10 +28,11 @@ export const startAddBook = (bookData = {}) => {
             auteur = '',
             niveau = '',
             status = '',
-            date = 0
+            date = 0,
+            idStudent=''
         } = bookData;
 
-        const book = { titre, auteur, niveau, status, date };
+        const book = { titre, auteur, niveau, status, date, idStudent };
 
         return database.ref('users/books').push(book).then((ref) => {
             dispatch(addBook({

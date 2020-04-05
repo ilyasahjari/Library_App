@@ -14,6 +14,7 @@ import  ParentsList  from '../components/ParentsList';
 import StudentProfil from '../components/StudentProfil';
 import ParentEdit from '../components/ParentEdit';
 import BookAdd from '../components/BookAdd';
+import BookList  from '../components/BookList';
 function AppRouter() {
     
 
@@ -35,6 +36,7 @@ function AppRouter() {
 
           <Switch className="App">
             <Route path="/" component={Dashboard} exact={true}/>
+            <Route path="/BookLIst" component={BookList}/>
             <Route path="/addStudent" component={StudentAdd} />
             <Route path="/edit/:id" component={StudentEdit}/>
             <Route path="/addParent" component={ParentAddForm}/>
