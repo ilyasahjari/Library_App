@@ -1,7 +1,7 @@
 -- to do !
-- to do create function that returns the checked value of status and idStudent
+- trier les elements
+- editer un livre avec le id etudiants
 - livre : id, titre, auteur, niveau, destination ??, status (imprentable, preparé, emprunté, rendu)
-- add id student on book
 - payment ... (a suivre)  
 - go to student profil when adding him in studentAdd
 - add import/export CSV 

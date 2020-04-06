@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { startAddBook } from '../actions/book';
 import { connect } from 'react-redux';
 import '../App.css'
 import DatePicker from "react-datepicker";
-import PhoneInput from 'react-phone-input-2'
 
 // titre = '',
 //     auteur = '',
@@ -23,6 +22,19 @@ const BookAdd = (props) => {
     let idStudent='';
     const [onChangeNiveau, setOnChangeNiveau] = useState(false);
 
+
+    const handleCancel = (e)=>{
+        e.preventDefault();
+        scrollToTop();
+        props.history.push('../BookList')
+    }
+
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -59,6 +71,8 @@ const BookAdd = (props) => {
                         date: Number(date),
                         idStudent
                     });
+                    scrollToTop();
+                    props.push.history('../BookList')
                 }else{
                     alert('book already exist')
                 }
@@ -176,6 +190,9 @@ return (
             <div className="row form-group">
                 <div className="col">
                     <button onClick={handleAdd} className="btn btn-primary">Ajouter Livre</button>
+                </div>
+                <div className="col">
+                        <button onClick={handleCancel} className="btn btn-primary">Annuler</button>
                 </div>
             </div>
 

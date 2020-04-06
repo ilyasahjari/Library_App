@@ -41,7 +41,7 @@ store.dispatch(startSetBook());
 store.dispatch(startSetParent());
 
 
-store.dispatch(startSetStudent()).then(() => {
+store.dispatch(startSetStudent() || startSetBook() || startSetParent()).then(() => {
     ReactDOM.render(jsx, document.getElementById('root'));
 });
 

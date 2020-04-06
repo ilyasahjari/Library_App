@@ -13,6 +13,19 @@ const ParentEdit = (props) => {
     const [sexe, setSexe] = useState(props.parent ? props.parent.sexe : '');
     const [phoneNum, setPhoneNum] = useState(props.parent ? props.parent.phoneNum : '');
 
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }
+
+    const handleCancel = (e) =>{
+        e.preventDefault();
+        scrollToTop();
+        props.history.push('../ParentsList')
+    }
+
     const handleEdit = (e) => {
         e.preventDefault();
         if (nom && prenom && sexe) {
@@ -22,6 +35,7 @@ const ParentEdit = (props) => {
                 sexe,
                 phoneNum
             });
+            scrollToTop();
             props.history.push('../ParentsList')
         } else {
             alert("please fill the fields")
@@ -56,7 +70,7 @@ const ParentEdit = (props) => {
     return (
         <div className="AppAdd">
             <form className="styleAdd main-section">
-                <h5 className="row justify-content-center"> Modification {prenom.toUpperCase()} {nom.toUpperCase()} </h5>
+                <h5 className="row justify-content-center"> Modification {props.parent.prenom.toUpperCase()} {props.parent.nom.toUpperCase()} </h5>
                 <hr />
                 <div className="row">
                     <div className="col">
@@ -91,6 +105,9 @@ const ParentEdit = (props) => {
                     </div>
                     <div className="col">
                         <button type="submit" onClick={handleDelete} className="btn btn-primary">Supprimer Parent</button>
+                    </div>
+                    <div className="col">
+                        <button type="submit" onClick={handleCancel} className="btn btn-primary">Annuler</button>
                     </div>
                 </div>
             </form>

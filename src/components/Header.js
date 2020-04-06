@@ -25,6 +25,9 @@ const Header = ({ dispatch }) => {
               <li className="nav-item active">
                 <NavLink className="nav-link" to="/ParentsList" activeClassName="is-active" >Liste Parents</NavLink>
               </li>
+              <li className="nav-item active">
+                <NavLink className="nav-link" to="/BookList" activeClassName="is-active" >Liste Livres</NavLink>
+              </li>
               {/* <li className="nav-item active">
                     <NavLink className="nav-link" to="/addStudent" activeClassName="is-active">Ajout Etudiants</NavLink>
               </li>

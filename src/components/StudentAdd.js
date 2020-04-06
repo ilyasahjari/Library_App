@@ -23,6 +23,12 @@ const BookAdd = (props) => {
     const [hideNextButton2, setHideNextButton2] = useState(false)
 
 
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }    
 
     const handleAdd = (e) => {
         e.preventDefault();
@@ -42,6 +48,7 @@ const BookAdd = (props) => {
                     idParent1,
                     idParent2
                 });
+                scrollToTop();
                 props.history.push('/');
 
             } else {

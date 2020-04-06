@@ -1,101 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import getVisibleBooks from "../selectors/book"
 
+export const BookList = (props) => {
 
+    const getStudenttById = (id) => {
+        const student = props.students.find((student) => student.id === id);
+        return (student) ? 'Nom Etudiant : ' +  student.nom +' '+ student.prenom : " "
+    }
 
-const BookList = (props) => {
     return (
-        <div className="App">
+        <div className="App ">
             <div className="row">
-
-                <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">Item Two</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">Item Three</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">Item Four</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">Item Five</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-4 col-md-6 mb-4">
-                    <div className="card h-100">
-                        <div className="card-body">
-                            <h4 className="card-title">
-                                <a href="#">Item Six</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div className="card-footer">
-                            <small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
+                {
+                    props.books.map((book) => {
+                        return (
+                            <div className="col-lg col-md-6 mb-4" key={book.id}>
+                                <div className="card h-100">
+                                    <div className="card-body">
+                                        <h4 className="card-title">
+                                            <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
+                                        </h4>
+                                        <h5> Auteur : {book.auteur}</h5>
+                                        <h5> Status : {book.status}</h5>
+                                        
+                                        <p className="card-text">Niveau : {book.niveau}</p>
+                                    </div>
+                                    <div className="card-footer">
+                                        <small className="text-muted">{ getStudenttById(book.idStudent)}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
 
             </div>
 
@@ -103,4 +42,12 @@ const BookList = (props) => {
     )
 }
 
-export default BookList;
+
+const mapToProps = (state) => {
+    return {
+        books: getVisibleBooks(state.books,state.filters),
+        students: state.expenses
+    }
+}
+
+export default connect(mapToProps)(BookList);

@@ -3,9 +3,18 @@ import React , {useState} from 'react'
 
 const ParentAddForm = (props) => {
     const [addParentClick, setAddParentClick] =useState(true)
-    
+
+
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }
+
     const isAdded=()=>{
-           props.history.push('/ParentsList');
+        scrollToTop();
+        props.history.push('/ParentsList');
     }
 
 

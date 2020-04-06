@@ -12,6 +12,7 @@ const ParentAdd = (props) => {
     const [sexe, setSexe] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
 
+
     const handleAdd = (e) => {
         e.preventDefault();
         const exist_element = props.parents.filter((parent) => {

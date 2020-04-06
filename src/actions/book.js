@@ -65,7 +65,7 @@ export const startRemoveBook = (id) => {
 // EDIT_EXPENSE
 const editBook = (id, updates) =>
     ({
-        type: "EDIT_EXPENSE",
+        type: "EDIT_BOOK",
         id,
         updates
     });

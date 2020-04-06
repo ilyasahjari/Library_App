@@ -1,12 +1,9 @@
-export default (expenses, {  text,auteur,niveau,status,sortBy }) => {
+export default (books, {  text,auteur,niveau,status }) => {
 
-    return expenses.filter((expense) => {
-            const textMatch = expense.nom.toLowerCase().includes(text.toLowerCase());
-            const auteurMatch = expense.auteur.toLowerCase().includes(auteur.toLowerCase());
-            const niveauMatch = expense.niveau.toLowerCase().includes(niveau.toLowerCase());
-            const statusMatch = expense.status.toLowerCase().includes(status.toLowerCase());
+    return books.filter((book) => {
+            const textMatch = book.titre.toLowerCase().includes(text.toLowerCase());
             
-            return textMatch && auteurMatch && niveauMatch && statusMatch;
+            return textMatch;
         });
 
 };

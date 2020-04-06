@@ -7,6 +7,7 @@ import ErrorMessage from './ErrorMessage';
 
 const StudentEdit = (props) => {
 
+  const [id , setId]= useState(props.expense? props.expense.id : '');
   const [nom, setnom] = useState(props.expense ? props.expense.nom : '');
   const [prenom, setPrenom] = useState(props.expense ? props.expense.prenom : '');
   const [classe, setClasse] = useState(props.expense ? props.expense.classe : '');
@@ -27,23 +28,32 @@ const StudentEdit = (props) => {
   //     .catch(err => alert(err));
   // }
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  }
+
   const handleDelete = () => {
     if (nom && prenom && classe)
-      props.startRemoveStudent(props.expense.id)
+      props.startRemoveStudent(id)
+    scrollToTop();
     props.history.push('/')
   }
+
 
   const handleEdit = (e) => {
     e.preventDefault();
     if (nom && prenom && classe) {
-      props.startEditStudent(props.expense.id, {
+      props.startEditStudent(id, {
         nom,
         prenom,
         classe,
         email,
         date: Number(date)
       });
-      props.history.push(`../StudentProfil/${props.expense.id}`)
+     scrollToTop();
+     props.history.push(`/`)
     } else {
       alert("please fill the fields")
     }
@@ -51,6 +61,7 @@ const StudentEdit = (props) => {
 
   const handleCancel = (e) => {
     e.preventDefault()
+    scrollToTop();
     props.history.push(`../StudentProfil/${props.expense.id}`);
   }
 
@@ -89,7 +100,7 @@ const StudentEdit = (props) => {
       <EditCheck />
       {editShow &&
         <form className="styleAdd main-section">
-          <h5 className="row justify-content-center"> Modification {prenom.toUpperCase()} {nom.toUpperCase()} </h5>
+          <h5 className="row justify-content-center"> Modification {props.expense.prenom.toUpperCase()} {props.expense.nom.toUpperCase()} </h5>
           <hr/>
           <div className="row">
             <div className="col">
@@ -152,7 +163,8 @@ const StudentEdit = (props) => {
 
 const mapToProps = (state, props) => {
   return {
-    expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+    expense: state.expenses.find((expense) => expense.id === props.match.params.id),
+    students: state.expenses
   }
 }
 

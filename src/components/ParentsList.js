@@ -68,7 +68,6 @@ export const ParentsList = (props) => {
                     </thead>
                     <tbody>
 
-                        {/* show each element */}
                         {
                             props.parents.map((parent) => {
                                 return (<tr key={parent.id}>
