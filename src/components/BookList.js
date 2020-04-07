@@ -23,13 +23,10 @@ export const BookList = (props) => {
                                             <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
                                         </h4>
                                         <h5> Auteur : {book.auteur}</h5>
-                                        <h5> Status : {book.status}</h5>
                                         
                                         <p className="card-text">Niveau : {book.niveau}</p>
                                     </div>
-                                    <div className="card-footer">
-                                        <small className="text-muted">{ getStudenttById(book.idStudent)}</small>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         )
