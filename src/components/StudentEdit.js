@@ -170,7 +170,7 @@ const mapToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   startEditStudent: (id, expense) => dispatch(startEditStudent(id, expense)),
-  startRemoveStudent: (payload) => dispatch(startRemoveStudent(payload))
+  startRemoveStudent: (id) => dispatch(startRemoveStudent(id))
 });
 
 export default connect(mapToProps, mapDispatchToProps)(StudentEdit);

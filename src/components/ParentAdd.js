@@ -75,7 +75,7 @@ const ParentAdd = (props) => {
                 <div className="row">
                     <div className="col">
                         <label >Prenom :</label>
-                        <input type="text" className="form-control" placeholder="First name" onChange={onPrenomChange} defaultValue={props.prenom} />
+                        <input type="text" className="form-control" placeholder="First name" onChange={onPrenomChange} defaultValue={props.prenom} autoFocus/>
                     </div>
 
                     <div className="col">

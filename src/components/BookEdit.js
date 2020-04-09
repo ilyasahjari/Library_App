@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { startEditBook } from '../actions/book';
+import { startEditBook, startRemoveBook } from '../actions/book';
 import { connect } from 'react-redux';
 import '../App.css'
 import DatePicker from "react-datepicker";
@@ -52,6 +52,12 @@ const BookEdit = (props) => {
 
     };
 
+    const handleDelete = (e) =>{
+        e.preventDefault();
+        props.startRemoveBook(props.book.id);
+        scrollToTop();
+        props.history.push("../BookList")
+    }
 
 
     const onTitreChange = (e) => {
@@ -137,6 +143,9 @@ const BookEdit = (props) => {
                         <button onClick={handleEdit} className="btn btn-primary">Modifier Livre</button>
                     </div>
                     <div className="col">
+                        <button onClick={handleDelete} className="btn btn-primary">Supprimer Livre</button>
+                    </div>
+                    <div className="col">
                         <button onClick={handleCancel} className="btn btn-primary">Annuler</button>
                     </div>
                     
@@ -153,7 +162,8 @@ const BookEdit = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startEditBook: (id, book) => dispatch(startEditBook(id, book))
+        startEditBook: (id, book) => dispatch(startEditBook(id, book)),
+        startRemoveBook: (id) => dispatch(startRemoveBook(id))
     }
 };
 

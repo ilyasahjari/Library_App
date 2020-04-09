@@ -72,7 +72,7 @@ const BookAdd = (props) => {
                         idStudent
                     });
                     scrollToTop();
-                    props.push.history('../BookList')
+                    props.history.push('../BookList')
                 }else{
                     alert('book already exist')
                 }
@@ -127,7 +127,7 @@ return (
             <div className="row">
                 <div className="col">
                     <label >Titre :</label>
-                    <input type="text" className="form-control" placeholder="Book Name" onChange={onTitreChange} />
+                    <input type="text" className="form-control" placeholder="Book Name" onChange={onTitreChange} autoFocus />
                 </div>
 
                 <div className="col">
