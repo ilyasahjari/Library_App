@@ -1,16 +1,19 @@
 -- to do !
+
+- add choice of books to add to a student 
+- authentification
 - trier les elements
 - editer un livre avec le id etudiants
 - livre : id, titre, auteur, niveau, destination ??, status (imprentable, preparé, emprunté, rendu)
 - payment ... (a suivre)  
 - go to student profil when adding him in studentAdd
-- add import/export CSV 
+- add import CSV 
 - add to student : phonenumber, full adresse
 - add to parent : email
 - adding stripe API for payment react
-
+- send mail 
 - styling application 
-	-header with image 
+ 
 
 - Working on firebase to connect offline with persistor to keep the state of the elements even offline
 (optional) Adding firebase for authentification

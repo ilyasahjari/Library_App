@@ -1,16 +1,40 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { startRemoveBook } from '../actions/book'
+import { startRemoveBook, startEditBook } from '../actions/book'
 import getVisibleBooks from "../selectors/book"
+import ModalAddStudentBook from "./ModalAddStudentBook"
+
 
 export const BookList = (props) => {
+
+    let idStudent = ''
+    const [modalShow, setModalShow] = useState(false);
+
 
     const getStudenttById = (id) => {
         const student = props.students.find((student) => student.id === id);
         return (student) ? 'Nom Etudiant : ' +  student.nom +' '+ student.prenom : " "
     }
 
+
+    const handleValidate = (idBook) =>{
+        props.startEditBook(idBook,{ idStudent })
+        setModalShow(false)
+    }
+
+    const handleClose =()=>{
+        setModalShow(false)
+    }
+
+    const getId = (id) =>{
+        idStudent= id
+        console.log(idStudent)
+    }
+
+    const handleShow = () =>{
+        setModalShow(true)
+    }
 
     return (
         <div className="App ">
@@ -26,12 +50,17 @@ export const BookList = (props) => {
                                         </h4>
                                         <h5> Auteur : {book.auteur}</h5>
                                         <h5>Etat : {book.status}</h5>
-
                                         <p className="card-text">Niveau : {book.niveau}</p>
                                     </div>
-                                    <div className="card-footer">
+                                    <div className="row card-footer">
                                         <small className="text-muted">{ getStudenttById(book.idStudent)}</small><br/>
+                                       <div className="col">
+                                        <button className="btn btn-primary" onClick={() => setModalShow(true)}>Résérver Livre</button><br/>
+                                        <ModalAddStudentBook onClick={handleShow} show={modalShow} handleClose={handleClose} handleShow={handleShow} handleValidate={()=>props.startEditBook(book.id,{ idStudent })} getId={getId}/>
+                                       </div> 
+                                       <div className="col">
                                         <button className="btn btn-primary" onClick={()=> props.startRemoveBook(book.id)}>Supprimer Livre</button>
+                                        </div>
                                     </div>
                                 </div>      
                             </div>
@@ -48,6 +77,7 @@ export const BookList = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        startEditBook: (id, book) => dispatch(startEditBook(id, book)),
         startRemoveBook: (id) => dispatch(startRemoveBook(id))
     }
 };
