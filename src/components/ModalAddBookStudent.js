@@ -4,39 +4,40 @@ import { startEditBook, startRemoveBook } from '../actions/book'
 import { Button, Modal } from 'react-bootstrap';
 
 
-const ModalAddStudentBook = (props) => {
+const ModalAddBookStudent = (props) => {
 
-    const [idStudent, setIdEtudiant] = useState('');
     const [idBook, setIdBook] = useState('');
+    const [idStudent, setIdStudent] = useState(props.idStudent);
+    let    status= "emprunté"
 
 
-
-
-    const onStudentChange = (e) => {
-        const studentId = e.target.value;
-        setIdEtudiant(studentId);
-        props.getId(studentId)
+    const onBookChange = (e) => {
+        const bookId = e.target.value;
+        setIdBook(bookId);
     }
 
     const handleValidate = () => {
-        props.startEditBook(props.idBook, {
-            idStudent
+        props.startEditBook(idBook, {
+            idStudent,
+            status
         })
         props.handleClose();
+
     }
+
     return (
         <div>
 
             <Modal show={props.show} onHide={props.handleShow} animation={false}>
                 <Modal.Header>
-                    <Modal.Title>Selectionner Etudiant du livre:</Modal.Title>
+                    <Modal.Title>Selectionner Livre à emprunté  : </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <select className="browser-default custom-select" onChange={onStudentChange}>
+                    <select className="browser-default custom-select" onChange={onBookChange}>
                         <option></option>
-                        {props.students.map((student) => {
+                        {props.books.map((book) => {
                             return (
-                                <option key={student.id} value={student.id}>{student.nom} {student.prenom}</option>
+                                <option key={book.id} value={book.id}>{book.titre}, {book.auteur}</option>
                             );
                         })}
                     </select>
@@ -45,10 +46,10 @@ const ModalAddStudentBook = (props) => {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={props.handleClose}>
                         Fermer
-            </Button>
+                    </Button>
                     <Button variant="primary" onClick={handleValidate}>
                         Résérver Livre
-            </Button>
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </div>
@@ -64,8 +65,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapToProps = (state) => {
     return {
+        books: state.books.filter((book)=> book.status.toLowerCase().includes("disponible")),
         students: state.expenses
     }
 }
 
-export default connect(mapToProps, mapDispatchToProps)(ModalAddStudentBook);
+export default connect(mapToProps, mapDispatchToProps)(ModalAddBookStudent);

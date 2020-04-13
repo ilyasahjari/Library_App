@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { startRemoveBook, startEditBook } from '../actions/book'
@@ -10,6 +10,8 @@ export const BookList = (props) => {
 
     let idStudent = ''
     const [modalShow, setModalShow] = useState(false);
+    let idBook =""
+
 
 
     const getStudenttById = (id) => {
@@ -18,13 +20,12 @@ export const BookList = (props) => {
     }
 
 
-    const handleValidate = (idBook) =>{
-        props.startEditBook(idBook,{ idStudent })
-        setModalShow(false)
-    }
-
     const handleClose =()=>{
         setModalShow(false)
+    }
+    
+    const getBookid = (id) =>{
+        return id
     }
 
     const getId = (id) =>{
@@ -40,9 +41,9 @@ export const BookList = (props) => {
         <div className="App ">
             <div className="row">
                 {
-                    props.books.map((book) => {
+                    props.books.map((book,index) => {
                         return (
-                            <div className="col-lg-4 col-md-6 mb-4" key={book.id}>
+                            <div className="col-lg-4 col-md-6 mb-4" key={index}>
                                 <div className="card h-100">
                                     <div className="card-body">
                                         <h4 className="card-title">
@@ -51,12 +52,12 @@ export const BookList = (props) => {
                                         <h5> Auteur : {book.auteur}</h5>
                                         <h5>Etat : {book.status}</h5>
                                         <p className="card-text">Niveau : {book.niveau}</p>
+                                        <small className="text-muted">{ getStudenttById(book.idStudent)}</small><br/>
                                     </div>
                                     <div className="row card-footer">
-                                        <small className="text-muted">{ getStudenttById(book.idStudent)}</small><br/>
                                        <div className="col">
-                                        <button className="btn btn-primary" onClick={() => setModalShow(true)}>Résérver Livre</button><br/>
-                                        <ModalAddStudentBook onClick={handleShow} show={modalShow} handleClose={handleClose} handleShow={handleShow} handleValidate={()=>props.startEditBook(book.id,{ idStudent })} getId={getId}/>
+                                        <button className="btn btn-primary" onClick={() => setModalShow(true)}>Résérver Livre (Not working)</button><br/>
+                                        <ModalAddStudentBook show={modalShow} handleClose={()=>setModalShow(false)} handleShow={()=>setModalShow(true)} idBook={book.id} getId={getId}/>
                                        </div> 
                                        <div className="col">
                                         <button className="btn btn-primary" onClick={()=> props.startRemoveBook(book.id)}>Supprimer Livre</button>

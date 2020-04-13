@@ -5,6 +5,7 @@ import { startEditBook } from '../actions/book'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { Tabs, Tab } from 'react-bootstrap'
+import ModalAddBookStudent from './ModalAddBookStudent'
 
 const StudentProfil = (props) => {
     const [id, setId] = useState(props.expense ? props.expense.id : '');
@@ -16,7 +17,9 @@ const StudentProfil = (props) => {
     const [idParent1, setIdParent1] = useState(props.expense ? props.expense.idParent1 : '');
     const [idParent2, setIdParent2] = useState(props.expense ? props.expense.idParent2 : '');
     const [idStudent, setIdStudent] = useState('');
-    const [status, setStatusLivre]= useState('rendu');
+    const [status, setStatusLivre]= useState('disponible');
+    const [showButtonAddLivre,setShowButtonAddLivre] =useState(false);
+    const [modalShow, setModalShow] = useState(false);
 
 
     const classeFullName = {
@@ -36,6 +39,17 @@ const StudentProfil = (props) => {
         return (books) ? books : null;
     }
 
+    
+    const hideButton = (e) =>{
+        e.preventdefault();
+        setShowButtonAddLivre(false)
+        console.log(showButtonAddLivre)
+    }
+
+    const showButton = (e) =>{
+        setShowButtonAddLivre(true)
+        console.log(showButtonAddLivre)
+    }
     return (
         <div className="App">
             <div className="container main-section App">
@@ -53,8 +67,12 @@ const StudentProfil = (props) => {
                                             <h3>{prenom} {nom}</h3>
                                             <h5>Etudiant</h5>
                                         </div>
-                                        <div className="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right">
-                                            <Link to={`/edit/${id}`} title="Edit item"><button className="btn btn-primary">Modifier</button></Link>
+                                        <div className="col-md-4 col-sm-6 col-xs-4 profile-header-section1 text-right">
+                                            { showButtonAddLivre || <Link to={`/edit/${id}`} title="Edit item"><button>Modifier</button></Link>}
+                                            
+                                            { showButtonAddLivre ||<button onClick={() => setModalShow(true)}>Ajouter Livre</button>}
+                                            <ModalAddBookStudent show={modalShow} handleClose={()=>setModalShow(false)} handleShow={()=>setModalShow(true)} idStudent={id}/>
+
                                         </div>
                                     </div>
                                 </div>
@@ -62,8 +80,8 @@ const StudentProfil = (props) => {
                                     <div className="row">
                                         <div className="col-md-12">
                                             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-                                                <Tab eventKey="profile" title="Info Profile">
-                                                    <div role="tabpanel" className="tab-pane fade show active" id="profile">
+                                                <Tab  eventKey="profile" title="Info Profile">
+                                                    <div role="tabpanel" className="tab-pane fade show active">
                                                         <br />
                                                         <div className="row">
                                                             <div className="col-md-2">
@@ -125,20 +143,20 @@ const StudentProfil = (props) => {
                                                     </div>
                                                 </Tab>
                                                 <Tab eventKey="books" title="Livres empruntés">
-                                                    <div role="tabpanel" className="tab-pane fade show active" id="profile">
+                                                    <div role="tabpanel" className="tab-pane fade show active">
 
                                                         <div className="row">
                                                             {
                                                                 getBookById(id).map((book,index) => {
                                                                     return (
-                                                                        <div className="col-lg-4 col-md-6 mb-4" key={index}>
+                                                                        <div className="col-lg col-md-6 mb-4" key={index}>
                                                                             <div className="card h-100">
                                                                                 <div className="card-body">
                                                                                     <h4 className="card-title">
                                                                                         <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
                                                                                     </h4>
                                                                                     <h5> Auteur : {book.auteur}</h5>
-                                                                                    <p className="card-text">Niveau : {book.niveau}</p>
+                                                                                    <p className="card-text">Niveau : {book .niveau}</p>
                                                                                     <button className="btn btn-primary" onClick={()=>{props.startEditBook(book.id,{idStudent, status})}}>Remettre</button>
                                                                                 </div>
 

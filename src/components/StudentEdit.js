@@ -62,7 +62,7 @@ const StudentEdit = (props) => {
   const handleCancel = (e) => {
     e.preventDefault()
     scrollToTop();
-    props.history.push(`../StudentProfil/${props.expense.id}`);
+    props.history.goBack()
   }
 
   const onNomChange = (e) => {

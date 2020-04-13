@@ -28,8 +28,9 @@ const BookEdit = (props) => {
 
     const handleCancel = (e)=>{
         e.preventDefault();
+        props.history.goBack()
         scrollToTop();
-        props.history.push('../BookList')
+
     }
 
     const handleEdit = (e) => {
@@ -44,8 +45,9 @@ const BookEdit = (props) => {
                     status,
                     date: Number(date),
                 });
+            props.history.goBack()
             scrollToTop();
-            props.history.push('../BookList')
+
         } else {
             alert('Please fill the empty fields')
         }
@@ -55,8 +57,9 @@ const BookEdit = (props) => {
     const handleDelete = (e) =>{
         e.preventDefault();
         props.startRemoveBook(props.book.id);
+        props.history.goBack()
         scrollToTop();
-        props.history.push("../BookList")
+
     }
 
 
