@@ -54,11 +54,11 @@ export const BookList = (props) => {
                                         <p className="card-text">Niveau : {book.niveau}</p>
                                         <small className="text-muted">{ getStudenttById(book.idStudent)}</small><br/>
                                     </div>
-                                    <div className="row card-footer">
-                                       <div className="col">
+                                    <div className="card-footer">
+                                       {/* <div className="col">
                                         <button className="btn btn-primary" onClick={() => setModalShow(true)}>Résérver Livre (Not working)</button><br/>
                                         <ModalAddStudentBook show={modalShow} handleClose={()=>setModalShow(false)} handleShow={()=>setModalShow(true)} idBook={book.id} getId={getId}/>
-                                       </div> 
+                                       </div>  */}
                                        <div className="col">
                                         <button className="btn btn-primary" onClick={()=> props.startRemoveBook(book.id)}>Supprimer Livre</button>
                                         </div>

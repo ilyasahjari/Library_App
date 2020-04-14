@@ -30,7 +30,6 @@ const BookEdit = (props) => {
         e.preventDefault();
         props.history.goBack()
         scrollToTop();
-
     }
 
     const handleEdit = (e) => {
