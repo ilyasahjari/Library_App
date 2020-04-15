@@ -1,5 +1,5 @@
 -- to do !
-
+- payment montant paye moyen payement (carte payment check), objet payer, commentaire , idstudent
 - add choice of books to add to a student 
 - authentification
 - trier les elements

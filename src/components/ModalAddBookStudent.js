@@ -31,7 +31,7 @@ const ModalAddBookStudent = (props) => {
             <div onClick={e => e.stopPropagation()}>
 
                 <Modal show={props.show} onHide={props.handleClose}  animation={true}>
-                    <Modal.Header closeButton={true}>
+                    <Modal.Header closeButton={false}>
                         <Modal.Title>Selectionner Livre à emprunté  : </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>

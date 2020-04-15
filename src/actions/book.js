@@ -40,7 +40,10 @@ export const startAddBook = (bookData = {}) => {
                 ...book
             }));
             console.log('book added');
+            window.location.reload(false);
+
         });
+
 
     };
 };

@@ -18,7 +18,7 @@ const StudentProfil = (props) => {
     const [idParent2, setIdParent2] = useState(props.expense ? props.expense.idParent2 : '');
     const [idStudent, setIdStudent] = useState('');
     const [status, setStatusLivre]= useState('disponible');
-    const [showButtonAddLivre,setShowButtonAddLivre] =useState(false);
+    const [showButtonAddLivre, setShowButtonAddLivre] =useState(false);
     const [modalShow, setModalShow] = useState(false);
 
 
@@ -149,14 +149,14 @@ const StudentProfil = (props) => {
                                                             {
                                                                 getBookById(id).map((book,index) => {
                                                                     return (
-                                                                        <div className="col-lg col-md-6 mb-4" key={index}>
+                                                                        <div className="col-lg-4 col-md-6 mb-4" key={index}>
                                                                             <div className="card h-100">
                                                                                 <div className="card-body">
                                                                                     <h4 className="card-title">
                                                                                         <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
                                                                                     </h4>
                                                                                     <h5> Auteur : {book.auteur}</h5>
-                                                                                    <p className="card-text">Niveau : {book .niveau}</p>
+                                                                                    <p className="card-text">Niveau : {book.niveau}</p>
                                                                                     <button className="btn btn-primary" onClick={()=>{props.startEditBook(book.id,{idStudent, status})}}>Remettre</button>
                                                                                 </div>
 

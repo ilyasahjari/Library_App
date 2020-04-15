@@ -60,6 +60,7 @@ export const startAddStudent = (userData = {}) => {
                 ...user
             }));
             console.log('added user');
+            window.location.reload(false);
         });
 
     };
