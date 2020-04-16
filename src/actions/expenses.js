@@ -60,7 +60,7 @@ export const startAddStudent = (userData = {}) => {
                 ...user
             }));
             console.log('added user');
-            window.location.reload(false);
+            //window.location.reload(false);
         });
 
     };
@@ -92,6 +92,8 @@ export const startEditStudent = (id, updates) => {
         return database.ref(`users/students/${id}`).update(updates).then(() => {
             dispatch(editStudent(id, updates));
         });
+        // window.location.reload(false);
+
     };
 };
 

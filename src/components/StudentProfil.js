@@ -9,11 +9,6 @@ import ModalAddBookStudent from './ModalAddBookStudent'
 
 const StudentProfil = (props) => {
     const [id, setId] = useState(props.expense ? props.expense.id : '');
-    const [nom, setnom] = useState(props.expense ? props.expense.nom : '');
-    const [prenom, setPrenom] = useState(props.expense ? props.expense.prenom : '');
-    const [classe, setClasse] = useState(props.expense ? props.expense.classe : '');
-    const [date, setDate] = useState(props.expense ? new Date(props.expense.date) : new Date());
-    const [email, setEmail] = useState(props.expense ? props.expense.email : '');
     const [idParent1, setIdParent1] = useState(props.expense ? props.expense.idParent1 : '');
     const [idParent2, setIdParent2] = useState(props.expense ? props.expense.idParent2 : '');
     const [idStudent, setIdStudent] = useState('');
@@ -64,13 +59,14 @@ const StudentProfil = (props) => {
                                 <div className="col-md-8 profile-header">
                                     <div className="row">
                                         <div className="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                                            <h3>{prenom} {nom}</h3>
+                                            <h3>{props.expense.prenom} {props.expense.nom}</h3>
                                             <h5>Etudiant</h5>
                                         </div>
                                         <div className="col-md-4 col-sm-6 col-xs-4 profile-header-section1 text-right">
-                                            { showButtonAddLivre || <Link to={`/edit/${id}`} title="Edit item"><button>Modifier</button></Link>}
                                             
-                                            { showButtonAddLivre ||<button onClick={() => setModalShow(true)}>Ajouter Livre</button>}
+                                            <Link to={`/edit/${id}`} title="Edit item"><button>Modifier</button></Link>
+                                            <button onClick={() => setModalShow(true)}>Ajouter Livre</button>
+
                                             <ModalAddBookStudent show={modalShow} handleClose={()=>setModalShow(false)} handleShow={()=>setModalShow(true)} idStudent={id}/>
 
                                         </div>
@@ -96,7 +92,7 @@ const StudentProfil = (props) => {
                                                                 <label>Nom</label>
                                                             </div>
                                                             <div className="col-md-6">
-                                                                <p>{prenom + " " + nom}</p>
+                                                                <p>{props.expense.prenom + " " + props.expense.nom}</p>
                                                             </div>
                                                         </div>
                                                         <div className="row">
@@ -104,7 +100,7 @@ const StudentProfil = (props) => {
                                                                 <label>Email</label>
                                                             </div>
                                                             <div className="col-md-6">
-                                                                <p>{email}</p>
+                                                                <p>{props.expense.email}</p>
                                                             </div>
                                                         </div>
                                                         <div className="row">
@@ -112,7 +108,7 @@ const StudentProfil = (props) => {
                                                                 <label>Date de naissance </label>
                                                             </div>
                                                             <div className="col-md-6">
-                                                                <p>{moment(date).format('DD/MM/YYYY')}</p>
+                                                                <p>{moment(props.expense.date).format('DD/MM/YYYY')}</p>
                                                             </div>
                                                         </div>
                                                         <br />
@@ -121,7 +117,7 @@ const StudentProfil = (props) => {
                                                                 <label>Classe </label>
                                                             </div>
                                                             <div className="col-md-6">
-                                                                <p>{classeFullName[classe]}</p>
+                                                                <p>{classeFullName[props.expense.classe]}</p>
                                                             </div>
                                                         </div>
                                                         <div className="row">

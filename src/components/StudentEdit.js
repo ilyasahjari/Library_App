@@ -53,7 +53,7 @@ const StudentEdit = (props) => {
         date: Number(date)
       });
      scrollToTop();
-     props.history.push(`/`)
+     props.history.goBack()
     } else {
       alert("please fill the fields")
     }

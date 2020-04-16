@@ -45,6 +45,8 @@ const BookEdit = (props) => {
                     date: Number(date),
                 });
             props.history.goBack()
+            //window.location.reload(false);
+
             scrollToTop();
 
         } else {

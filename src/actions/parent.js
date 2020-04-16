@@ -36,7 +36,7 @@ export const startAddParent = (userData = {}) => {
                 id: ref.key,
                 ...user
             }));
-            window.location.reload(false);
+            //window.location.reload(false);
         });
 
     };

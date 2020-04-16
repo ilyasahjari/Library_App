@@ -1,6 +1,7 @@
 import database from '../firebase/firebase';
 
 const addBook = ({
+    id='',
     titre = '',
     auteur = '',
     niveau = '',
@@ -12,6 +13,7 @@ const addBook = ({
         type: 'ADD_BOOK',
         payload:
         {
+            id,
             titre,
             auteur,
             niveau,
@@ -40,8 +42,6 @@ export const startAddBook = (bookData = {}) => {
                 ...book
             }));
             console.log('book added');
-            window.location.reload(false);
-
         });
 
 
