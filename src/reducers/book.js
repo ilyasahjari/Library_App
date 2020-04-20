@@ -18,7 +18,7 @@ export default (state = bookReducerDefault, action) => {
                         ...expense,
                         ...action.updates
                     }; else {
-                    return expense;
+                   return expense;
                 }
             });
 

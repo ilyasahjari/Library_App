@@ -43,7 +43,7 @@ export const BookList = (props) => {
                 {
                     props.books.map((book,index) => {
                         return (
-                            <div className="col-lg-4 col-md-6 mb-4" key={index}>
+                            <div className="col-lg-3 col-md-6 mb-4" key={index}>
                                 <div className="card h-100">
                                     <div className="card-body">
                                         <h4 className="card-title">
@@ -85,7 +85,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapToProps = (state) => {
     return {
-        books: getVisibleBooks(state.books,state.filters),
+        books: state.books,
         students: state.expenses
     }
 }

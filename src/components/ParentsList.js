@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import numeral from '../number'
 import { Table } from 'react-bootstrap';
@@ -11,16 +11,18 @@ import { setSexeFilterParent } from "../actions/parent-filter"
 import { CSVLink, CSVDownload } from "react-csv";
 import { CSVReader } from 'react-papaparse'
 import SideBar from './SideBar';
+import { setTextFiltertParent } from '../actions/parent-filter'
 
 
 
 export const ParentsList = (props) => {
+
     const [classeFilter, setClasseFilter] = useState(' ');
 
     const onChangeClassFiltre = (e) => {
         const classeFilter = e.target.value;
         setClasseFilter(classeFilter);
-        props.dispatch(setSexeFilterParent(classeFilter));
+        props.setSexeFilterParent(classeFilter);
 
     }
     const handleOnDrop = (data) => {
@@ -105,6 +107,13 @@ export const ParentsList = (props) => {
     )
 }
 
+const mapDispatchProps = (dispatch) =>{
+    return {
+        setTextFiltertParent: () => dispatch(setTextFiltertParent("")),
+        setSexeFilterParent :(element)=>dispatch(setSexeFilterParent(element))
+    }
+}
+
 const mapsToProps = (state) => {
     return {
         parents: getVisibleParents(state.parents, state.parentfilters),
@@ -113,4 +122,4 @@ const mapsToProps = (state) => {
 }
 
 
-export default connect(mapsToProps)(ParentsList);
+export default connect(mapsToProps,mapDispatchProps)(ParentsList);

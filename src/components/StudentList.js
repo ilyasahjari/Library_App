@@ -9,9 +9,25 @@ import '../App.css'
 import { setClasseFilter } from '../actions/filters';
 import moment from 'moment';
 import { CSVLink, CSVDownload } from "react-csv";
-
+import { startEditBook } from '../actions/book';
+import { startEditPayement } from '../actions/payement';
+import {startRemovePayement} from '../actions/payement';
 
 export const BookList = (props) => {
+
+    let idStudent='';
+    let status= "disponible";
+
+    const getPayementByStudentID =(id)=>{
+        const payement = props.payements.find((payement)=> payement.idStudent === id);
+        return (payement) ? payement.id : null;
+    }
+
+    const getBookByStudentID =(id)=>{
+        const book = props.books.find((book)=> book.idStudent === id);
+        return (book) ? book.id : null;
+    }
+
 
     return (
         <div >
@@ -52,7 +68,7 @@ export const BookList = (props) => {
                                     <td>{expense.nom}</td>
                                     <td>{expense.classe}</td>
                                     <td>{date}</td>
-                                    <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveStudent(expense.id)) }}>Delete</button></td>
+                                    <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveStudent(expense.id)); props.dispatch(startEditBook(getBookByStudentID(expense.id),{idStudent,status})); props.dispatch(startRemovePayement(getPayementByStudentID(expense.id)))  }}>Delete</button></td>
                                 </tr>);
                             })
                         }
@@ -77,7 +93,9 @@ export const BookList = (props) => {
 
 const mapsToProps = (state) => {
     return {
-        expenses: getVisibleExpenses(state.expenses, state.filters)
+        expenses: getVisibleExpenses(state.expenses, state.filters),
+        books : state.books,
+        payements: state.payements
     }
 }
 

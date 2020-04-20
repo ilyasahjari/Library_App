@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import studentReducer from '../reducers/expenses';
 import filterReducer from '../reducers/filters';
 import parentReducer from '../reducers/parent';
+import payementReducer from '../reducers/payement'
 import parentFilterReducer from '../reducers/parent-filter'
 import bookReducer from '../reducers/book'
 import bookFilterReducer from '../reducers/book-filter'
@@ -41,7 +42,8 @@ export default () => {
             parents: parentReducer,
             parentfilters: parentFilterReducer,
             books: bookReducer,
-            booksfilters: bookFilterReducer
+            booksfilters: bookFilterReducer,
+            payements : payementReducer 
         }),
         composeEnhancers(applyMiddleware(thunk))
 

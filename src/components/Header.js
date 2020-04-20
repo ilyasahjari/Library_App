@@ -6,7 +6,9 @@ import { connect } from 'react-redux'
 import SideBar from './SideBar'
 const Header = ({ dispatch }) => {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const checkisActive=(e)=>{
+    
+  }
 
   return (
     <div >

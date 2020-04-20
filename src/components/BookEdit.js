@@ -98,17 +98,17 @@ const BookEdit = (props) => {
     return (
         <div className="AppAdd">
             <form className="styleAdd main-section">
-                <h3 className="testTilte">Modification Livre {props.book.titre}</h3>
+                <h3 className="testTilte">Modification Livre "{props.book.titre}"</h3>
 
                 <div className="row">
                     <div className="col">
                         <label >Titre :</label>
-                        <input type="text" className="form-control" placeholder="Book Name" onChange={onTitreChange} value={titre} />
+                        <input type="text" className="form-control" placeholder="Book Name" onChange={onTitreChange} defaultValue={titre} />
                     </div>
 
                     <div className="col">
                         <label >Auteur :</label>
-                        <input type="text" className="form-control" placeholder="Writer Name" onChange={onAuteurChange} value={auteur} />
+                        <input type="text" className="form-control" placeholder="Writer Name" onChange={onAuteurChange} defaultValue={auteur} />
                     </div>
                 </div>
                 <br />

@@ -2,6 +2,7 @@ import uuid from 'uuid';
 import database from '../firebase/firebase';
 import { setStartDate } from './filters';
 import { startSetParent } from './parent';
+import { startAddPayement, addPayement } from './payement';
 
 
 
@@ -54,15 +55,16 @@ export const startAddStudent = (userData = {}) => {
 
         const user = { nom, prenom, classe, date, email, idParent1, idParent2 };
 
-        return database.ref('users/students').push(user).then((ref) => {
+        let idStudent = ""
+
+        database.ref('users/students').push(user).then((ref) => {
             dispatch(addStudent({
                 id: ref.key,
                 ...user
             }));
-            console.log('added user');
-            //window.location.reload(false);
+            idStudent= ref.key;
+            dispatch(startAddPayement({idStudent}));   
         });
-
     };
 };
 // REMOVE_EXPENSE

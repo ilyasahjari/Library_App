@@ -22,8 +22,7 @@ const ErrorMessage = (props) => {
             </div>
             <div className="error-actions">
               <NavLink className="btn btn-primary btn-lg" to="/" exact={true} > RETOUR PAGE D'ACCUEIL </NavLink>
-              {/* <a onClick={handleBackHome} className="btn btn-primary btn-lg"><span className="glyphicon glyphicon-home"></span>
-                        Take Me Home </a>*/}<a target="_Blank" href="" className="btn btn-default btn-lg"><span className="glyphicon glyphicon-envelope"></span> Contact Support </a>
+              <a target="_Blank" href="./" className="btn btn-default btn-lg"><span className="glyphicon glyphicon-envelope"></span> Contact Support </a>
             </div>
           </div>
         </div>

@@ -1,12 +1,13 @@
 -- to do !
 - payment montant paye moyen payement (carte payment check), objet payer, commentaire , idstudent
-- add choice of books to add to a student 
+    const totalExpenses = props.expenses
+        .map((expense) => expense.amount)
+        .reduce((sum,value)=>value + sum, 0 );
+	(to deploy)
+- go to student profil directly after adding one 
 - authentification
-- trier les elements
-- editer un livre avec le id etudiants
-- livre : id, titre, auteur, niveau, destination ??, status (imprentable, preparé, emprunté, rendu)
-- payment ... (a suivre)  
-- go to student profil when adding him in studentAdd
+- changer tri les elements
+//editer un livre avec le id etudiants
 - add import CSV 
 - add to student : phonenumber, full adresse
 - add to parent : email

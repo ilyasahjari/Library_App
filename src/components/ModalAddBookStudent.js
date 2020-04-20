@@ -31,7 +31,7 @@ const ModalAddBookStudent = (props) => {
             <div onClick={e => e.stopPropagation()}>
 
                 <Modal show={props.show} onHide={props.handleClose}  animation={true}>
-                    <Modal.Header closeButton={false}>
+                    <Modal.Header closeButton>
                         <Modal.Title>Selectionner Livre à emprunté  : </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -66,9 +66,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const mapToProps = (state) => {
+const mapToProps = (state,props) => {
     return {
-        books: state.books.filter((book) => book.status.toLowerCase().includes("disponible")),
+        books: state.books.filter((book) => book.status === "disponible" && book.niveau === props.niveau),
         students: state.expenses
     }
 }

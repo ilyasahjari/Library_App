@@ -10,6 +10,7 @@ import axios from "axios";
 
 const BookAdd = (props) => {
 
+    let idStudent =""
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [classe, setClasse] = useState('');
@@ -30,6 +31,8 @@ const BookAdd = (props) => {
         });
     }    
 
+    
+
     const handleAdd = (e) => {
         e.preventDefault();
         const exist_element = props.expenses.filter((expense) => {
@@ -46,11 +49,10 @@ const BookAdd = (props) => {
                     date: Number(date),
                     email,
                     idParent1,
-                    idParent2
+                    idParent2  
                 });
                 scrollToTop();
-                props.history.push('/');
-
+                props.history.push(`/`);
             } else {
                 alert("Student already exists");
             }
