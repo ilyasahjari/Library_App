@@ -132,7 +132,7 @@ const StudentProfil = (props) => {
                                 <div className="col-md-12">
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <Tabs defaultActiveKey="payement" id="uncontrolled-tab-example">
+                                            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                                                 <Tab eventKey="profile" title="Info Profile">
                                                     <div role="tabpanel" className="tab-pane fade show active">
                                                         <br />
@@ -236,7 +236,9 @@ const StudentProfil = (props) => {
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td />
+                                                                <td>
+                                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Euro_symbol_black.svg/1019px-Euro_symbol_black.svg.png"  style={{height:"50px"}} alt="normographe" />
+                                                                </td>
                                                                 <th scope="row">Caution</th>
                                                                 <td>100€</td>
                                                                 <th />
@@ -246,16 +248,18 @@ const StudentProfil = (props) => {
 
                                                             </tr>
                                                             <tr>
-                                                                <td><img src="../images/Webp.net-resizeimage (1).jpg" alt="calculatrice" /></td>
+                                                                <td>
+                                                                   <img src='https://img1.bgxcdn.com/thumb/large/oaupload/banggood/images/06/67/4b263b74-cc1c-45fc-86c2-5de1d97edb65.JPG'  style={{height:"50px"}} alt="calculatrice"/>
+                                                                </td>
                                                                 <th scope="row">Calculatrice</th>
-                                                                <td>68€</td>
+                                                                  <td>68€</td>
                                                                 <td />
                                                                 <td>
-                                                                    <Checkbox checked={state.calculatrice} onChange={handleCheckBox} disabled={disabled.calculatrice} color="primary" name="calculatrice" />
+                                                                  <Checkbox checked={state.calculatrice} onChange={handleCheckBox} disabled={disabled.calculatrice} color="primary" name="calculatrice" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td><img src="" alt="normographe" /></td>
+                                                                <td><img src="https://lh3.googleusercontent.com/proxy/ygQPajlmLBg6DciWqEqcMgNFQHDtr39vWRGPJW9qZkrd_bEDZ9oEUIcfSUQlRC9ksYTLMQyugpwpHbpNAdbcYitQl5myeChSCAB83FPuiP27Sw"  style={{height:"50px"}} alt="normographe" /></td>
                                                                 <th scope="row">Normographe</th>
                                                                 <td>5€</td>
                                                                 <td />
@@ -264,7 +268,7 @@ const StudentProfil = (props) => {
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td><img src="" alt="cleUSB" /></td>
+                                                                <td><img src="https://www.cdiscount.com/pdt2/7/3/6/1/300x300/tem6427643888736/rw/256go-cle-usb-3-0-stick-rotatif-pendrive-memoire-f.jpg" style={{height:"50px"}}  alt="cleUSB" /></td>
                                                                 <th scope="row">Clé USB</th>
                                                                 <td>5€</td>
                                                                 <td />
