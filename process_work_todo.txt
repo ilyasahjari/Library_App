@@ -1,10 +1,9 @@
 -- to do !
-- payment montant paye moyen payement (carte payment check), objet payer, commentaire , idstudent
-    const totalExpenses = props.expenses
-        .map((expense) => expense.amount)
-        .reduce((sum,value)=>value + sum, 0 );
-	(to deploy)
-- go to student profil directly after adding one 
+- add multiple payements for a student 
+- ajout de l'historique des achats
+- check delete and buy before clicking(boolean to check if its true then delete and buy)
+- go to student profil directly after adding one (do it with a filter for student)
+- search by full name 
 - authentification
 - changer tri les elements
 //editer un livre avec le id etudiants

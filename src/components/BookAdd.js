@@ -49,7 +49,7 @@ const BookAdd = (props) => {
                 const exist_student = props.students.filter((student) => {
                     return (student.nom === nomStudent && student.prenom === prenomStudent)
                 });
-                if (exist_student.length != 0) {
+                if (exist_student.length !== 0) {
                     idStudent=exist_student[0].id;
                     return true;
                 }

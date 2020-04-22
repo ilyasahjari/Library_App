@@ -27,12 +27,7 @@ const StudentProfil = (props) => {
     const [commentaire, setCommentaire] = useState(props.payement ? props.payement.commentaire : "")
 
 
-    const [elements, setElements] = useState({
-        caution: props.payement.caution ? true : false,
-        calculatrice: props.payement.calculatrice ? true : false,
-        normographe: props.payement.normographe ? true : false,
-        cleUSB: props.payement.cleUSB ? true : false,
-    })
+    
 
     const [state, setState] = useState({
         caution: props.payement.caution ? true : false,
@@ -259,7 +254,7 @@ const StudentProfil = (props) => {
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td><img src="https://lh3.googleusercontent.com/proxy/ygQPajlmLBg6DciWqEqcMgNFQHDtr39vWRGPJW9qZkrd_bEDZ9oEUIcfSUQlRC9ksYTLMQyugpwpHbpNAdbcYitQl5myeChSCAB83FPuiP27Sw"  style={{height:"50px"}} alt="normographe" /></td>
+                                                                <td><img src="https://rentree-facile.com/wp-content/uploads/2018/08/Trace-cercles-impairs-pairs-et-pairsimpairs-n°18-743070-1.jpg"  style={{height:"50px"}} alt="normographe" /></td>
                                                                 <th scope="row">Normographe</th>
                                                                 <td>5€</td>
                                                                 <td />
