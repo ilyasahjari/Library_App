@@ -9,6 +9,7 @@ import ModalAddBookStudent from './ModalAddBookStudent'
 import Checkbox from '@material-ui/core/Checkbox';
 import { startEditPayement, startAddPayement } from '../actions/payement'
 import PayementAdd from './PayementAdd'
+import Dnd from './DND'
 
 
 
@@ -84,7 +85,7 @@ const StudentProfil = (props) => {
                                 <div className="col-md-12">
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <Tabs defaultActiveKey="payement" id="uncontrolled-tab-example">
+                                            <Tabs defaultActiveKey="testPayement" id="uncontrolled-tab-example">
                                                 <Tab eventKey="profile" title="Info Profile">
                                                     <div role="tabpanel" className="tab-pane fade show active">
                                                         <br />
@@ -178,6 +179,9 @@ const StudentProfil = (props) => {
                                                 <Tab eventKey="payement" title="Réglement Produit">
                                                     <PayementAdd idStudent={id} />
                                                     
+                                                </Tab>
+                                                <Tab eventKey="testPayement" title="Test Add Livre">
+                                                    <Dnd/>
                                                 </Tab>
                                             </Tabs>
                                         </div>
