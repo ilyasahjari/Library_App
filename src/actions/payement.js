@@ -3,25 +3,33 @@ import database from '../firebase/firebase'
 
 export const addPayement = ({
     id = "",
-    amountPayed = 0,
     payementMethod = "",
-    caution = false,
-    calculatrice = false,
-    normographe = false,
-    cleUSB = false,
+    caution = 0,
+    calculatrice = 0,
+    normographe = 0,
+    cleUSB = 0,
     commentaire = "",
+    date=0,
+    status="",
+    banque="",
+    numCheque="",
+    numEnveloppe="",
     idStudent =""
 } = {}) => ({
     type: "ADD_PAYEMENT",
     payload: {
         id,
-        amountPayed,
         payementMethod,
         caution,
         calculatrice,
         normographe,
         cleUSB,
         commentaire,
+        date,
+        status,
+        banque,
+        numCheque,
+        numEnveloppe,
         idStudent
     }
 })
@@ -29,24 +37,32 @@ export const addPayement = ({
 export const startAddPayement = (payementData = {}) => {
     return (dispatch) => {
         const {
-            amountPayed = 0,
             payementMethod = "",
             caution = 0,
             calculatrice = 0,
             normographe = 0,
             cleUSB = 0,
             commentaire = "",
+            date=0,
+            status="",
+            banque="",
+            numCheque="",
+            numEnveloppe="",
             idStudent =""
         } = payementData
 
         const payement = {
-            amountPayed,
             payementMethod,
             caution,
             calculatrice,
             normographe,
             cleUSB,
             commentaire,
+            date,
+            status,
+            banque,
+            numCheque,
+            numEnveloppe,
             idStudent
         }
         return database.ref('users/payements').push(payement).then((ref) => {

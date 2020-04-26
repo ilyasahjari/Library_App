@@ -63,7 +63,7 @@ export const startAddStudent = (userData = {}) => {
                 ...user
             }));
             idStudent= ref.key;
-            dispatch(startAddPayement({idStudent}));   
+            //dispatch(startAddPayement({idStudent}));   
         });
     };
 };

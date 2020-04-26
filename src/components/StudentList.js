@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import getVisibleExpenses from '../selectors/expenses'
 import numeral from '../number'
@@ -12,11 +12,15 @@ import { CSVLink, CSVDownload } from "react-csv";
 import { startEditBook } from '../actions/book';
 import { startEditPayement } from '../actions/payement';
 import {startRemovePayement} from '../actions/payement';
+import ModalDeleteStudent from './ModalDeleteStudent';
 
 export const BookList = (props) => {
 
     let idStudent='';
     let status= "disponible";
+
+    const [showDelete, setShowDelete]= useState(false);
+
 
     const getPayementByStudentID =(id)=>{
         const payement = props.payements.find((payement)=> payement.idStudent === id);
@@ -27,6 +31,7 @@ export const BookList = (props) => {
         const book = props.books.find((book)=> book.idStudent === id);
         return (book) ? book.id : null;
     }
+
 
 
     return (
@@ -68,7 +73,8 @@ export const BookList = (props) => {
                                     <td>{expense.nom}</td>
                                     <td>{expense.classe}</td>
                                     <td>{date}</td>
-                                    <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveStudent(expense.id)); props.dispatch(startEditBook(getBookByStudentID(expense.id),{idStudent,status})); props.dispatch(startRemovePayement(getPayementByStudentID(expense.id)))  }}>Delete</button></td>
+                                    <td><button className="btn btn-primary" onClick={()=>setShowDelete(true) }>Delete</button></td>
+                                    <ModalDeleteStudent handleDeleteStudent={()=>{props.startRemoveStudent(expense.id); props.startEditBook(getBookByStudentID(expense.id),{idStudent,status});setShowDelete(false)}} show={showDelete} handleClose={()=>setShowDelete(false)} />
                                 </tr>);
                             })
                         }
@@ -91,6 +97,14 @@ export const BookList = (props) => {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        startRemoveStudent: (id) => dispatch(startRemoveStudent(id)),
+        startEditBook: (id, expense)=> dispatch(startEditBook(id,expense))
+    }
+};
+
+
 const mapsToProps = (state) => {
     return {
         expenses: getVisibleExpenses(state.expenses, state.filters),
@@ -100,4 +114,4 @@ const mapsToProps = (state) => {
 }
 
 
-export default connect(mapsToProps)(BookList);
+export default connect(mapsToProps, mapDispatchToProps)(BookList);

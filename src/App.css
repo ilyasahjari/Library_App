@@ -209,7 +209,7 @@ header {
 
 .sidenav {
   width: 140px;
-  height : 900px;
+  height : 1000px;
   position: absolute;
   z-index: 1;
   top: 120px;
