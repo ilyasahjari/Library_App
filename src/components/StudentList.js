@@ -21,6 +21,12 @@ export const BookList = (props) => {
 
     const [showDelete, setShowDelete]= useState(false);
 
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+    }
 
     const getPayementByStudentID =(id)=>{
         const payement = props.payements.find((payement)=> payement.idStudent === id);
@@ -43,13 +49,13 @@ export const BookList = (props) => {
 
             <div className="App">
                 {/*add filter Component*/}
-            Trier par classe
+            {/* Trier par classe
             <select onChange={(e) => { props.dispatch(setClasseFilter(e.target.value)) }}>
                     <option> </option>
                     <option>2nde</option>
                     <option>1ere</option>
                     <option>Tnle</option>
-                </select>
+                </select> */}
                 <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
                     <caption>{props.expenses.length} Users</caption>
                     <thead className="thead-light">
@@ -69,7 +75,7 @@ export const BookList = (props) => {
                                 const milToDate = new Date(expense.date)
                                 const date = moment(milToDate).format('DD/MM/YYYY')
                                 return (<tr key={expense.id}>
-                                    <td><Link to={`/StudentProfil/${expense.id}`} title="Edit item">{expense.prenom}</Link></td>
+                                    <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} title="Edit item">{expense.prenom}</Link></td>
                                     <td>{expense.nom}</td>
                                     <td>{expense.classe}</td>
                                     <td>{date}</td>

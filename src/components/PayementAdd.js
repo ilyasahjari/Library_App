@@ -125,7 +125,7 @@ const PayementAdd = (props) => {
                 <tbody>
                     <tr>
                         <td>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Euro_symbol_black.svg/1019px-Euro_symbol_black.svg.png" style={{ height: "50px" }} alt="normographe" />
+                            <img src={require('./../images/caution.png')} style={{ height: "50px" }} alt="normographe" />
                         </td>
                         <th scope="row">Caution</th>
                         <td>100€</td>
@@ -139,7 +139,7 @@ const PayementAdd = (props) => {
                     </tr>
                     <tr>
                         <td>
-                            <img src='https://img1.bgxcdn.com/thumb/large/oaupload/banggood/images/06/67/4b263b74-cc1c-45fc-86c2-5de1d97edb65.JPG' style={{ height: "50px" }} alt="calculatrice" />
+                            <img src={require('./../images/calculatrice.jpg')} style={{ height: "50px" }} alt="calculatrice" />
                         </td>
                         <th scope="row">Calculatrice</th>
                         <td>68€</td>
@@ -151,7 +151,7 @@ const PayementAdd = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td><img src="https://rentree-facile.com/wp-content/uploads/2018/08/Trace-cercles-impairs-pairs-et-pairsimpairs-n°18-743070-1.jpg" style={{ height: "50px" }} alt="normographe" /></td>
+                        <td><img src={require('./../images/normographe.jpg')} style={{ height: "50px" }} alt="normographe" /></td>
                         <th scope="row">Normographe</th>
                         <td>5€</td>
 
@@ -163,7 +163,7 @@ const PayementAdd = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td><img src="https://www.cdiscount.com/pdt2/7/3/6/1/300x300/tem6427643888736/rw/256go-cle-usb-3-0-stick-rotatif-pendrive-memoire-f.jpg" style={{ height: "50px" }} alt="cleUSB" /></td>
+                        <td><img src={require('./../images/cleUSB.jpg')} style={{ height: "50px" }} alt="cleUSB" /></td>
                         <th scope="row">Clé USB</th>
                         <td>5€</td>
                         <td>

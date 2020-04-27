@@ -9,7 +9,8 @@ import ModalAddBookStudent from './ModalAddBookStudent'
 import Checkbox from '@material-ui/core/Checkbox';
 import { startEditPayement, startAddPayement } from '../actions/payement'
 import PayementAdd from './PayementAdd'
-import Dnd from './DND'
+import Dnd from './DragNDrop/DND'
+import Kanban from './DragNDrop/StudentBookList'
 
 
 
@@ -85,7 +86,45 @@ const StudentProfil = (props) => {
                                 <div className="col-md-12">
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <Tabs defaultActiveKey="testPayement" id="uncontrolled-tab-example">
+                                            <Tabs defaultActiveKey="AjoutLivre" id="uncontrolled-tab-example">
+
+                                                <Tab eventKey="AjoutLivre" title="Ajout Livre">
+                                                    <Kanban idStudent={id}/>
+                                                </Tab>
+
+                                                <Tab eventKey="payement" title="Réglement Produit">
+                                                    <PayementAdd idStudent={id} />      
+                                                </Tab>
+
+                                                <Tab eventKey="books" title="Livres empruntés">
+                                                    <div role="tabpanel" className="tab-pane fade show active">
+
+                                                        <div className="row">
+                                                            {
+                                                                getBookById(id).map((book, index) => {
+                                                                    return (
+                                                                        <div className="col-lg-5 col-md-6 mb-4" key={index}>
+                                                                            <div className="card h-100">
+                                                                                <div className="card-body">
+                                                                                    <h4 className="card-title">
+                                                                                        <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
+                                                                                    </h4>
+                                                                                    <h5> Auteur : {book.auteur}</h5>
+                                                                                    <p className="card-text">Niveau : {book.niveau}</p>
+                                                                                    <button className="btn btn-primary" onClick={() => { props.startEditBook(book.id, { idStudent, status }) }}>Remettre</button>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </div>
+
+                                                    </div>
+
+                                                </Tab>
+                                                
                                                 <Tab eventKey="profile" title="Info Profile">
                                                     <div role="tabpanel" className="tab-pane fade show active">
                                                         <br />
@@ -148,41 +187,8 @@ const StudentProfil = (props) => {
                                                         </div>
                                                     </div>
                                                 </Tab>
-                                                <Tab eventKey="books" title="Livres empruntés">
-                                                    <div role="tabpanel" className="tab-pane fade show active">
 
-                                                        <div className="row">
-                                                            {
-                                                                getBookById(id).map((book, index) => {
-                                                                    return (
-                                                                        <div className="col-lg-5 col-md-6 mb-4" key={index}>
-                                                                            <div className="card h-100">
-                                                                                <div className="card-body">
-                                                                                    <h4 className="card-title">
-                                                                                        <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
-                                                                                    </h4>
-                                                                                    <h5> Auteur : {book.auteur}</h5>
-                                                                                    <p className="card-text">Niveau : {book.niveau}</p>
-                                                                                    <button className="btn btn-primary" onClick={() => { props.startEditBook(book.id, { idStudent, status }) }}>Remettre</button>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                })
-                                                            }
-                                                        </div>
-
-                                                    </div>
-
-                                                </Tab>
-                                                <Tab eventKey="payement" title="Réglement Produit">
-                                                    <PayementAdd idStudent={id} />
-                                                    
-                                                </Tab>
-                                                <Tab eventKey="testPayement" title="Test Add Livre">
-                                                    <Dnd/>
-                                                </Tab>
+                                               
                                             </Tabs>
                                         </div>
 

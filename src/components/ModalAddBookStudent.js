@@ -69,7 +69,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapToProps = (state,props) => {
     return {
         books: state.books.filter((book) => book.status === "disponible" && book.niveau === props.niveau),
-        students: state.expenses
     }
 }
 

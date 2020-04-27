@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 import React, { useState } from 'react'
-import { setTextFilter, sortByAmount, sortByDate } from '../actions/filters'
+import { setTextFilter, sortByAmount, sortByDate, setNomFilter } from '../actions/filters'
 import { setTextFiltertParent } from '../actions/parent-filter'
 import { connect } from 'react-redux'
 import SideBar from './SideBar'
@@ -40,7 +40,7 @@ const Header = ({ dispatch }) => {
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input className="form-control mr-sm-2" type="search" placeholder="Search First Name"
-                onChange={(e) => { dispatch(setTextFilter(e.target.value)); dispatch(setTextFiltertParent(e.target.value)) }} />
+                onChange={(e) => { (dispatch(setTextFilter(e.target.value))) || dispatch(setNomFilter(e.target.value)); dispatch(setTextFiltertParent(e.target.value)) }} />
             </form>
           </div>
         </nav>

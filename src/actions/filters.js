@@ -1,8 +1,17 @@
-// SET_TEXT_FILTER
+// SET_PRENOM_FILTER
 export const setTextFilter = (text = '') => ({
     type: 'SET_TEXT_FILTER',
     text
 });
+
+
+
+// SET_NOM_FILTER
+export const setNomFilter =(nom='')=>({
+    type: 'SET_NOM_FILTER',
+    nom
+});
+
 
 //SET_CLASSE_FILTER
 export const setClasseFilter = (classe ='')=>({
