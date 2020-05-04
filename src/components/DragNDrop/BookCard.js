@@ -37,16 +37,15 @@ const KanbanCard = (props) => {
         <div
             key={props.project.id}
             style={cardStyle}
-            onClick={(e) => e.target.cursor = "all-scroll"}
             draggable={true}
             onDragEnd={(e) => { props.onDragEnd(e, props.project); }}
         >
             <div title={`Auteur : ${props.project.auteur}\nNiveau : ${props.project.niveau}`}>
                 <Link to={`/BookEdit/${props.project.id}`} onClick={scrollToTop}>
-                    {props.project.titre}<br/>
-                     <img src={require('./../../images/francais1.jpg')} style={{ height: "60px" }} alt="livre" />
+                    {props.project.titre}
                 </Link><br />
-
+                     <img src={require('./../../images/francais1.jpg')} style={{ height: "60px" }} alt="livre" />
+               
 
             </div>
             {/* {(collapsed)

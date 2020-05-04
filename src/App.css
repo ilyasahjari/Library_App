@@ -1,5 +1,5 @@
 .App {
-  margin-left: 160px;
+  margin-left: 9%;
   margin-right: 20px;
   margin-top: 30px
 }
@@ -50,7 +50,6 @@
 header {
   width: 100%;
   height: 19%;
-  background: url(https://www.firadelllibreprohibit.com/wp-content/uploads/2020/01/11-bookstores-6-three-lives-2.w710.h473.2x.jpg) no-repeat 50% 50%;
   background-size: cover;
 }
 
@@ -75,11 +74,16 @@ header {
 
 .testTilte {
     text-align: center;
-    color: black;
-    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-  
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 50px;
+    letter-spacing: 1.6px;
+    word-spacing: -2.4px;
+    color: #000000;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;  
 }
 
 .testTiltee:after {
@@ -93,7 +97,9 @@ header {
   margin-bottom:10px;
 }
 .main-section{
-  box-shadow: 6px 6px 6px 3px;
+  -webkit-box-shadow: 3px 3px 21px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 21px -2px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 21px -2px rgba(0,0,0,0.75);
   margin-bottom: 60px;
   margin-top: 30px;
 
@@ -208,11 +214,11 @@ header {
 
 
 .sidenav {
-  width: 140px;
+  width: 7%;
   height : 1000px;
   position: absolute;
   z-index: 1;
-  top: 120px;
+  top: 14%;
   left: 10px;
   background: #eee;
   overflow-x: hidden;

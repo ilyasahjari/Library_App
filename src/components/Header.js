@@ -4,10 +4,16 @@ import { setTextFilter, sortByAmount, sortByDate, setNomFilter } from '../action
 import { setTextFiltertParent } from '../actions/parent-filter'
 import { connect } from 'react-redux'
 import SideBar from './SideBar'
-const Header = ({ dispatch }) => {
+import { OrbitSpinner, AtomSpinner } from 'react-epic-spinners';
+import { Transition } from 'semantic-ui-react'
+import "./../Authenticationstyle.css"
 
-  const checkisActive=(e)=>{
-    
+const Header = ({ dispatch }, props) => {
+
+  const [openSideBar, setOpenSideBar] = useState(false)
+
+  const style = {
+    "display": openSideBar ? 'flex' : 'none',
   }
 
   return (
@@ -15,7 +21,11 @@ const Header = ({ dispatch }) => {
       <header >
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand bg-dark" style={{ color: "white" }} >LIBRARY APP</a>
+          <button style={{ backgroundColor: "#343a40", color: "white" }} onClick={() => setOpenSideBar(!openSideBar)}>&#9776;</button>
+
+          <AtomSpinner color='#38ACDF' size={40} />
+
+          <a className="navbar-brand bg-dark" style={{ color: "white" }} > LIBRARY APP</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -37,15 +47,25 @@ const Header = ({ dispatch }) => {
                     <NavLink className="nav-link" to="/addParent" activeClassName="is-active">Ajout Parent</NavLink>
                </li> */}
 
+
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input className="form-control mr-sm-2" type="search" placeholder="Search First Name"
-                onChange={(e) => { (dispatch(setTextFilter(e.target.value))) || dispatch(setNomFilter(e.target.value)); dispatch(setTextFiltertParent(e.target.value)) }} />
+                onChange={(e) => { dispatch(setNomFilter(e.target.value)) || (dispatch(setTextFilter(e.target.value))); dispatch(setTextFiltertParent(e.target.value)) }} />
             </form>
+            <a className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src={require("../images/logo-book.png")} width="27" height="30" className="rounded-circle" />
+            </a>
           </div>
         </nav>
-        <h1 className="testTilte">LIBRARY APP</h1>
+
+        <h1 className="testTilte">  <img src={require("../images/logo.png")} style={{ height: "60px" }} /> LIBRARY APP</h1>
       </header>
+      {/* <Transition visible={openSideBar}  animation='scale' duration={500}> */}
+      <div style={style} className="fadeIn">
+        <SideBar />
+      </div>
+      {/* </Transition> */}
     </div >
   )
 };

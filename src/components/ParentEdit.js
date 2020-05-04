@@ -70,7 +70,7 @@ const ParentEdit = (props) => {
     return (
         <div className="AppAdd">
             <form className="styleAdd main-section">
-                <h5 className="row justify-content-center"> Modification {props.parent.prenom.toUpperCase()} {props.parent.nom.toUpperCase()} </h5>
+                <h5 className="row justify-content-center testTilte" style={{ "fontSize":"30px"}} > Modification {props.parent.prenom.toUpperCase()} {props.parent.nom.toUpperCase()} </h5>
                 <hr />
                 <div className="row">
                     <div className="col">
@@ -86,8 +86,8 @@ const ParentEdit = (props) => {
                 <br />
 
                 <div className="form-group">
-                    <label >Sexe :</label>
-                    <select value={sexe} className="form-control" onChange={onSexeChange}>
+                    <label >Sexe :</label><br/>
+                    <select value={sexe} className="select" onChange={onSexeChange}>
                         <option></option>
                         <option>F</option>
                         <option>M</option>
@@ -96,7 +96,7 @@ const ParentEdit = (props) => {
                 </div>
                 <div className="form-group ">
                     <label >Numéro de téléphone :</label>
-                    <PhoneInput country={'fr'} value={phoneNum} onChange={setPhoneNum} />
+                    <PhoneInput country={'fr'} style={{width:"92%"}} value={phoneNum} onChange={setPhoneNum} />
                 </div>
                 <br />
                 <div className="row form-group">

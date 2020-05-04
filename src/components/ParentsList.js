@@ -44,19 +44,12 @@ export const ParentsList = (props) => {
 
     return (
         <div>
-            <h1 style={{
-                textAlign: "center"
-            }}> Afficher Liste de Parents </h1>
+            <h1 className="testTilte" style={{ "fontSize":"40px"}}> Liste de Parents </h1>
 
 
             <div className="App">
                 {/*add filter Component*/}
-            Trier par classe
-            <select defaultValue=' ' onChange={onChangeClassFiltre} >
-                    <option value=''> </option>
-                    <option>M</option>
-                    <option>F</option>
-                </select>
+           
                 <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
                     <caption>{props.parents.length} Parents</caption>
                     <thead className="thead-light">

@@ -39,8 +39,11 @@ const KanbanBoard = (props) => {
 
     return (
         <div>
-            {columns.map((column) => {
+            <div className="row">
+            {columns.map((column, index) => {
                 return (
+                    <div className="col-lg-7 col-md-2 mb-6" key={index}>
+ 
                     <KanbanColumn
                         name={column.name}
                         stage={column.stage}
@@ -49,8 +52,10 @@ const KanbanBoard = (props) => {
                         onDragEnd={handleOnDragEnd}
                         key={column.stage}
                     />
+                    </div>
                 );
             })}
+            </div>
         </div>
     );
 

@@ -70,7 +70,7 @@ const ParentAdd = (props) => {
     return (
         <div>
             <div>
-            <h3 className="testTilte">Ajouter Parent</h3>
+            <h3 className="testTilte" style={{ "fontSize":"30px"}}>Ajouter Parent</h3>
                 
                 <div className="row">
                     <div className="col">
@@ -85,8 +85,8 @@ const ParentAdd = (props) => {
                 </div>
                 <br />
                 <div className="form-group">
-                    <label>Sexe :</label>
-                    <select className="form-control" onChange={onSexeChange}>
+                    <label>Sexe :</label><br/>
+                    <select className="select"  onChange={onSexeChange}>
                         <option> </option>
                         <option>M</option>
                         <option>F</option>
@@ -95,15 +95,15 @@ const ParentAdd = (props) => {
                 </div>
                 <div className="form-group ">
                     <label >Numéro de téléphone :</label>
-                    <PhoneInput country={'fr'} value={phoneNum} onChange={setPhoneNum} />
+                    <PhoneInput country={'fr'} style={{width:"92%"}} value={phoneNum} onChange={setPhoneNum} />
                 </div>
-
+                <br/>
                 <div className="row form-group">
                     <div className="col">
-                        <button onClick={handleAdd} className="btn btn-primary">Ajouter Parent</button>
+                        <input onClick={handleAdd} type="submit" value="Ajouter Parent"/>
                     </div>
-                    <div className="col-8">
-                        <button onClick={handleHideForm} className="btn btn-primary">Annuler</button>
+                    <div className="col">
+                        <input onClick={handleHideForm} type="submit" value="Annuler"/>
                     </div>
 
                 </div>

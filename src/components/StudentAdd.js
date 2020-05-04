@@ -100,7 +100,7 @@ const BookAdd = (props) => {
         <div className="AppAdd">
 
             <form className="styleAdd main-section">
-                <h3 className="testTilte">Ajouter Etudiant</h3>
+                <h3 className="testTilte" style={{ "fontSize":"30px"}}>Ajouter Etudiant</h3>
                 <br />
                 <div className="row">
                     <div className="col">
@@ -116,8 +116,8 @@ const BookAdd = (props) => {
                 </div>
                 <br />
                 <div className="form-group">
-                    <label >Classe :</label>
-                    <select className="form-control" onChange={onClasseChange}>
+                    <label >Classe :</label><br/>
+                    <select className="select" onChange={onClasseChange}>
                         <option > </option>
                         <option>2nde</option>
                         <option>1ere</option>
@@ -127,7 +127,7 @@ const BookAdd = (props) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Email address :</label>
-                    <input onChange={onEmailChange} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <input onChange={onEmailChange} type="text" style={{width:"600px"}} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                     <small id="emailHelp" className="form-text text-muted">Nous ne partagerons jamais votre Email avec qui que ce soit.</small>
                 </div>
 
@@ -146,7 +146,7 @@ const BookAdd = (props) => {
 
                 <ParentsBoxStudent i={iterator++} hideNextButton={hideNextButton2} setHideNextButton={setHideNextButton2} handleParentName={handleParentName2} />
                 <div className="form-group">
-                {parentsChecked() && <button type="submit" onClick={handleAdd} className="btn btn-primary">Inscription</button>}
+                {parentsChecked() && <input type="submit" onClick={handleAdd} value="Inscription"/>}
                 </div>
             </form>
 

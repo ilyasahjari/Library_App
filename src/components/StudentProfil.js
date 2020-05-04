@@ -57,7 +57,7 @@ const StudentProfil = (props) => {
 
 
     return (
-        <div className="App">
+        <div className="App fadeIn">
             <div className="container main-section App">
                 <div className="row">
 

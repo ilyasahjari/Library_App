@@ -1,37 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import configureStore from './store/configureStore'
 import AppRouter from './Router/AppRouter'
-import { addBook, startAddBook } from './actions/expenses' 
+import AuthenticationPage from './components/AuthenticationPage'
+import { addBook, startAddBook } from './actions/expenses'
 import getVisibleExpenses from './selectors/expenses'
-import {sortByAmount, sortByDate, setTextFilter} from './actions/filters'
+import { sortByAmount, sortByDate, setTextFilter } from './actions/filters'
 import { Provider } from 'react-redux'
 import { app } from 'firebase';
-
-// const store = configureStore();
-// //console.log(store.getState());
+import AuthentificationPage from './components/AuthenticationPage';
 
 
-// store.subscribe(() => {
-//     const state = store.getState();
-//     const visibleExpenses = state.expenses;
-//     console.log(visibleExpenses);
-// });
+const App = (props) => {
+    const [connect, setConnect] = useState(false)
+    //Update 
+    useEffect(() => {
+        const data = localStorage.getItem("connect");
+        if (data) {
+            setConnect(JSON.parse(data));
+        }
+    }, []);
 
 
-
-//const expenseOne = store.dispatch(addBook({ nom: "ahjari", prenom: "ilyas", classe: "M1", date: 4000}));
-//const expenseTwo = store.dispatch(startAddBook({ nom: "dardab", prenom: "amine", classe: "L3", date: 2000 }));
-//const expenseThree = store.dispatch(startAddBook({ nom: "bazine", prenom: "mehdi", classe: "L2", date: 1000 }));
-
-//store.dispatch(sortByDate());
-// function App() 
-// {
-//     return (
-//         <Provider store={store}>
-//             <AppRouter/>
-//         </Provider>
-//     );
-// }
+    //recuperer les donnees et les mettre dans le local storage
+    useEffect(() => {
+        localStorage.setItem("connect", JSON.stringify(connect))
+    });
 
 
-// export default App;
+    return (
+        <div>
+            {connect || <AuthentificationPage connect={setConnect} />}
+            {connect && <AppRouter connect={setConnect} />}
+        </div>
+    )
+
+}
+
+export default App;

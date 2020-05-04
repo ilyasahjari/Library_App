@@ -19,7 +19,7 @@ const KanbanColumn = (props) => {
     const generateKanbanCards = () => {
         return props.projects.slice(0).map((project) => {
             return (
-                <div key={project.id}>
+                <div key={project.id} style={{  flexWrap: "nowrap" }}>
                     <KanbanCard
                         project={project}
                         key={project.name}
@@ -32,8 +32,6 @@ const KanbanColumn = (props) => {
 
 
     const columnStyle = {
-        'display': 'block',
-        'verticalAlign': 'top',
         'marginRight': '5px',
         'marginBottom': '5px',
         'paddingLeft': '5px',
@@ -49,9 +47,13 @@ const KanbanColumn = (props) => {
             onDragExit={(e) => { setMouseIsHovering(false) }}
         >
             <h4>{props.name} ({props.projects.length})</h4>
-            <div style={{ display: "flex", flexDirection: "row" }}>
-                {generateKanbanCards()}
+            <div className="col-lg-3 col-md-2 mb-6" >
+
+              {(props.projects.length%8===0 )  ?generateKanbanCards() :<div style={{ display: "flex", flexDirection: "row" }}>
+                    {generateKanbanCards()}
+                </div>  }
             </div>
+
             <br />
         </div>
     );

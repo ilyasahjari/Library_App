@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { startRemoveBook, startEditBook } from '../actions/book'
@@ -10,67 +10,72 @@ export const BookList = (props) => {
 
     let idStudent = ''
     const [modalShow, setModalShow] = useState(false);
-    let idBook =""
+    let idBook = ""
 
 
 
     const getStudenttById = (id) => {
         const student = props.students.find((student) => student.id === id);
-        return (student) ? 'Nom Etudiant : ' +  student.nom +' '+ student.prenom : " "
+        return (student) ? 'Nom Etudiant : ' + student.nom + ' ' + student.prenom : " "
     }
 
 
-    const handleClose =()=>{
+    const handleClose = () => {
         setModalShow(false)
     }
-    
-    const getBookid = (id) =>{
+
+    const getBookid = (id) => {
         return id
     }
 
-    const getId = (id) =>{
-        idStudent= id
+    const getId = (id) => {
+        idStudent = id
         console.log(idStudent)
     }
 
-    const handleShow = () =>{
+    const handleShow = () => {
         setModalShow(true)
     }
 
     return (
-        <div className="App ">
-            <div className="row">
-                {
-                    props.books.map((book,index) => {
-                        return (
-                            <div className="col-lg-3 col-md-6 mb-4" key={index}>
-                                <div className="card h-100">
-                                    <div className="card-body">
-                                        <h4 className="card-title">
-                                            <Link to={`/BookEdit/${book.id}`} title="Edit item">{book.titre}</Link>
-                                        </h4>
-                                        <h5> Auteur : {book.auteur}</h5>
-                                        <h5>Etat : {book.status}</h5>
-                                        <p className="card-text">Niveau : {book.niveau}</p>
-                                        <small className="text-muted">{ getStudenttById(book.idStudent)}</small><br/>
-                                    </div>
-                                    <div className="card-footer">
-                                       {/* <div className="col">
+        <div>
+            <h1 className="testTilte" style={{ "fontSize":"40px"}}> Liste de Livres </h1>
+
+            <div className="App ">
+
+                <div className="row">
+                    {
+                        props.books.map((book, index) => {
+                            return (
+                                <div className="col-lg-3 col-md-6 mb-4" key={index}>
+                                    <div className="card h-100">
+                                        <div className="card-body">
+                                            <h4 className="card-title">
+                                                <Link to={`/BookEdit/${book.id}`} style={{ color: "#00bfff" }} title="Edit item">{book.titre}</Link>
+                                            </h4>
+                                            <h5> Auteur : {book.auteur}</h5>
+                                            <h5>Etat : {book.status}</h5>
+                                            <p className="card-text">Niveau : {book.niveau}</p>
+                                            <small className="text-muted">{getStudenttById(book.idStudent)}</small><br />
+                                        </div>
+                                        <div className="card-footer">
+                                            {/* <div className="col">
                                         <button className="btn btn-primary" onClick={() => setModalShow(true)}>Résérver Livre (Not working)</button><br/>
                                         <ModalAddStudentBook show={modalShow} handleClose={()=>setModalShow(false)} handleShow={()=>setModalShow(true)} idBook={book.id} getId={getId}/>
                                        </div>  */}
-                                       <div className="col">
-                                        <button className="btn btn-primary" onClick={()=> props.startRemoveBook(book.id)}>Supprimer Livre</button>
+                                            <div className="col">
+                                                <button className="btn btn-primary" onClick={() => props.startRemoveBook(book.id)}>Supprimer Livre</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>      
-                            </div>
-                        )
-                    })
-                }
+                                </div>
+                            )
+                        })
+                    }
+
+                </div>
 
             </div>
-
         </div>
     )
 }
@@ -90,4 +95,4 @@ const mapToProps = (state) => {
     }
 }
 
-export default connect(mapToProps,mapDispatchToProps)(BookList);
+export default connect(mapToProps, mapDispatchToProps)(BookList);

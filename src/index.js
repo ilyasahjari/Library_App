@@ -12,6 +12,8 @@ import { startSetPayement } from './actions/payement';
 import {startAddBook, startSetBook} from './actions/book'
 import './firebase/firebase';
 import { PersistGate } from 'redux-persist/integration/react'
+import "./Authenticationstyle.css"
+
 
 const store = configureStore();
 console.log(store.getState());
@@ -27,7 +29,7 @@ store.subscribe(() => {
 
 const jsx = (
     <Provider store={store}>
-        <AppRouter />
+        <App />
     </Provider>
 );
 

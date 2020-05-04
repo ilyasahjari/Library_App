@@ -122,7 +122,7 @@ const onPrenomStudentChange = (e) => {
 return (
     <div className="AppAdd">
         <form className="styleAdd main-section">
-            <h3 className="testTilte">Ajouter Livre</h3>
+            <h3 className="testTilte" style={{ "fontSize":"30px"}}>Ajouter Livre</h3>
 
             <div className="row">
                 <div className="col">
@@ -138,7 +138,7 @@ return (
             <br />
             <div className="form-group">
                 <label>Status :</label>
-                <select className="form-control" onChange={onStatusChange}>
+                <select className="select" onChange={onStatusChange}>
                     <option> </option>
                     <option>disponible</option>
                     <option>préparé</option>
@@ -150,12 +150,12 @@ return (
                 <div className="row form-group">
                     <div className="col">
                         <label >Nom Etudiant :</label>
-                        <input type="text" className="form-control" placeholder="Nom Etudiant" onChange={onNomStudentChange} />
+                        <input type="text" placeholder="Nom Etudiant" onChange={onNomStudentChange} />
                     </div>
 
                     <div className="col">
                         <label >Prenom Parent :</label>
-                        <input type="text" className="form-control" placeholder="Prenom Etudiant" onChange={onPrenomStudentChange} list={"idDataList"} />
+                        <input type="text" placeholder="Prenom Etudiant" onChange={onPrenomStudentChange} list={"idDataList"} />
                         <datalist id={"idDataList"}>
                             {
                                 props.students.filter((expense) => {
@@ -171,7 +171,7 @@ return (
             }
             <div className="form-group">
                 <label>Niveau :</label>
-                <select className="form-control" onChange={onNiveauChange}>
+                <select className="select" onChange={onNiveauChange}>
                     <option> </option>
                     <option>2nde</option>
                     <option>1ere</option>

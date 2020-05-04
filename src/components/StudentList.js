@@ -42,9 +42,7 @@ export const BookList = (props) => {
 
     return (
         <div >
-            <h1 style={{
-                textAlign: "center"
-            }}> Afficher Liste d'adherents </h1>
+            <h1 className="testTilte" style={{ "fontSize":"40px"}}> Liste d'adherents </h1>
 
 
             <div className="App">
@@ -75,7 +73,7 @@ export const BookList = (props) => {
                                 const milToDate = new Date(expense.date)
                                 const date = moment(milToDate).format('DD/MM/YYYY')
                                 return (<tr key={expense.id}>
-                                    <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} title="Edit item">{expense.prenom}</Link></td>
+                                    <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} style={{color:"	#00bfff"}} title="Edit item">{expense.prenom}</Link></td>
                                     <td>{expense.nom}</td>
                                     <td>{expense.classe}</td>
                                     <td>{date}</td>

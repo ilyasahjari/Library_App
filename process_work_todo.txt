@@ -1,13 +1,5 @@
 -- to do !
-- add multiple payements for a student 
-export default (expenses) => {
-  return expenses
-      .map((expense) => expense.amount)
-      .reduce((sum, value) => sum + value, 0);
-};
 
-- ajout de l'historique des achats
-- check delete and buy before clicking(boolean to check if its true then delete and buy)
 - go to student profil directly after adding one (do it with a filter for student)
 - search by full name 
 - authentification
@@ -19,7 +11,7 @@ export default (expenses) => {
 - adding stripe API for payment react
 - send mail 
 - styling application 
- 
+- background change transitions and dashboard transition 
 
 - Working on firebase to connect offline with persistor to keep the state of the elements even offline
 (optional) Adding firebase for authentification

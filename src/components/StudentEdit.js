@@ -100,7 +100,7 @@ const StudentEdit = (props) => {
       <EditCheck />
       {editShow &&
         <form className="styleAdd main-section">
-          <h5 className="row justify-content-center"> Modification {props.expense.prenom.toUpperCase()} {props.expense.nom.toUpperCase()} </h5>
+          <h5 className="row justify-content-center testTilte" style={{ "fontSize":"30px"}}> Modification {props.expense.prenom.toUpperCase()} {props.expense.nom.toUpperCase()} </h5>
           <hr/>
           <div className="row">
             <div className="col">
@@ -123,7 +123,7 @@ const StudentEdit = (props) => {
             <div className="col">
               <div className="form-group">
                 <label >Classe :</label>
-                <select value={classe} className="form-control" onChange={onClasseChange}>
+                <select value={classe} className="select" onChange={onClasseChange}>
                   <option></option>
                   <option>2nde</option>
                   <option>1ere</option>
@@ -134,7 +134,7 @@ const StudentEdit = (props) => {
             <div className="col">
               <div className="form-group">
                 <label >Date :</label><br/>
-                <DatePicker className="form-control"
+                <DatePicker className="select"
                   defaultValue={moment(date).format('MM/DD/YYYY')}
                   dateFormat="dd/MM/yyyy"
                   selected={date}

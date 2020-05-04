@@ -98,7 +98,7 @@ const BookEdit = (props) => {
     return (
         <div className="AppAdd">
             <form className="styleAdd main-section">
-                <h3 className="testTilte">Modification Livre "{props.book.titre}"</h3>
+                <h3 className="testTilte" style={{ "fontSize":"30px"}}>Modification Livre "{props.book.titre}"</h3>
 
                 <div className="row">
                     <div className="col">
