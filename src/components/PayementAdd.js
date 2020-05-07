@@ -114,7 +114,7 @@ const PayementAdd = (props) => {
         <div>
             <table className="table">
                 <thead>
-                    <tr>
+                    <tr style={{textAlign:"center"}}>
                         <th scope="col"></th>
                         <th scope="col">Nom</th>
                         <th scope="col">Prix</th>
@@ -123,11 +123,11 @@ const PayementAdd = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr style={{backgroundColor:"white"}}>
                         <td>
                             <img src={require('./../images/caution.png')} style={{ height: "50px" }} alt="normographe" />
                         </td>
-                        <th scope="row">Caution</th>
+                        <td scope="row">Caution</td>
                         <td>100€</td>
                         <td>
                             {diffElement("caution")}
@@ -141,7 +141,7 @@ const PayementAdd = (props) => {
                         <td>
                             <img src={require('./../images/calculatrice.jpg')} style={{ height: "50px" }} alt="calculatrice" />
                         </td>
-                        <th scope="row">Calculatrice</th>
+                        <td scope="row">Calculatrice</td>
                         <td>68€</td>
                         <td>
                             {diffElement("calculatrice")}
@@ -150,9 +150,9 @@ const PayementAdd = (props) => {
                             {diffElement("calculatrice") ? <input name="calculatrice" className="form-control input-full" type="number" onChange={onStatePayementChange} value={statePayement.calculatrice} style={{ width: "100px" }} /> : <Checkbox checked={true} disabled={true} color="primary" name="cleUSB" />}
                         </td>
                     </tr>
-                    <tr>
+                    <tr style={{backgroundColor:"white"}}>
                         <td><img src={require('./../images/normographe.jpg')} style={{ height: "50px" }} alt="normographe" /></td>
-                        <th scope="row">Normographe</th>
+                        <td scope="row">Normographe</td>
                         <td>5€</td>
 
                         <td>
@@ -164,7 +164,7 @@ const PayementAdd = (props) => {
                     </tr>
                     <tr>
                         <td><img src={require('./../images/cleUSB.jpg')} style={{ height: "50px" }} alt="cleUSB" /></td>
-                        <th scope="row">Clé USB</th>
+                        <td scope="row">Clé USB</td>
                         <td>5€</td>
                         <td>
                             {diffElement("cleUSB")}
@@ -174,27 +174,27 @@ const PayementAdd = (props) => {
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr style={{backgroundColor:"white"}}>
 
-                        <th>
+                        <td>
                             Commentaire:
-                        </th>
+                        </td>
                         <td>
                             <textarea name="commentaire" className="form-control" id="exampleFormControlTextarea1" onChange={onStatePayementChange} value={statePayement.commentaire} rows="2" />
                         </td>
-                        <th />
-                        <th />
-                        <th />
+                        <td />
+                        <td />
+                        <td />
                     </tr>
 
                     <tr>
                         <td />
-                        <th>
+                        <td>
                             TOTAL A PAYÉ
-                        </th>
-                        <th>
+                        </td>
+                        <td>
                             {isNaN(totalToPayement) ? 0 : totalToPayement}
-                        </th>
+                        </td>
                         <td>
                             <select name="payementMethod" className="form-control" onChange={onStatePayementChange} value={statePayement.payementMethod}>
                                 <option value="" disabled hidden>Methode de payement</option>
