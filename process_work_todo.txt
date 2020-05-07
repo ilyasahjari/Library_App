@@ -1,14 +1,16 @@
 -- to do !
 
-- go to student profil directly after adding one (do it with a filter for student)
-- search by full name 
-- authentification
+- inscription with search and complete profile
+- add search customized
+- ajouter admin avec arbre de matieres, tri par annee les livres,
+- search by full name
+- go to student profil directly after adding one (do it with a filter for student) 
+- authentification (presque fini)
 - changer tri les elements
-//editer un livre avec le id etudiants
+
 - add import CSV 
 - add to student : phonenumber, full adresse
 - add to parent : email
-- adding stripe API for payment react
 - send mail 
 - styling application 
 - background change transitions and dashboard transition 

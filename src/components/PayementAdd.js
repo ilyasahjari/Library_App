@@ -60,9 +60,9 @@ const PayementAdd = (props) => {
 
     const totalToPayement = parseInt(statePayement.caution) + parseInt(statePayement.calculatrice) + parseInt(statePayement.cleUSB) + parseInt(statePayement.normographe);
 
-    const onStatePayementChange = (e) => {
-        setStatePayement({ ...statePayement, [e.target.name]: e.target.value });
-    }
+        const onStatePayementChange = (e) => {
+            setStatePayement({ ...statePayement, [e.target.name]: e.target.value });
+        }
 
 
     const handleAddPayement = (e) => {

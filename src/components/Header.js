@@ -20,12 +20,12 @@ const Header = ({ dispatch }, props) => {
     <div >
       <header >
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <button style={{ backgroundColor: "#343a40", color: "white" }} onClick={() => setOpenSideBar(!openSideBar)}>&#9776;</button>
+        <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"#398B93"}}>
+          <button style={{ backgroundColor: "#398B93", color: "white" }} onClick={() => setOpenSideBar(!openSideBar)}>&#9776;</button>
 
-          <AtomSpinner color='#38ACDF' size={40} />
+          <AtomSpinner color='black' size={40} />
 
-          <a className="navbar-brand bg-dark" style={{ color: "white" }} > LIBRARY APP</a>
+          <a className="navbar-brand" style={{ backgroundColor: "#398B93" }} > LIBRARY APP</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -53,9 +53,9 @@ const Header = ({ dispatch }, props) => {
               <input className="form-control mr-sm-2" type="search" placeholder="Search First Name"
                 onChange={(e) => { dispatch(setNomFilter(e.target.value)) || (dispatch(setTextFilter(e.target.value))); dispatch(setTextFiltertParent(e.target.value)) }} />
             </form>
-            <a className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src={require("../images/logo-book.png")} width="27" height="30" className="rounded-circle" />
-            </a>
+            <div className="nav-link dropdown-toggle"   id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src={require("../images/logo.png")} width="30" height="30" className="rounded-circle" />
+            </div>
           </div>
         </nav>
 

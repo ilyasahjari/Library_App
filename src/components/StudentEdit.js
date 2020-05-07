@@ -100,6 +100,7 @@ const StudentEdit = (props) => {
       <EditCheck />
       {editShow &&
         <form className="styleAdd main-section">
+          <br/>
           <h5 className="row justify-content-center testTilte" style={{ "fontSize":"30px"}}> Modification {props.expense.prenom.toUpperCase()} {props.expense.nom.toUpperCase()} </h5>
           <hr/>
           <div className="row">
@@ -116,7 +117,7 @@ const StudentEdit = (props) => {
           <br />
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address :</label>
-            <input value={email} onChange={onEmailChange} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+            <input value={email} onChange={onEmailChange}  type="text" style={{width:"630px"}} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email" />
             <small id="emailHelp" className="form-text text-muted">Nous ne partagerons jamais votre Email avec qui que ce soit.</small>
           </div>
           <div className="row">
@@ -145,7 +146,7 @@ const StudentEdit = (props) => {
           <br />
           <div className="row form-group">
             <div className="col">
-              <button type="submit" onClick={handleEdit} className="btn btn-primary">Modifier Etudiant</button>
+              <button type="submit"  onClick={handleEdit} className="btn btn-primary">Modifier Etudiant</button>
             </div>
             <div className="col">
               <button type="submit" onClick={handleDelete} className="btn btn-primary">Supprimer Etudiant</button>
