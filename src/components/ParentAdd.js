@@ -100,10 +100,10 @@ const ParentAdd = (props) => {
                 <br/>
                 <div className="row form-group">
                     <div className="col">
-                        <input onClick={handleAdd} type="submit" value="Ajouter Parent"/>
+                        <button className="btn btn-primary" onClick={handleAdd} type="submit"> Ajouter Parent</button>
                     </div>
                     <div className="col">
-                        <input onClick={handleHideForm} type="submit" value="Annuler"/>
+                        <button className="btn btn-primary" onClick={handleHideForm} type="submit">Annuler</button>
                     </div>
 
                 </div>
