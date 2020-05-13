@@ -16,7 +16,7 @@ const AuthentificationPage = (props) => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        (stateLogin.userName === "admin" && stateLogin.password === "admin") ? props.connect(true) : alert("Nom ou mot de passe incorrect");
+        (stateLogin.userName.toLowerCase() === "admin" && stateLogin.password === "admin") ? props.connect(true) : alert("Nom ou mot de passe incorrect");
     }
 
     return (

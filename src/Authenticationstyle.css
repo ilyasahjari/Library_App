@@ -290,3 +290,10 @@ input[type=text]::placeholder, [type=password] ::placeholder,input[type=select]:
 #icon {
   width:60%;
 }
+
+@media screen and (max-width: 500px) {
+  .wrapper{
+    margin-right: 5px;
+    width: 95%;
+  }
+}

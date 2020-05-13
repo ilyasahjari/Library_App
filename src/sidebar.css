@@ -22,9 +22,7 @@ body:before {
   width: 100vw;
 }
 
-ol {
-  list-style-type: none;
-}
+
 a[href] {
   color: rgb(63, 198, 216);
   position: relative;
