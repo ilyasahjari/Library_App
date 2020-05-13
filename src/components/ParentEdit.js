@@ -67,10 +67,18 @@ const ParentEdit = (props) => {
         setPhoneNum(phoneNum);
     }
 
+    const headerStyle ={
+        backgroundColor:  "white",
+        fontSize: "1.5em",
+        padding: "1rem",
+        textAlign: "center",
+        textTransform: "uppercase"
+    }
+
     return (
         <div className="AppAdd">
             <form className="styleAdd main-section">
-                <h5 className="row justify-content-center testTilte" style={{ "fontSize":"30px"}} > Modification {props.parent.prenom.toUpperCase()} {props.parent.nom.toUpperCase()} </h5>
+                <div style={headerStyle} > Modification {props.parent.prenom.toUpperCase()} {props.parent.nom.toUpperCase()} </div>
                 <hr />
                 <div className="row">
                     <div className="col">

@@ -85,7 +85,13 @@ const BookAdd = (props) => {
      
     };
 
-
+    const headerStyle ={
+        backgroundColor:  "white",
+        fontSize: "1.5em",
+        padding: "1rem",
+        textAlign: "center",
+        textTransform: "uppercase"
+    }
 
 const onTitreChange = (e) => {
     const titre = e.target.value;
@@ -122,8 +128,8 @@ const onPrenomStudentChange = (e) => {
 return (
     <div className="AppAdd">
         <form className="styleAdd main-section">
-            <h3 className="testTilte" style={{ "fontSize":"30px"}}>Ajouter Livre</h3>
-
+        <div style={headerStyle}>Ajouter Livre</div>
+            <hr/>
             <div className="row">
                 <div className="col">
                     <label >Titre :</label>

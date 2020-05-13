@@ -84,6 +84,13 @@ const BookEdit = (props) => {
         setNiveau(niveau)
     }
 
+    const headerStyle ={
+        backgroundColor:  "white",
+        fontSize: "1.5em",
+        padding: "1rem",
+        textAlign: "center",
+        textTransform: "uppercase"
+    }
     // const onNomStudentChange = (e) => {
     //     const nom = e.target.value;
     //     setNomStudent(nom);
@@ -98,8 +105,8 @@ const BookEdit = (props) => {
     return (
         <div className="AppAdd">
             <form className="styleAdd main-section">
-                <h3 className="testTilte" style={{ "fontSize":"30px"}}>Modification Livre "{props.book.titre}"</h3>
-
+                <div style={headerStyle}>Modification Livre "{props.book.titre}"</div>
+                <hr/>
                 <div className="row">
                     <div className="col">
                         <label >Titre :</label>

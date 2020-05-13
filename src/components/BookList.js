@@ -39,11 +39,10 @@ export const BookList = (props) => {
 
     return (
         <div>
-            <h1 className="testTilte" style={{ "fontSize":"40px"}}> Liste de Livres </h1>
+            <div className="App main-section">
+            <div className="header" style={{ "fontSize": "40px", backgroundColor:"pink"}}>Liste Livres</div>
 
-            <div className="App">
-
-                <div className="row">
+                <div className="row" style={{marginLeft:"20px", marginTop:"10px", marginRight:"20px"}}>
                     {
                         props.books.map((book, index) => {
                             return (

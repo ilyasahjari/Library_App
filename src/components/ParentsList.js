@@ -44,14 +44,12 @@ export const ParentsList = (props) => {
 
     return (
         <div>
-            <h1 className="testTilte" style={{ "fontSize":"40px"}}> Liste de Parents </h1>
-
-
-            <div className="App">
+            <div className="App fadeIn">
                 {/*add filter Component*/}
-           
-                <Table className="mt-4" striped bordered hover size="sm" responsive="sm">
-                    <caption>{props.parents.length} Parents</caption>
+                <div className="header" style={{ "fontSize": "40px" ,backgroundColor: "grey"}}>Liste Parents</div>
+
+                <table cellSpacing="0">
+                    <caption style={{color: "white"}}>{props.parents.length} Parents</caption>
                     <thead className="thead-light">
                         <tr>
                             <th>Prenom</th>
@@ -76,15 +74,8 @@ export const ParentsList = (props) => {
                         }
                     </tbody>
 
-                </Table>
-                <CSVLink data={props.parents} filename={"Liste_parents.csv"} separator={";"} enclosingCharacter={`'`} headers={headerCSV}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>
-
-                <CSVReader
-                    onDrop={handleOnDrop}
-                    onError={handleOnError}
-                >
-                    <span>Drop CSV file here or click to upload.</span>
-                </CSVReader>
+                </table>
+                <CSVLink  style={{marginBottom:"50px"}} data={props.parents} filename={"Liste_parents.csv"} separator={";"} enclosingCharacter={`'`} headers={headerCSV}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>
             </div>
             {/* <div style={{
                 display: 'flex',

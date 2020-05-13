@@ -23,6 +23,13 @@ const BookAdd = (props) => {
     const [hideNextButton1, setHideNextButton1] = useState(false)
     const [hideNextButton2, setHideNextButton2] = useState(false)
 
+    const headerStyle ={
+        backgroundColor:  "white",
+        fontSize: "1.5em",
+        padding: "1rem",
+        textAlign: "center",
+        textTransform: "uppercase"
+    }
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -100,7 +107,8 @@ const BookAdd = (props) => {
         <div className="AppAdd">
 
             <form className="styleAdd main-section">
-                <h3 className="testTilte" style={{ "fontSize":"30px"}}>Ajouter Etudiant</h3>
+            <div style={headerStyle}>Ajouter Etudiant</div>
+                <hr/>
                 <br />
                 <div className="row">
                     <div className="col">

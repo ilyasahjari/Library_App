@@ -66,12 +66,20 @@ const ParentAdd = (props) => {
         setPhoneNum(phoneNum);
     }
 
+    const headerStyle ={
+        backgroundColor:  "white",
+        fontSize: "1.5em",
+        padding: "1rem",
+        textAlign: "center",
+        textTransform: "uppercase"
+    }
 
     return (
         <div>
             <div>
-            <h3 className="testTilte" style={{ "fontSize":"30px"}}>Ajouter Parent</h3>
-                
+            <div style={headerStyle}>Ajouter Parent</div>
+            <hr />
+
                 <div className="row">
                     <div className="col">
                         <label >Prenom :</label>
