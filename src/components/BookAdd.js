@@ -137,7 +137,7 @@ return (
             </div>
             <br />
             <div className="form-group">
-                <label>Status :</label>
+                <label>Status :</label><br/>
                 <select className="select" onChange={onStatusChange}>
                     <option> </option>
                     <option>disponible</option>

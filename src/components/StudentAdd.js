@@ -126,8 +126,8 @@ const BookAdd = (props) => {
 
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address :</label>
-                    <input onChange={onEmailChange} type="text" style={{width:"600px"}} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email" />
+                    <label htmlFor="exampleInputEmail1">Email address :</label><br/>
+                    <input onChange={onEmailChange} type="text" style={{width:"700px"}} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer email" />
                     <small id="emailHelp" className="form-text text-muted">Nous ne partagerons jamais votre Email avec qui que ce soit.</small>
                 </div>
 
