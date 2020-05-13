@@ -5,13 +5,12 @@ import { Checkbox } from '@material-ui/core';
 import PayementChequeAdd from './PayementChequeAdd';
 import ModalPayementCheck from './ModalPayementCheck';
 import { Button } from 'react-bootstrap';
-
+import PayementHistory from './PayementHistory'
 
 
 
 
 const PayementAdd = (props) => {
-    const [idStudent, setIdStudent] = useState(props.idStudent);
     const [showCheckPayement, setShowCheckPayement] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
 
@@ -81,7 +80,7 @@ const PayementAdd = (props) => {
                         banque: statePayement.banque,
                         numEnveloppe: statePayement.numEnveloppe,
                         numCheque: statePayement.numCheque,
-                        idStudent,
+                        idStudent: props.idStudent,
                         date
                     })
                 }
@@ -216,46 +215,7 @@ const PayementAdd = (props) => {
             <Button onClick={() => setShowHistory(!showHistory)}>
                 {showHistory ? "Masquer Historique paiements" : "Afficher Historique paiements"}
             </Button>
-            {
-                showHistory &&
-
-                <div>
-                    <br />
-                    <h5>
-                        Historique Paiements
-                        </h5>
-                    <br />
-                    <table className="table table-sm table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Methode de paiement</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Caution</th>
-                                <th scope="col">Calculatrice</th>
-                                <th scope="col">Normographe</th>
-                                <th scope="col">Clé USB</th>
-                                <th scope="col">Commentaire</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {props.payements.map((payement) => {
-                                return (
-                                    <tr key={payement.id}>
-                                        <td>{payement.payementMethod} {payement.payementMethod === "Cheque" ? ` : Banque :${payement.banque}, numEnv :${payement.numEnv}, numCheque: ${payement.numCheque}` : null}</td>
-                                        <td>{payement.date}</td>
-                                        <td>{payement.caution}€</td>
-                                        <td>{payement.calculatrice}€</td>
-                                        <td>{payement.normographe}€</td>
-                                        <td>{payement.cleUSB}€</td>
-                                        <td>{payement.commentaire}</td>
-                                    </tr>
-                                )
-                            })
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
+            <PayementHistory show={showHistory} handleClose={() => setShowHistory(false)} payements={props.payements}/>
 
         </div>
 

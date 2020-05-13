@@ -10,6 +10,7 @@ const ModalAddBookStudent = (props) => {
     const [idStudent, setIdStudent] = useState(props.idStudent);
     let status = "emprunté"
 
+    
 
     const onBookChange = (e) => {
         const bookId = e.target.value;
@@ -48,10 +49,10 @@ const ModalAddBookStudent = (props) => {
                     <Modal.Footer>
                         <Button variant="secondary" onClick={props.handleClose}>
                             Fermer
-                    </Button>
+                        </Button>
                         <Button variant="primary" onClick={handleValidate}>
                             Résérver Livre
-                    </Button>
+                        </Button>
                     </Modal.Footer>
                 </Modal>
             </div>
