@@ -40,7 +40,7 @@ const BookAdd = (props) => {
         });
         const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
 
-        if (nom && prenom && classe && emailValid) {
+        if (nom && prenom) {
             if (exist_element.length === 0) {
                 props.startAddStudent({
                     nom,

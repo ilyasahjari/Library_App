@@ -66,7 +66,7 @@ export const ParentsList = (props) => {
                         {
                             props.parents.map((parent) => {
                                 return (<tr key={parent.id}>
-                                    <td><Link to={`/ParentEdit/${parent.id}`} title="Edit item">{parent.prenom}</Link></td>
+                                    <td><Link to={`/ParentEdit/${parent.id}`} style={{ color: "#00bfff" }} title="Edit item">{parent.prenom}</Link></td>
                                     <td>{parent.nom}</td>
                                     <td>{parent.sexe}</td>
                                     <td>{parent.phoneNum}</td>

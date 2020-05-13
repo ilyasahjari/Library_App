@@ -21,10 +21,6 @@ const AuthentificationPage = (props) => {
 
     return (
         <div>
-               <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous" />   
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossOrigin="anonymous"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossOrigin="anonymous"/>
-
             <header >
 
                 <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "#398B93" }}>
@@ -32,8 +28,8 @@ const AuthentificationPage = (props) => {
 
                     <a className="navbar-brand" style={{ backgroundColor: "#398B93" }} > LIBRARY APP</a>
                 </nav>
-                <h1 className="testTilte">  <img src={require("../images/logo.png")} style={{ height: "60px" }} /> LIBRARY APP</h1>
             </header>
+
             <div className="wrapper fadeInDown">
                 <div id="formContent">
 

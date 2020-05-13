@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import getVisibleExpenses from '../selectors/expenses'
 import numeral from '../number'
@@ -11,14 +11,20 @@ import moment from 'moment';
 import { CSVLink, CSVDownload } from "react-csv";
 import { startEditBook } from '../actions/book';
 import ModalDeleteStudent from './ModalDeleteStudent';
+import axios from 'axios'
 import "../table.scss"
+
 
 export const BookList = (props) => {
 
     let idStudent = '';
     let status = "disponible";
-
+    const [data, setData]= useState([]);
     const [showDelete, setShowDelete] = useState(false);
+
+    // useEffect(()=>{
+    //     axios.get("http://localhost:8080/eleve/eleves").then(response =>console.log(response.data))
+    // })  
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -40,11 +46,8 @@ export const BookList = (props) => {
 
 
     return (
-        <div >
-            <h1 className="testTilte" style={{ "fontSize": "40px" }}>  </h1>
-
-
-            <div className="App">
+        <div>
+            <div className="App fadeIn">
                 {/*add filter Component*/}
                 {/* Trier par classe
             <select onChange={(e) => { props.dispatch(setClasseFilter(e.target.value)) }}>
@@ -54,7 +57,7 @@ export const BookList = (props) => {
                     <option>Tnle</option>
                 </select> */}
                 <div className="table-users">
-                    <div className="header testTilte" style={{ "fontSize": "40px" }}>Liste d'adherents</div>
+                    <div className="header" style={{ "fontSize": "40px" }}>Liste d'adherents</div>
 
                     <table cellSpacing="0">
                         <thead>
@@ -74,7 +77,7 @@ export const BookList = (props) => {
                                     const milToDate = new Date(expense.date)
                                     const date = moment(milToDate).format('DD/MM/YYYY')
                                     return (<tr key={expense.id}>
-                                        <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} style={{ color: "#00bfff" }} title="Edit item"> {expense.nom}</Link> </td>
+                                        <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} style={{ color: "#00bfff" }} title="Edit item"> {expense.nom} </Link> </td>
                                         <td>{expense.prenom}</td>
                                         <td>{expense.classe}</td>
                                         <td>{date}</td>

@@ -18,6 +18,7 @@
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-axios": "^2.0.3",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-bootstrap-select": "^0.14.0",
     "react-burger-menu": "^2.6.13",
@@ -48,7 +49,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-prebuild": "npm install --production=false"
   },
   "eslintConfig": {
     "extends": "react-app"

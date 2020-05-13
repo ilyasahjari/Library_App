@@ -41,7 +41,7 @@ export const BookList = (props) => {
         <div>
             <h1 className="testTilte" style={{ "fontSize":"40px"}}> Liste de Livres </h1>
 
-            <div className="App ">
+            <div className="App">
 
                 <div className="row">
                     {

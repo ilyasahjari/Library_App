@@ -133,7 +133,7 @@ const PayementAdd = (props) => {
                             {diffElement("caution")}
                         </td>
                         <td>
-                            {diffElement("caution") ? <input name="caution" className="form-control" type="number" onChange={onStatePayementChange} style={{ width: "100px" }} value={statePayement.caution} /> : <Checkbox checked={true} disabled={true} color="primary" name="cleUSB" />}
+                            {diffElement("caution") ? <input name="caution" className="form-control" type="number" onChange={onStatePayementChange} style={{ width: "100px" }} value={statePayement.caution} /> : <Checkbox checked={true} disabled={true} color="black" name="cleUSB" />}
                         </td>
 
                     </tr>

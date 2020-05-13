@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { setTextFilter, sortByAmount, sortByDate, setNomFilter } from '../actions/filters'
 import { setTextFiltertParent } from '../actions/parent-filter'
 import { connect } from 'react-redux'
@@ -12,20 +12,35 @@ const Header = ({ dispatch }, props) => {
 
   const [openSideBar, setOpenSideBar] = useState(false)
 
-  const style = {
+  const [back, setBack] = useState(true)
+
+  const styleSideNav = {
     "display": openSideBar ? 'flex' : 'none',
   }
 
+  const styleNav = {
+    backgroundColor: back ? console.log("normal") : "black",
+    "WebkitTransition":" background-color 1s",
+    "transition": "background-color 1s"
+  }
+
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY < 20 ? setBack(true) : setBack(false);
+    })
+  })
+
   return (
-    <div >
+    <div style={{marginBottom: '100px'}}>
       <header >
 
-        <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"#398B93"}}>
-          <button style={{ backgroundColor: "#398B93", color: "white" }} onClick={() => setOpenSideBar(!openSideBar)}>&#9776;</button>
+        <nav className="navbar navbar-expand-lg fixed-top" style={styleNav}>
+          <button style={{ backgroundColor: "black", color: "white" }} onClick={() => setOpenSideBar(!openSideBar)}>&#9776;</button> 
 
-          <AtomSpinner color='black' size={40} />
+          <AtomSpinner color='white' size={40} />
 
-          <a className="navbar-brand" style={{ backgroundColor: "#398B93" }} > LIBRARY APP</a>
+          <a className="navbar-brand" style={{color:"white"}} > LIBRARY APP</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -40,6 +55,8 @@ const Header = ({ dispatch }, props) => {
               <li className="nav-item active">
                 <NavLink className="nav-link" to="/BookList" activeClassName="is-active" >Liste Livres</NavLink>
               </li>
+
+
               {/* <li className="nav-item active">
                     <NavLink className="nav-link" to="/addStudent" activeClassName="is-active">Ajout Etudiants</NavLink>
               </li>
@@ -53,20 +70,20 @@ const Header = ({ dispatch }, props) => {
               <input className="form-control mr-sm-2" type="search" placeholder="Search First Name"
                 onChange={(e) => { dispatch(setNomFilter(e.target.value)) || (dispatch(setTextFilter(e.target.value))); dispatch(setTextFiltertParent(e.target.value)) }} />
             </form>
-            <div className="nav-link dropdown-toggle"   id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src={require("../images/logo.png")} width="30" height="30" className="rounded-circle" />
             </div>
           </div>
         </nav>
 
-        <h1 className="testTilte">  <img src={require("../images/logo.png")} style={{ height: "60px" }} /> LIBRARY APP</h1>
+        {/* <h1 className="testTilte">  <img src={require("../images/logo.png")} style={{ height: "60px" }} /> LIBRARY APP</h1> */}
       </header>
-      {/* <Transition visible={openSideBar}  animation='scale' duration={500}> */}
-      <div style={style} className="fadeIn">
+      <div style={styleSideNav} className="fadeIn">
         <SideBar />
       </div>
-      {/* </Transition> */}
+
     </div >
+
   )
 };
 

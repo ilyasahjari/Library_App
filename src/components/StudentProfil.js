@@ -59,12 +59,11 @@ const StudentProfil = (props) => {
     return (
         <div className="App fadeIn">
             <div className="container main-section App">
-                <div className="row">
 
                     <div className="row user-left-part">
-                        {/* <div className="col-sm-3 col-xs-12 user-profil-part pull-left">
-
-                        </div> */}
+                        <div className="col-sm-3 col-xs-12 user-profil-part pull-left">
+                            
+                        </div> 
                         <div className="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
                             <div className="row profile-right-section-row">
                                 <div className="col-md-8 profile-header">
@@ -197,7 +196,6 @@ const StudentProfil = (props) => {
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
 
 
