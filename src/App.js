@@ -8,7 +8,7 @@ import { sortByAmount, sortByDate, setTextFilter } from './actions/filters'
 import { Provider } from 'react-redux'
 import { app } from 'firebase';
 import AuthentificationPage from './components/AuthenticationPage';
-import "./SideBar.css"
+import "./sidebar.css"
 
 
 const App = (props) => {
