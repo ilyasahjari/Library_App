@@ -1,12 +1,10 @@
 import React from 'react';
 import '../App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { connect } from "react-redux"
 import SideBar from "../components/SideBar"
 import Dashboard from "../components/Dashboard"
 import StudentAdd from "../components/StudentAdd"
 import ParentAddForm from "../components/ParentAddForm"
-import StudentDelete from "../components/StudentDelete"
 import ErrorMessage from "../components/ErrorMessage"
 import Header from "../components/Header"
 import StudentEdit from "../components/StudentEdit"
@@ -16,11 +14,9 @@ import ParentEdit from '../components/ParentEdit';
 import BookAdd from '../components/BookAdd';
 import BookList  from '../components/BookList';
 import BookEdit from '../components/BookEdit';
-import AuthentificationPage from '../components/AuthenticationPage';
 import "../Authenticationstyle.css"
-import { checkPropTypes } from 'prop-types';
 import "../App1.css"
-import "../SideBar.css"
+import "SideBar.css"
 
 function AppRouter(props) {
     
