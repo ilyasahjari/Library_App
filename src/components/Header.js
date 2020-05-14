@@ -43,7 +43,7 @@ const Header = ({ dispatch }, props) => {
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-              <a className="navbar-brand" style={{color:"black"}} > LIBRARY APP</a>
+              <a className="navbar-brand" style={{color:"black" }} > LIBRARY APP</a>
               <li className="nav-item active">
                 <NavLink className="nav-link" to="/" activeClassName="is-active" exact={true} > Liste d'étudiants </NavLink>
               </li>
