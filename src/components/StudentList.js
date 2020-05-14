@@ -13,7 +13,8 @@ import { startEditBook } from '../actions/book';
 import ModalDeleteStudent from './ModalDeleteStudent';
 import axios from 'axios'
 import "../table.scss"
-
+import { faAddressCard, faUserEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const BookList = (props) => {
 
@@ -22,9 +23,9 @@ export const BookList = (props) => {
     const [data, setData]= useState([]);
     const [showDelete, setShowDelete] = useState(false);
 
-    // useEffect(()=>{
-    //     axios.get("http://localhost:8080/eleve/eleves").then(response =>console.log(response.data))
-    // })  
+    useEffect(()=>{
+        axios.get("http://localhost:8080/restapi").then(response =>console.log(response))
+    })  
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -77,11 +78,16 @@ export const BookList = (props) => {
                                     const milToDate = new Date(expense.date)
                                     const date = moment(milToDate).format('DD/MM/YYYY')
                                     return (<tr key={expense.id}>
-                                        <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} style={{ color: "#00bfff" }} title="Edit item"> {expense.nom} </Link> </td>
+                                        <td><Link to={`/StudentProfil/${expense.id}`} onClick={scrollToTop} style={{ color: "#00bfff" }} title="Edit item"> {expense.nom} <FontAwesomeIcon icon={faAddressCard} /> </Link> </td>
                                         <td>{expense.prenom}</td>
                                         <td>{expense.classe}</td>
                                         <td>{date}</td>
-                                        <td style={{ textAlign: "center" }}><button className="btn btn-primary" onClick={() => setShowDelete(true)}>Supprimer</button> </td>
+                                        <td style={{ textAlign: "center" }}>
+                                            <Link to={`/edit/${expense.id}`}> 
+                                                <FontAwesomeIcon icon={faUserEdit} title="edit" />
+                                            </Link> &nbsp;
+                                            <Link to={"."}><FontAwesomeIcon icon={faTrashAlt} onClick={() => setShowDelete(true)}/></Link> 
+                                        </td>
                                         <ModalDeleteStudent handleDeleteStudent={() => { props.startRemoveStudent(expense.id); props.startEditBook(getBookByStudentID(expense.id), { idStudent, status }); setShowDelete(false) }} show={showDelete} handleClose={() => setShowDelete(false)} />
                                     </tr>);
                                 })
