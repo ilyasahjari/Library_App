@@ -27,7 +27,7 @@ const Header = ({ dispatch }, props) => {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      window.scrollY < 20 ? setBack(true) : setBack(false);
+      window.scrollY < 40 ? setBack(true) : setBack(false);
     })
   })
 

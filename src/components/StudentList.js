@@ -84,9 +84,9 @@ export const BookList = (props) => {
                                         <td>{date}</td>
                                         <td style={{ textAlign: "center" }}>
                                             <Link to={`/edit/${expense.id}`}> 
-                                                <FontAwesomeIcon icon={faUserEdit} title="edit" />
+                                                <FontAwesomeIcon title="editer" icon={faUserEdit}  />
                                             </Link> &nbsp;
-                                            <Link to={"."}><FontAwesomeIcon icon={faTrashAlt} onClick={() => setShowDelete(true)}/></Link> 
+                                            <Link to={"."}><FontAwesomeIcon title="supprimer" icon={faTrashAlt} onClick={() => setShowDelete(true)}/></Link> 
                                         </td>
                                         <ModalDeleteStudent handleDeleteStudent={() => { props.startRemoveStudent(expense.id); props.startEditBook(getBookByStudentID(expense.id), { idStudent, status }); setShowDelete(false) }} show={showDelete} handleClose={() => setShowDelete(false)} />
                                     </tr>);

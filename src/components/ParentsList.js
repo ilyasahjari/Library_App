@@ -12,6 +12,8 @@ import { CSVLink, CSVDownload } from "react-csv";
 import { CSVReader } from 'react-papaparse'
 import SideBar from './SideBar';
 import { setTextFiltertParent } from '../actions/parent-filter'
+import { faAddressCard, faUserEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
@@ -51,12 +53,12 @@ export const ParentsList = (props) => {
                 <table cellSpacing="0">
                     <caption style={{color: "white"}}>{props.parents.length} Parents</caption>
                     <thead className="thead-light">
-                        <tr>
+                        <tr style={{ textAlign: "center" }}>
                             <th>Prenom</th>
                             <th>Nom</th>
                             <th>Sexe</th>
                             <th>Numéro téléphone</th>
-                            <th>Modifier</th>
+                            <th style={{ textAlign: "left" }}>Modifier</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +70,14 @@ export const ParentsList = (props) => {
                                     <td>{parent.nom}</td>
                                     <td>{parent.sexe}</td>
                                     <td>{parent.phoneNum}</td>
-                                    <td><button className="btn btn-primary" onClick={() => { props.dispatch(startRemoveParent(parent.id)) }}>Delete</button></td>
+                                    <td> 
+                                        <Link to={`/ParentEdit/${parent.id}`}> 
+                                                <FontAwesomeIcon icon={faUserEdit} title="edit" />
+                                        </Link> &nbsp;&nbsp;&nbsp;
+                                        <Link to={`./ParentsList`}>
+                                            <FontAwesomeIcon title="supprimer" icon={faTrashAlt} onClick={() => props.startRemoveParent(parent.id)}/>
+                                        </Link> 
+                                    </td>
                                 </tr>);
                             })
                         }
@@ -93,6 +102,7 @@ export const ParentsList = (props) => {
 
 const mapDispatchProps = (dispatch) =>{
     return {
+        startRemoveParent: (id)=> dispatch(startRemoveParent(id)),
         setTextFiltertParent: () => dispatch(setTextFiltertParent("")),
         setSexeFilterParent :(element)=>dispatch(setSexeFilterParent(element))
     }
