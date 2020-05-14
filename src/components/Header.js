@@ -36,14 +36,14 @@ const Header = ({ dispatch }, props) => {
       <header >
 
         <nav className="navbar navbar-expand-lg fixed-top" style={styleNav}>
-        <AtomSpinner color='black' size={40} /> &nbsp;&nbsp;&nbsp;
+        <AtomSpinner color='white' size={40} /> &nbsp;&nbsp;&nbsp;
 
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-              <a className="navbar-brand" style={{color:"black" }} > LIBRARY APP</a>
+              <a className="navbar-brand" style={{color:"white" }} > LIBRARY APP</a>
               <li className="nav-item active">
                 <NavLink className="nav-link" to="/" activeClassName="is-active" exact={true} > Liste d'étudiants </NavLink>
               </li>
