@@ -19,14 +19,17 @@ import BookEdit from '../components/BookEdit';
 import AuthentificationPage from '../components/AuthenticationPage';
 import "../Authenticationstyle.css"
 import { checkPropTypes } from 'prop-types';
-import "../sidebar.css"
+import "../App1.css"
+import "../SideBar.css"
 
 function AppRouter(props) {
     
 
     return (
         <BrowserRouter>
+           <SideBar />
           <Header connect={props.connect}/>
+
           <Switch >
             <Route path="/" component={Dashboard} exact={true}/>
             <Route path="/BookList" component={BookList}/>
