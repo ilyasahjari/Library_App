@@ -3,17 +3,17 @@ import '../App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import SideBar from "../components/SideBar"
 import Dashboard from "../components/Dashboard"
-import StudentAdd from "../components/StudentAdd"
-import ParentAddForm from "../components/ParentAddForm"
+import StudentAdd from "../components/Student/StudentAdd"
+import ParentAddForm from "../components/Parent/ParentAddForm"
 import ErrorMessage from "../components/ErrorMessage"
 import Header from "../components/Header"
-import StudentEdit from "../components/StudentEdit"
-import  ParentsList  from '../components/ParentsList';
-import StudentProfil from '../components/StudentProfil';
-import ParentEdit from '../components/ParentEdit';
-import BookAdd from '../components/BookAdd';
-import BookList  from '../components/BookList';
-import BookEdit from '../components/BookEdit';
+import StudentEdit from "../components/Student/StudentEdit"
+import  ParentsList  from '../components/Parent/ParentsList';
+import StudentProfil from '../components/Student/StudentProfil';
+import ParentEdit from '../components/Parent/ParentEdit';
+import BookAdd from '../components/Book/BookAdd';
+import BookList  from '../components/Book/BookList';
+import BookEdit from '../components/Book/BookEdit';
 import "../Authenticationstyle.css"
 import "../App1.css"
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { startAddStudent, addBook, startSetExpenses } from '../actions/expenses';
-import ParentsBoxStudent from './ParentBoxStudent'
-import ParentAdd from './ParentAdd'
+import { startAddStudent, addBook, startSetExpenses } from '../../actions/expenses';
+import ParentsBoxStudent from '../Parent/ParentBoxStudent'
+import ParentAdd from '../Parent/ParentAdd'
 import { connect } from 'react-redux';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import getVisibleExpenses from '../selectors/expenses';
+import getVisibleExpenses from '../../selectors/expenses';
 import axios from "axios";
 
 const BookAdd = (props) => {

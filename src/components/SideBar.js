@@ -1,39 +1,39 @@
 import React from 'react'
 import { slide as Menu } from 'react-burger-menu';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const SideBar = (props) => {
     return (
 
         <div>
-            <nav class="main-menu">
+            <nav className="main-menu">
             <ul>
 
-                <li class="has-subnav">
-                    <Link to={"./addStudent"}>
-                        <i class="fa fa-laptop fa-2x"></i>
-                        <span class="nav-text">
+                <li className="has-subnav">
+                    <NavLink to={"/addStudent"}>
+                        <i className="fa fa-laptop fa-2x"></i>
+                        <span className="nav-text">
                             Ajouter Etudiant
                         </span>
-                    </Link>
+                    </NavLink>
                     
                 </li>
-                <li class="has-subnav">
-                    <Link to={"./addBook"}>
-                       <i class="fa fa-list fa-2x"></i>
-                        <span class="nav-text">
+                <li className="has-subnav">
+                    <NavLink to={"/addBook"}>
+                       <i className="fa fa-list fa-2x"></i>
+                        <span className="nav-text">
                             Ajouter Livre
                         </span>
-                    </Link>
+                    </NavLink>
                     
                 </li>
-                <li class="has-subnav">
-                    <Link to={"./addParent"}>
-                       <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">
+                <li className="has-subnav">
+                    <NavLink to={"/addParent"}>
+                       <i className="fa fa-folder-open fa-2x"></i>
+                        <span className="nav-text">
                             Ajouter Parent
                         </span>
-                    </Link>
+                    </NavLink>
                    
                 </li>
                 

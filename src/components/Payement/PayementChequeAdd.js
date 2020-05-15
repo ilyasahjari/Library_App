@@ -7,7 +7,7 @@ export default  (props) => {
             <br />
             <div className="row">
                 <div className="col">
-                    Banque
+                    Banque:
                 </div>
                 <div className="col" >
                     <input name="banque" className="form-control-sm" onChange={props.onChange} value={props.banque}/>
@@ -15,20 +15,15 @@ export default  (props) => {
             </div>
             <div className="row">
                 <div className="col">
-                    Num Cheque
+                    Num Cheque:
                 </div>
                 <div className="col">
                     <input name="numCheque" className="form-control-sm" onChange={props.onChange} value={props.numCheque}/>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    Num Env
-                </div>
-                <div className="col">
+                    Num Env:<br/>
                     <input name="numEnveloppe" className="form-control-sm" onChange={props.onChange} value={props.numEnv}/>
-                </div>
-            </div>
+                
         </div>
         )
     }

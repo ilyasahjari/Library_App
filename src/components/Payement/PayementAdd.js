@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { startEditPayement, startAddPayement } from '../actions/payement'
+import { startEditPayement, startAddPayement } from '../../actions/payement'
 import { connect } from 'react-redux'
 import { Checkbox } from '@material-ui/core';
 import PayementChequeAdd from './PayementChequeAdd';
-import ModalPayementCheck from './ModalPayementCheck';
+import ModalPayementCheck from '../Modals/ModalPayementCheck';
 import { Button } from 'react-bootstrap';
 import PayementHistory from './PayementHistory'
 
@@ -124,7 +124,7 @@ const PayementAdd = (props) => {
                 <tbody>
                     <tr style={{backgroundColor:"white"}}>
                         <td>
-                            <img src={require('./../images/caution.png')} style={{ height: "50px" }} alt="normographe" />
+                            <img src={require('./../../images/caution.png')} style={{ height: "50px" }} alt="normographe" />
                         </td>
                         <td scope="row">Caution</td>
                         <td>100€</td>
@@ -138,7 +138,7 @@ const PayementAdd = (props) => {
                     </tr>
                     <tr>
                         <td>
-                            <img src={require('./../images/calculatrice.jpg')} style={{ height: "50px" }} alt="calculatrice" />
+                            <img src={require('./../../images/calculatrice.jpg')} style={{ height: "50px" }} alt="calculatrice" />
                         </td>
                         <td scope="row">Calculatrice</td>
                         <td>68€</td>
@@ -150,7 +150,7 @@ const PayementAdd = (props) => {
                         </td>
                     </tr>
                     <tr style={{backgroundColor:"white"}}>
-                        <td><img src={require('./../images/normographe.jpg')} style={{ height: "50px" }} alt="normographe" /></td>
+                        <td><img src={require('./../../images/normographe.jpg')} style={{ height: "50px" }} alt="normographe" /></td>
                         <td scope="row">Normographe</td>
                         <td>5€</td>
 
@@ -162,7 +162,7 @@ const PayementAdd = (props) => {
                         </td>
                     </tr>
                     <tr>
-                        <td><img src={require('./../images/cleUSB.jpg')} style={{ height: "50px" }} alt="cleUSB" /></td>
+                        <td><img src={require('./../../images/cleUSB.jpg')} style={{ height: "50px" }} alt="cleUSB" /></td>
                         <td scope="row">Clé USB</td>
                         <td>5€</td>
                         <td>

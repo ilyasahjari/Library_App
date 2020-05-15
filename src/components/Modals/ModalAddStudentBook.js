@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux"
-import { startEditBook, startRemoveBook } from '../actions/book'
+import { startEditBook, startRemoveBook } from '../../actions/book'
 import { Button, Modal } from 'react-bootstrap';
 
 

@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import ErrorMessage from './ErrorMessage'
+import ErrorMessage from '../ErrorMessage'
 import { connect } from 'react-redux'
-import { startEditBook } from '../actions/book'
+import { startEditBook } from '../../actions/book'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { Tabs, Tab } from 'react-bootstrap'
-import ModalAddBookStudent from './ModalAddBookStudent'
+import ModalAddBookStudent from '../Modals/ModalAddBookStudent'
 import Checkbox from '@material-ui/core/Checkbox';
-import { startEditPayement, startAddPayement } from '../actions/payement'
-import PayementAdd from './PayementAdd'
-import Dnd from './DragNDrop/DND'
-import Kanban from './DragNDrop/StudentBookList'
+import { startEditPayement, startAddPayement } from '../../actions/payement'
+import PayementAdd from '../Payement/PayementAdd'
+import Dnd from '../DragNDrop/DND'
+import Kanban from '../DragNDrop/StudentBookList'
 
 
 

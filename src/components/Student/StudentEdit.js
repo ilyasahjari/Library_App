@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { startEditStudent, startRemoveStudent } from '../actions/expenses';
+import { startEditStudent, startRemoveStudent } from '../../actions/expenses';
 import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 
 const StudentEdit = (props) => {
 

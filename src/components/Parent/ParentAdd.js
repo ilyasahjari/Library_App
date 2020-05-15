@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { startAddParent, startSetParents } from '../actions/parent';
+import { startAddParent, startSetParents } from '../../actions/parent';
 import { connect } from 'react-redux';
-import '../App.css'
 import PhoneInput from 'react-phone-input-2'
 
 

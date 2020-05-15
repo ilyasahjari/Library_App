@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { startRemoveBook, startEditBook } from '../actions/book'
-import getVisibleBooks from "../selectors/book"
-import ModalAddStudentBook from "./ModalAddStudentBook"
+import { startRemoveBook, startEditBook } from '../../actions/book'
+import getVisibleBooks from "../../selectors/book"
+import ModalAddStudentBook from "../Modals/ModalAddStudentBook"
 
 
 export const BookList = (props) => {

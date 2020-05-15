@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import getVisibleExpenses from '../selectors/expenses'
-import numeral from '../number'
+import getVisibleExpenses from '../../selectors/expenses'
+import numeral from '../../number'
 import { Table } from 'react-bootstrap';
-import { startRemoveStudent, removeBook } from '../actions/expenses';
+import { startRemoveStudent, removeBook } from '../../actions/expenses';
 import { Link } from 'react-router-dom'
-import '../App.css'
-import { setClasseFilter } from '../actions/filters';
+import '../../App.css'
+import { setClasseFilter } from '../../actions/filters';
 import moment from 'moment';
 import { CSVLink, CSVDownload } from "react-csv";
-import { startEditBook } from '../actions/book';
-import ModalDeleteStudent from './ModalDeleteStudent';
+import { startEditBook } from '../../actions/book';
+import ModalDeleteStudent from '../Modals/ModalDeleteStudent';
 import axios from 'axios'
-import "../table.scss"
+import "../../table.scss"
 import { faAddressCard, faUserEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -24,7 +24,7 @@ export const BookList = (props) => {
     const [showDelete, setShowDelete] = useState(false);
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/restapi").then(response =>console.log(response))
+        axios.get("http://localhost:8080/restapi/profile/eleves").then(response =>console.log(response))
     })  
 
     const scrollToTop = () => {
@@ -97,7 +97,7 @@ export const BookList = (props) => {
                     </table>
 
                 </div>
-                <div style={{ marginLeft: "9%" }}>{props.expenses.length} Users</div>
+                <div style={{ marginLeft: "93%" }}>{props.expenses.length} Users</div>
                 <br />
 
                 <CSVLink data={props.expenses} filename={"Liste_etudiants.csv"} separator={";"} enclosingCharacter={`'`}><button className="btn btn-primary">Telecharger CSV</button></CSVLink>

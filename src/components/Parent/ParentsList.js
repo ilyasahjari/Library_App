@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import numeral from '../number'
+import numeral from '../../number'
 import { Table } from 'react-bootstrap';
-import { startRemoveParent } from '../actions/parent';
+import { startRemoveParent } from '../../actions/parent';
 import { Link } from 'react-router-dom'
-import '../App.css'
 import moment from 'moment';
-import getVisibleParents from "../selectors/parents"
-import { setSexeFilterParent } from "../actions/parent-filter"
+import getVisibleParents from "../../selectors/parents"
+import { setSexeFilterParent } from "../../actions/parent-filter"
 import { CSVLink, CSVDownload } from "react-csv";
 import { CSVReader } from 'react-papaparse'
-import SideBar from './SideBar';
-import { setTextFiltertParent } from '../actions/parent-filter'
+import SideBar from '../SideBar';
+import { setTextFiltertParent } from '../../actions/parent-filter'
 import { faAddressCard, faUserEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

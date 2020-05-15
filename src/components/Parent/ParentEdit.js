@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { startEditParent, startRemoveParent } from '../actions/parent';
+import { startEditParent, startRemoveParent } from '../../actions/parent';
 import { connect } from 'react-redux';
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
-import ErrorMessage from './ErrorMessage';
+import ErrorMessage from '../ErrorMessage';
 
 
 const ParentEdit = (props) => {

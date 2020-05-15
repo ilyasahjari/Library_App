@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { startAddBook } from '../actions/book';
+import { startAddBook } from '../../actions/book';
 import { connect } from 'react-redux';
-import '../App.css'
 import DatePicker from "react-datepicker";
 
 // titre = '',
