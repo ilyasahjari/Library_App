@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+#adherents {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#adherents td, #adherents th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#adherents tr:nth-child(even){background-color: #f2f2f2;}
+
+#adherents tr:hover {background-color: #ddd;}
+
+#adherents th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>  
+</head>
+<body>
+<div th:if="${ #lists.isEmpty(parents)}">
+    <h2>La liste des parents est VIDE!</h2>
+    <table id="adherents">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Sexe</th>
+            <th>Numero de telephone</th>
+            <th>Email</th>
+        </tr>
+        
+    </table>
+</div>
+
+<div th:if="${not #lists.isEmpty(parents)}">
+    <h2>liste des parents</h2>
+    <table id="adherents">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Sexe</th>
+            <th>Numero de telephone</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="parent : ${parents}">
+            <td th:text="${parent.id}"></td>
+            <td th:text="${parent.nom}"></td>
+            <td th:text="${parent.prenom}"></td>
+            <td th:text="${parent.sexe}"></td>
+            <td th:text="${parent.email}"></td>
+            <td th:text="${parent.phoneNumber}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

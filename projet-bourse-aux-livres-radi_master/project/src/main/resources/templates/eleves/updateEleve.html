@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+	<h1>Form</h1>
+    <form action="#" th:action="@{/eleve/update}" th:object="${eleve}" method="post">
+    	
+    	
+        
+    	<input type="hidden" th:value="${oldEleve.id}" name="id" />
+    	
+        <p>Nom : <input type="text" th:placeholder="${oldEleve.nom}" th:field="*{nom}" /></p>
+        <p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Firstname Error</p>
+        
+        <p>Prenom : <input type="text" th:placeholder="${oldEleve.prenom}" th:field="*{prenom}" /></p>
+        <p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Lastname Error</p>
+        
+        <p>Date de naissance : <input type="date" th:placeholder="${oldEleve.dateNaissance}" th:field="*{dateNaissance}" /></p>
+        <p th:if="${#fields.hasErrors('dateNaissance')}" th:errors="*{dateNaissance}">Birthday Error</p>
+        
+        
+        
+        <p>Adresse ligne 1 : <input type="text" th:placeholder="${oldEleve.address.addressLine1}" th:field="*{address.addressLine1}" /></p>
+        <p th:if="${#fields.hasErrors('address.addressLine1')}" th:errors="*{address.addressLine1}">address Error</p>
+        
+        
+        <p>Adresse ligne 2 : <input type="text" th:placeholder="${oldEleve.address.addressLine2}" th:field="*{address.addressLine2}" /></p>
+        <p th:if="${#fields.hasErrors('address.addressLine2')}" th:errors="*{address.addressLine2}">address Error</p>
+        
+        
+        <p>Ville : <input type="text" th:placeholder="${oldEleve.address.city}" th:field="*{address.city}" /></p>
+        <p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}">address Error</p>
+        
+       
+        <p>Pays : <input type="text" th:placeholder="${oldEleve.address.country}" th:field="*{address.country}" /></p>
+        <p th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}">address Error</p>
+        
+        
+        <p>Code postal : <input type="text" th:placeholder="${oldEleve.address.zipCode}" th:field="*{address.zipCode}" /></p>
+        <p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}">address Error</p>
+        
+         
+		<label> Mere
+		<select th:field="${eleve.mere}">
+			<option value="0">/</option> 
+			<option th:each="mere : ${meres}"
+					th:value="${mere.id}"
+					th:text="${mere.prenom + ' ' + mere.nom}"
+			></option>
+		</select>
+		</label>
+        
+		<label> Pere
+			<select th:field="${eleve.pere}">
+			<option value="0">/</option> 
+			<option th:each="pere : ${peres}"
+					th:value="${pere.id}"
+					th:text="${pere.prenom + ' ' + pere.nom}"
+			></option>
+		</select>
+		</label>
+		
+		
+        
+            
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

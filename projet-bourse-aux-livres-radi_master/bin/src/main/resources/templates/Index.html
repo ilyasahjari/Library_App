@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/w3images/coffeehouse.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+		    <div class="w3-col s3">
+		      <a href="#" class="w3-button w3-block w3-black">HOME</a>
+		    </div>
+		    
+		    									<!-- Students -->
+		    <div class="w3-col s3">
+		      <a href="/eleve/add" class="w3-button w3-block w3-black">Ajouter un nouvel etudiant</a>
+		    </div>
+		    <div class="w3-col s3">
+		      <a href="/eleve/eleves" class="w3-button w3-block w3-black">Afficher la liste des etudiants</a>
+		    </div>
+		    <div class="w3-col s3">
+		      <a href="/eleve/delete" class="w3-button w3-block w3-black">Supprimer un etudiant</a>
+		    </div>
+		    
+		        									<!-- Parents -->
+		    <div class="w3-col s3">
+		      <a href="/parent/add" class="w3-button w3-block w3-black">Ajouter un nouvel parent</a>
+		    </div>
+		    <div class="w3-col s3">
+		      <a href="/parent/parents" class="w3-button w3-block w3-black">Afficher la liste des parents</a>
+		    </div>
+		    
+		     <div class="w3-col s3">
+		      <a href="/parent/delete" class="w3-button w3-block w3-black">Supprimer un parent</a>
+		    </div>
+    
+  </div>
+</div>
+
+
+
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>

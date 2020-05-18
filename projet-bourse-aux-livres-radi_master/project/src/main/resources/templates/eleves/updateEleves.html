@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+#eleves {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#eleves td, #eleves th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#eleves tr:nth-child(even){background-color: #f2f2f2;}
+
+#eleves tr:hover {background-color: #ddd;}
+
+#eleves th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>  
+</head>
+<body>
+<div th:if="${ #lists.isEmpty(eleves)}">
+    <h2>La liste des eleves est VIDE!</h2>
+    <table id="eleves">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Dade de naissance</th>
+            <th>Adresse Ligne1</th>
+            <th>Adresse Ligne2</th>
+            <th>Ville</th>
+            <th>Pays</th>
+            <th>Code Postal</th>
+            <th>Pere</th>
+            <th>Mere</th>
+        </tr>
+        
+    </table>
+</div>
+
+<div th:if="${not #lists.isEmpty(eleves)}">
+    <h2>liste des eleves</h2>
+    <table id="eleves">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Dade de naissance</th>
+            <th>Pere</th>
+            <th>Mere</th>
+            <th>Delete</th>
+            
+            
+        </tr>
+        <tr th:each="eleve : ${eleves}">
+            <td th:text="${eleve.id}"></td>
+            <td th:text="${eleve.nom}"></td>
+            <td th:text="${eleve.prenom}"></td>
+            <td th:text="${eleve.dateNaissance}"></td>
+            
+            <td th:if="${eleve.pere == null}" th:text="${'non renseigné'}"></td>
+            <td th:unless="${eleve.pere == null}" th:text="${eleve.pere.getPrenom()}"></td>
+            
+            <td th:if="${eleve.mere == null}" th:text="${'non renseigné'}"></td>
+            <td th:unless="${eleve.mere == null}" th:text="${eleve.mere.getPrenom()}"></td>
+            
+            <td >
+              <form th:action="@{updateEleves}" method="post">
+                  <input type="hidden" name="id" th:value="${eleve.id}" />
+                  <input type="submit"  value="Update"  />
+                 
+              </form>
+            </td>
+            
+           
+           
+        </tr>
+    </table>
+
+</body>
+</html>

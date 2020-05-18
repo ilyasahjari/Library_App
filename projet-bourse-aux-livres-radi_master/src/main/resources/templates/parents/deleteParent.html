@@ -1,0 +1,175 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Supprimer responsable</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+
+     
+    <!-- FONTAWESOME STYLES-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}"/>
+           <!-- CUSTOM STYLES-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
+     
+ <!-- GOOGLE FONTS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+   ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul li {display: inline-block;}
+
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 150px;
+  display: none;
+  list-style-type: circle;
+}
+ul li ul li { 
+  background: #6cc091; 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #666;}
+</style>
+</head>
+<body>
+<div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/img/logo.png" />
+
+                    </a>
+                    
+                </div>
+              
+                
+                <span style="float:right;margin-top: 20px;margin-right: 20px;">
+              <ul>
+    <li>
+              <img src="images/client.png" style="width: 40px;">
+                     <ul>
+        <li><a th:href="r" style="color:#fff;"><i class="fa fa-power-off" aria-hidden="true" style="font-size: 1.2em;margin:5px;">Déconnecter</i></a></li>
+       
+      </ul>
+                     </li>
+    </ul>
+              </span>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+           <div class="sidebar-collapse">
+               <ul class="nav" id="main-menu">
+                 
+
+
+                     <li class="active-link">
+                        <a href="/Index" ><i class="fa fa-desktop "></i>Menu</a>
+                    </li>
+             
+                  
+                    <li>
+                        <a href="/eleve/add" ><i class="fa fa-user" aria-hidden="true"></i>Ajouter un eleve</a>
+                    </li>
+                    <li>
+                        <a  href="/eleve/eleves"><i class="fa fa-list "></i>Consulter la liste des eleves</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/eleve/delete"><i class="fas fa-user-minus"></i>Supprimer un eleve</a>
+                    </li>
+                    <li>
+                        <a href="/classe/creer" ><i class="fas fa-plus-circle" aria-hidden="true"></i>Creer une classe</a>
+                    </li>
+                    
+					  <li>
+                        <a  href="/parent/add" ><i class="fa fa-user" aria-hidden="true"></i>Ajouter un parent</a>
+                    </li>
+                    <li>
+                        <a  href="/parent/parents"><i class="fa fa-list "></i>Consulter la liste des parents</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/parent/delete"><i class="fas fa-user-minus "></i>Supprimer un parent</a>
+                    </li>
+                     <li>
+                        <a ><i class="fa fa-power-off "></i>Deconnecter</a>
+                    </li>
+                  
+                    
+                   
+                </ul>
+                            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                 
+                <hr/>
+                <div class="row text-center pad-top" style="padding-left:30px;">
+                  		<h2 style="float:left;">Supprimer Responsable:</h2>
+                  		<br>
+                  		<div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+							            <th>Prenom</th>
+							            <th>Sexe</th>
+							            <th>Numero de telephone</th>
+							            <th>Email</th>
+                                        <th>Supprimer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                     <tr th:each="parent : ${parents}">
+          
+            <td th:text="${parent.nom}"></td>
+            <td th:text="${parent.prenom}"></td>
+            <td th:text="${parent.sexe}"></td>
+            <td th:text="${parent.email}"></td>
+            <td th:text="${parent.phoneNumber}"></td>
+                  
+                                
+                                
+                                <td >
+              <form th:action="@{deleteParent}" method="post">
+                  <input type="hidden" name="id" th:value="${parent.id}" />
+                  <input type="submit" onClick="return confirm('Etes vous sure de vouloir supprimer ce parent?')" value="Delete" class="btn btn-danger"  />
+                 
+              </form>
+            </td>
+            
+            </tr>  
+            
+                                    <tr>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                  		
+                  		
+             	 </div>
+
+              
+</body>
+</html>

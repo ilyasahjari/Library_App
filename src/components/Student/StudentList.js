@@ -24,8 +24,8 @@ export const BookList = (props) => {
     const [showDelete, setShowDelete] = useState(false);
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/restapi/profile/eleves").then(response =>console.log(response))
-    })  
+        axios.get("http://localhost:8080/rest/classes").then(response =>console.log(response.data.result))
+    })
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -33,6 +33,7 @@ export const BookList = (props) => {
             behavior: "smooth"
         });
     }
+
 
     const getPayementByStudentID = (id) => {
         const payement = props.payements.find((payement) => payement.idStudent === id);

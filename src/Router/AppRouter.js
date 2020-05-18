@@ -16,6 +16,7 @@ import BookList  from '../components/Book/BookList';
 import BookEdit from '../components/Book/BookEdit';
 import "../Authenticationstyle.css"
 import "../App1.css"
+import NiveauList from '../components/NiveauList';
 
 function AppRouter(props) {
     
@@ -36,6 +37,7 @@ function AppRouter(props) {
             <Route path="/StudentProfil/:id" component={StudentProfil}/>
             <Route path="/ParentEdit/:id" component={ParentEdit}/>
             <Route path="/BookEdit/:id" component={BookEdit}/>
+            <Route path="/Niveau" component={NiveauList}/>
             <Route component={ErrorMessage} />
           </Switch>
         </BrowserRouter>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajouter un etudiant </title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+
+     
+    <!-- FONTAWESOME STYLES-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}"/>
+           <!-- CUSTOM STYLES-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
+    <link href="assets/css/custom.css" rel="stylesheet" />
+     <link rel="stylesheet" type="text/css" th:href="@{/css/mainFA.css}"/>
+     <!-- GOOGLE FONTS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+   ul {
+  display: inline;
+  margin: 0
+  padding: 0;
+}
+ul li {display: inline-block;}
+
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 150px;
+  display: none;
+  list-style-type: circle;
+}
+ul li ul li { 
+  background: #6cc091; 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #666;}
+</style>
+</head>
+<body>
+     
+           
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                    
+                    
+                    
+                    
+      <!--  
+      Logo 
+      -->
+                      
+                                                                             
+                        <img src="images/utilisateur.png" style="width: 250px;"  />
+
+                    </a>
+                    
+                </div>
+                <!--  <span class="logout-spn" > 
+				<a href="#" style="color:#fff;"><i class="fa fa-power-off" aria-hidden="true" style="font-size: 0.8em;text-align:center;"><br>Déconnecter</i></a>
+                </span>-->
+              <span style="float:right;margin-top: 20px;margin-right: 20px;">
+              <ul>
+    <li>
+      <!-- Recuperation des identifiants de l'utilisateur  -->
+              <img src="" style="width: 40px;">
+                     <ul>
+        <li><a th:href="r" style="color:#fff;"><i class="fa fa-power-off" aria-hidden="true" style="font-size: 1.2em;margin:5px;">Déconnecter</i></a></li>
+       
+      </ul>
+                     </li>
+    </ul>
+              </span>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+       
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+   <footer id="footer">
+				<div class="inner">
+
+					<h3 style="color:black;">Inscription eleve</h3>
+
+<form action="#" th:action="@{/eleve/add}" th:object="${eleve}" method="post">
+						
+						<div class="field half">
+							<label for="text">Nom</label>
+							<!--   -->
+							<input type="text" th:field="*{nom}" />	
+							<p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Firstname Error</p>					
+						</div>
+						
+						<div class="field half">
+							<label for="text">Prenom</label>
+							<!---->
+							<input type="text" th:field="*{prenom}" />
+							<p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Lastname Error</p>							
+						</div>
+						
+						<div class="field half">
+							<label for="text">Date de naissance</label>
+<input type="date" th:field="*{dateNaissance}" />	
+<p th:if="${#fields.hasErrors('dateNaissance')}" th:errors="*{dateNaissance}">Birthday Error</p>					
+						</div>
+						<div class="field half">
+							<label for="text">Email</label>
+<input type="text" th:field="*{email}" />	
+ <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</p>					
+						</div>
+						
+						
+						<div class="field half">
+							<label for="message">Numero</label>
+							<input type="text" th:field="*{numeroTel}" />
+							 <p th:if="${#fields.hasErrors('numeroTel')}" th:errors="*{numeroTel}"> numero de telephone Error</p>
+						</div>
+						
+						<div class="field half">
+							<label for="message">Niveau</label>
+<select th:field="${eleve.niveau}">
+			<option th:each="niveau : ${niveaux}"
+					th:value="${niveau}"
+					th:text="${niveau.nomNiveau}"
+			></option>
+		</select>
+		 <p class="error" th:errors="${eleve.niveau}"> niveau Error</p>
+		 
+		 						</div>
+						<div class="field half">
+							<label for="message">Classe</label>
+<select th:field="${eleve.classe}">
+			<option th:each="classe : ${classes}"
+					th:value="${classe.id}"
+					th:text="${classe.nom}"
+			></option>
+		</select>
+ 				<p class="error" th:errors="${eleve.classe}"> classe Error</p>						</div>
+						<div class="field half">
+							<label for="text">Adresse ligne 1</label>
+<input type="text" th:field="*{address.addressLine1}" /></p>
+        <p th:if="${#fields.hasErrors('address.addressLine1')}" th:errors="*{address.addressLine1}">address Error</p>						
+						</div>
+						
+						
+						<div class="field half">
+							<label for="text">Adresse ligne 2</label>
+ <input type="text" th:field="*{address.addressLine2}" /></p>
+        <p th:if="${#fields.hasErrors('address.addressLine2')}" th:errors="*{address.addressLine2}">address Error</p>
+        
+						</div>
+						
+						
+						
+					<div class="field half">
+							<label for="message">Ville</label>
+<input type="text" th:field="*{address.city}" />	
+ <p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}">address Error</p>						 <p th:if="${#fields.hasErrors('numeroTel')}" th:errors="*{numeroTel}"> numero de telephone Error</p>
+						</div>
+						
+						
+						
+						<div class="field half">
+							<label for="message">Code postal :</label>
+							<input type="text" th:field="*{address.zipCode}" /></p>
+        <p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}">address Error</p>
+						</div>	
+						
+						
+						<div class="field half">
+							<label for="message"> Responsable 1:</label>
+							<select th:field="${eleve.pere}">
+			<option value="0">/</option> 
+			<option th:each="pere : ${peres}"
+					th:value="${pere.id}"
+					th:text="${pere.prenom + ' ' + pere.nom}"
+			></option>
+		</select>
+						</div>	
+						
+						
+						
+						<div class="field half">
+							<label for="message">Responsable 2:</label>
+							<select th:field="${eleve.mere}">
+			<option value="0">/</option> 
+			<option th:each="mere : ${meres}"
+					th:value="${mere.id}"
+					th:text="${mere.prenom + ' ' + mere.nom}"
+			></option>
+		</select>
+						</div>	
+						
+						
+						
+						<br>
+							<span id='message'></span>
+						
+							<br>
+							<br>
+							<br>
+						
+						<ul class="actions">
+							<li><input value="Submit" class="button alt" type="submit" ></li>
+						</ul>
+					</form>
+
+
+				</div>
+			</footer>
+
+      <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script type="text/javascript" th:src="@{/js/jquery-1.10.2.js}"></script>
+    
+      <!-- BOOTSTRAP SCRIPTS -->
+       <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  
+      <!-- CUSTOM SCRIPTS -->
+        <script type="text/javascript" th:src="@{/js/custom.js}"></script>
+    
+    
+   
+</body>
+</html>

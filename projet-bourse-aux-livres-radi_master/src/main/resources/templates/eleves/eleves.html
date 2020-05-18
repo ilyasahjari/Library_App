@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Consulter eleves  </title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+
+     
+    <!-- FONTAWESOME STYLES-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.css}"/>
+           <!-- CUSTOM STYLES-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
+     
+ <!-- GOOGLE FONTS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+   ul {
+  display: inline;
+  margin: 0;
+  padding: 0;  
+}
+ul li {display: inline-block;}
+
+ul li:hover ul {display: block;}
+ul li ul {
+  position: absolute;
+  width: 150px;
+  display: none;
+  list-style-type: circle;PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
+}
+ul li ul li { 
+  background: #6cc091; 
+  display: block; 
+}
+ul li ul li a {display:block !important;} 
+ul li ul li:hover {background: #666;}
+</style>
+<style>
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #b32c29;
+    background-color: #b32c29;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #b32c29;
+    border-top: none;
+    border-radius:10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+</style>
+</head>
+<body>
+
+
+<div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                         <!--  
+      Logo 
+      -->
+                                                                           
+                        <img src="images/utilisateur.png" style="width: 250px;"  />
+
+
+                    </a>
+                    
+                </div>
+              
+                
+                <span style="float:right;margin-top: 20px;margin-right: 20px;">
+              <ul>
+    <li>
+    
+      <!-- Recuperation des identifiants de l'utilisateur  -->
+              <img src="" style="width: 40px;">
+                     <ul>
+        <li><a th:href="r" style="color:#fff;"><i class="fa fa-power-off" aria-hidden="true" style="font-size: 1.2em;margin:5px;">Déconnecter</i></a></li>
+       
+      </ul>
+                     </li>
+    </ul>
+              </span>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+               <ul class="nav" id="main-menu">
+                 
+
+
+                     <li class="active-link">
+                        <a href="/Index"  ><i class="fa fa-desktop "></i>Menu</a>
+                    </li>
+             
+                  
+                    <li>
+                        <a href="/eleve/add" ><i class="fa fa-user" aria-hidden="true"></i>Ajouter un eleve</a>
+                    </li>
+                    <li>
+                        <a  href="/eleve/eleves"><i class="fa fa-list "></i>Consulter la liste des eleves</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/eleve/delete"><i class="fas fa-user-minus"></i>Supprimer un eleve</a>
+                    </li>
+                    <li>
+                        <a href="/classe/creer" ><i class="fas fa-plus-circle" aria-hidden="true"></i>Creer une classe</a>
+                    </li>
+                    
+					  <li>
+                        <a  href="/parent/add" ><i class="fa fa-user" aria-hidden="true"></i>Ajouter un parent</a>
+                    </li>
+                    <li>
+                        <a  href="/parent/parents"><i class="fa fa-list "></i>Consulter la liste des parents</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/parent/delete"><i class="fas fa-user-minus "></i>Supprimer un parent</a>
+                    </li>
+                     <li>
+                        <a ><i class="fa fa-power-off "></i>Deconnecter</a>
+                    </li>
+                  
+                    
+                   
+                </ul>
+                            </div>
+
+        </nav>
+        
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                 
+                <hr/>
+                <div class="row text-center pad-top" style="padding-left:30px;">
+                  		<h2 style="float:left;">La liste des eleves:</h2>
+                  		<br>
+                  		<br>
+                  		<div class="tab" style="margin-top: 20px;">
+  <button class="tablinks" onclick="openCase(event, 'Eleve')">Eleves</button>
+ 
+</div>
+
+<div id="Eleve" class="tabcontent">
+  <h3 style="float: left;">Eleves</h3>
+  <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Date de naissance</th>
+                                        <th>Email</th>
+                                        <th>Telephone</th> 
+                                        
+                                        <th>Adresse ligne 1</th>
+                                        <th>Adresse ligne 2</th>
+                                        <th>Ville</th> 
+                                        <th>Code Postal</th>
+                                        
+                                        <th>Responsable 1 </th>
+           								<th>Responsable 2</th>
+            
+           								<th>Niveau</th>
+            							<th>Classe</th>
+                                        
+                                        
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                               
+                               
+              <tr th:each="eleve : ${eleves}">
+          
+            <td th:text="${eleve.nom}"></td>
+            <td th:text="${eleve.prenom}"></td>
+            <td th:text="${eleve.dateNaissance}"></td>
+            <td th:text="${eleve.email}"></td>
+            <td th:text="${eleve.numeroTel}"></td>
+            <td th:text="${eleve.address.getAddressLine1()}"></td>
+            <td th:text="${eleve.address.getAddressLine2()}"></td>
+            <td th:text="${eleve.address.getCity()}"></td>
+            <td th:text="${eleve.address.getZipCode()}"></td>
+            
+            <td th:if="${eleve.pere == null}" th:text="${'non renseigné'}"></td>
+            <td th:unless="${eleve.pere == null}" th:text="${eleve.pere.getPrenom()}"></td>
+            
+            <td th:if="${eleve.mere == null}" th:text="${'non renseigné'}"></td>
+            <td th:unless="${eleve.mere == null}" th:text="${eleve.mere.getPrenom()}"></td>
+            
+            <td th:text="${eleve.niveau.nomNiveau}"></td>
+            <td th:text="${eleve.classe.getNom()}"></td>
+            
+        </tr>                 
+                               
+                               
+                               
+                               
+                               
+                                    <tr>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+</div>
+
+
+
+                  		
+                  		
+             	 </div>
+
+
+<script>
+function openCase(evt, Name) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(Name).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+              
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>Form</h1>
+    <form action="#" th:action="@{/adherent/add}" th:object="${adherent}" method="post">
+    	
+        <p>Nom : <input type="text" th:field="*{nom}" /></p>
+        <p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">Firstname Error</p>
+        
+        <p>Prenom : <input type="text" th:field="*{prenom}" /></p>
+        <p th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">Lastname Error</p>
+        
+        <p>Date de naissance : <input type="date" th:field="*{dateNaissance}" /></p>
+        <p th:if="${#fields.hasErrors('dateNaissance')}" th:errors="*{dateNaissance}">Birthday Error</p>
+        
+        
+        
+        <p>Adresse ligne 1 : <input type="text" th:field="*{address.addressLine1}" /></p>
+        <p th:if="${#fields.hasErrors('address.addressLine1')}" th:errors="*{address.addressLine1}">address Error</p>
+        
+        
+        <p>Adresse ligne 2 : <input type="text" th:field="*{address.addressLine2}" /></p>
+        <p th:if="${#fields.hasErrors('address.addressLine2')}" th:errors="*{address.addressLine2}">address Error</p>
+        
+        
+        <p>Ville : <input type="text" th:field="*{address.city}" /></p>
+        <p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}">address Error</p>
+        
+       
+        <p>Pays : <input type="text" th:field="*{address.country}" /></p>
+        <p th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}">address Error</p>
+        
+        
+        <p>Code postal : <input type="text" th:field="*{address.zipCode}" /></p>
+        <p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}">address Error</p>
+        
+         
+        
+		<label> Pere
+			<select th:field="${adherent.pere}">
+			<option th:each="pere : ${parents}"
+					th:value="${pere.id}"
+					th:text="${pere.id}"
+			></option>
+			</select>
+		</label>
+		
+		<label> Mere
+		
+		<select th:field="${adherent.mere}">
+			<option th:each="mere : ${parents}"
+					th:value="${mere.id}"
+					th:text="${mere.prenom + ' ' + mere.nom}"
+			></option>
+		</select>
+		</label>
+        
+            
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
