@@ -46,7 +46,7 @@ export const BookList = (props) => {
                     {
                         props.books.map((book, index) => {
                             return (
-                                <div className="col-lg-3 col-md-6 mb-4" key={index}>
+                                <div className="col-lg-3 col-md-6 mb-4 zoom" key={index}>
                                     <div className="card h-100">
                                         <div className="card-body">
                                             <h4 className="card-title">

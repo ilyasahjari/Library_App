@@ -5,6 +5,7 @@ const NiveauList = () => {
 
     const [data, setData] = useState([]);
     const [load, setLoad] = useState(true);
+    const [classeName, setClasseName] = useState("")
 
     let res = [];
     useEffect(() => {
@@ -15,8 +16,22 @@ const NiveauList = () => {
             })
     }, [])
 
+
+    const handleAddNiveau =()=>{
+        window.location.reload(false)
+            axios.post('http://localhost:8080/rest/classes', { "nom": classeName})
+                 .then(response => {
+                    console.log(response.data);
+            })
+                .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div className="App fadeIn">
+            <input onChange={(e)=>setClasseName(e.target.value)}/>
+            <button onClick={handleAddNiveau}>Ajouter</button>
             <table cellSpacing="0">
                 <thead>
                     <tr >
